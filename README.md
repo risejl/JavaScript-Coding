@@ -12,3 +12,4 @@ Record the JavaScript problems I have solved.
 ## Subjects supported
 
 * Array prototype
+* Array
