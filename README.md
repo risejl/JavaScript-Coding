@@ -1,15 +1,51 @@
 # JavaScript-Problems
 
-Record the JavaScript problems I have solved.
-
 ## Languages supported:
 
 * JavaScript
 * TypeScript
 
+## Subjects & Problems
 
-
-## Subjects supported
-
+### Array
 * Array prototype
-* Array
+  * Array.prototype.at()
+
+  * Array.prototype.concat()
+
+  * Array.prototype.every()
+
+  * Array.prototype.filter()
+
+  * Array.prototype.forEach()
+
+  * Array.prototype.last()
+
+  * Array.prototype.map()
+
+  * Array.prototype.reduce()
+
+  * Array.prototype.some()
+
+  * Array.prototype.square()
+
+* Other Array Problems
+  * Array.of()
+  * Array to Tree
+  * Array Wrapper
+  * Array-like to Array
+  * Chunk
+  * Compact
+  * Flatten
+  * Group By
+  * Intersections
+  * Remove Duplicates
+  * Shuffle
+  * Sort By
+
+
+### Function
+* Function prototype
+  * Function.prototype.call()
+  * Function.prototype.apply()
+  * Function.prototype.bind()

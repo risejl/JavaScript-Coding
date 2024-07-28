@@ -1,0 +1,15 @@
+/**
+ * @param thisArg The object to be used as the this object.
+ * @param argArray A set of arguments to be passed to the function.
+ * @return {any}
+ */
+Function.prototype.myApply = function (thisArg, argArray = []) {
+  const sym = Symbol();
+  const wrapperObj = Object(thisArg);
+  Object.defineProperty(wrapperObj, sym, {
+    enumerable: false,
+    value: this,
+  });
+
+  return wrapperObj[sym](...argArray);
+};
