@@ -46,3 +46,11 @@
   * Partial
   * Compose
   * Memoization
+
+### Closure
+* Create hello world function
+* Counter
+* Once
+* Limit
+* Expect
+
