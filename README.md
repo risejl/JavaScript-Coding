@@ -54,3 +54,14 @@
 * Limit
 * Expect
 
+### String
+* String prototype
+  * String.prototype.repeat()
+* Other String Problems
+  * Is alphaNumeric
+  * Compare version numbers
+  * Version numbers sorting
+  * Most frequently occurring character
+  * Find longest word length
+  * Find word with longest length
+
