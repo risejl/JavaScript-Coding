@@ -10,23 +10,14 @@
 ### Array
 * Array prototype
   * Array.prototype.at()
-
   * Array.prototype.concat()
-
   * Array.prototype.every()
-
   * Array.prototype.filter()
-
   * Array.prototype.forEach()
-
   * Array.prototype.last()
-
   * Array.prototype.map()
-
   * Array.prototype.reduce()
-
   * Array.prototype.some()
-
   * Array.prototype.square()
 
 * Other Array Problems
@@ -49,3 +40,9 @@
   * Function.prototype.call()
   * Function.prototype.apply()
   * Function.prototype.bind()
+* Other Function Problems
+  * Number of arguments
+  * Curry
+  * Partial
+  * Compose
+  * Memoization
