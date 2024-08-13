@@ -83,3 +83,7 @@
   * Parasite
   * Combination
   * Class
+* Object static methods
+  * Object.create()
+  * Object.is()
+  * Object.assign()
