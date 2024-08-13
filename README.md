@@ -69,3 +69,11 @@
 * Big integer addition
 * Add comma to number
 * Digit / Chinese number conversion
+
+### Object
+* Create an object
+  * Object literal
+  * Function constructor
+  * Class
+  * Object.create()
+  * Factory
