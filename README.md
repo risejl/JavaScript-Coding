@@ -65,3 +65,7 @@
   * Find longest word length
   * Find word with longest length
 
+### Number
+* Big integer addition
+* Add comma to number
+* Digit / Chinese number conversion
