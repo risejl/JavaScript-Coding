@@ -1,3 +1,9 @@
+/**
+ * @param {any} target
+ * @param {any[]} sources
+ * @return {object}
+ */
+
 function myObjectAssign(target, ...sources) {
   if (target == null) {
     throw new TypeError('Cannot convert undefined or null to object');

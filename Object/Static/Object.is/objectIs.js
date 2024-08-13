@@ -1,3 +1,9 @@
+/**
+ * @parma {any} a
+ * @param {any} b
+ * @return {boolean}
+ */
+
 function myObjectIs(a, b) {
   if (a === b) {
     return a !== 0 || 1 / a === 1 / b;

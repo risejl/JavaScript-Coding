@@ -1,3 +1,8 @@
+/**
+ * @param {any} proto
+ * @return {object}
+ */
+
 function myObjectCreate(proto) {
   function MyConstructor() {}
   MyConstructor.prototype = proto.prototype || proto;

@@ -18,8 +18,7 @@
   * Array.prototype.reduce()
   * Array.prototype.some()
   * Array.prototype.square()
-
-* Other Array Problems
+* Other array problems
   * Array.of()
   * Array to Tree
   * Array Wrapper
@@ -39,7 +38,7 @@
   * Function.prototype.call()
   * Function.prototype.apply()
   * Function.prototype.bind()
-* Other Function Problems
+* Other function problems
   * Number of arguments
   * Curry
   * Partial
@@ -56,7 +55,7 @@
 ### String
 * String prototype
   * String.prototype.repeat()
-* Other String Problems
+* Other string problems
   * Is alphaNumeric
   * Compare version numbers
   * Version numbers sorting
@@ -87,3 +86,12 @@
   * Object.create()
   * Object.is()
   * Object.assign()
+* Other object problems
+  * Is object empty
+  * new
+  * instanceOf
+  * Object map
+  * Squash object
+  * Deep clone
+  * Deep equal
+  * Deep merge
