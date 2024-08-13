@@ -1,7 +1,6 @@
 # JavaScript-Problems
 
 ## Languages supported:
-
 * JavaScript
 * TypeScript
 
@@ -77,3 +76,10 @@
   * Class
   * Object.create()
   * Factory
+* Object inheritance
+  * Prototype Chain
+  * Prototype
+  * Constructor
+  * Parasite
+  * Combination
+  * Class
