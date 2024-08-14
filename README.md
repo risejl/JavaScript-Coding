@@ -95,3 +95,13 @@
   * Deep clone
   * Deep equal
   * Deep merge
+
+### Async
+* Timer
+  * Cancel Timeout
+  * Cancel Interval
+  * Sleep
+  * Stimulate Traffic Light
+  * Cache With Time Limit
+  * Debounce
+  * Throttle
