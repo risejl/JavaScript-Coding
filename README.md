@@ -105,3 +105,11 @@
   * Cache With Time Limit
   * Debounce
   * Throttle
+* Promise
+  * Static methods
+    * resolve
+    * reject
+    * race
+    * all
+    * any
+    * allSettled
