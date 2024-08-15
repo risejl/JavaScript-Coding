@@ -113,3 +113,11 @@
     * all
     * any
     * allSettled
+  * Other promise problems
+    * Add two promises
+    * Promise time limit
+    * Promisify
+    * Promise scheduler
+    * Limit request
+    * Auto-retry promise on rejection
+    * Throttle promises
