@@ -106,6 +106,7 @@
   * Debounce
   * Throttle
 * Promise
+  * A+ Promise
   * Static methods
     * resolve
     * reject
