@@ -8,8 +8,8 @@
 Array.prototype.mySome = function (callbackFn, thisArg) {
   const len = this.length;
   let flag = false;
-  
-  for (let i = 0; i < len; i++) {
+
+  for (let i = 0; i < len; i += 1) {
     if (
       Object.hasOwn(this, i) &&
       callbackFn.call(thisArg, this[i], i, this)
@@ -20,4 +20,7 @@ Array.prototype.mySome = function (callbackFn, thisArg) {
   }
 
   return flag;
-};
+}
+
+// console.log([1, 2, 3].mySome((item) => item > 2)); // true
+// console.log([1, 2, 3].mySome((item) => item < 0)); // false

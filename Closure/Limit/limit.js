@@ -4,15 +4,16 @@
  * @return {Function}
  */
 
-function limit(func, count) {
-  let invokeCounter = 0;
-  let value = null;
+function limit(fn, max) {
+  let count = 0;
+  let value;
 
   return function (...args) {
-    if (invokeCounter < count) {
-      value = func.apply(this, args);
-      invokeCounter++;
+    if (count < max) {
+      value = fn.call(this, ...args);
+      count++;
     }
+
     return value;
   }
 }

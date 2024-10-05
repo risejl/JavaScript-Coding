@@ -1,18 +1,18 @@
 /**
  * @param {Function} constructor
  * @param {any[]} args
- * @return {Object}
+ * `myNew(constructor, ...args)` should return the same as `new constructor(...args)`
  */
+function myNew(constructor, ...args) {
+  const obj = {};
+  Object.setPrototypeOf(obj, constructor.prototype);
+  
+  const result = constructor.call(obj, ...args);
 
-const myNew = function (constructor, ...args) {
-  const emptyObj = {}
-  Object.setPrototypeOf(emptyObj, constructor.prototype);
-  const returned = constructor.call(emptyObj, ...args);
-
-  if (typeof returned !== 'object' || returned === null) {
-    return emptyObj;
+  if (typeof result !== 'object' || result === null) {
+    return obj;
   } else {
-    return returned;
+    return result;
   }
 }
 

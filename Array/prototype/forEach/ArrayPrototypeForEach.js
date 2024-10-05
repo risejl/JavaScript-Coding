@@ -9,17 +9,20 @@ Array.prototype.myForEach = function (callbackFn, thisArg) {
   if (this == null) {
     throw new TypeError('this is null or not defined');
   }
+
   if (typeof callbackFn !== 'function') {
     throw new TypeError(callbackFn + ' is not a function');
   }
+
   const O = Object(this);
   // Zero-fill Right Shift to ensure that the result if always non-negative.
   const len = O.length >>> 0;
-  let k = 0;
-  while (k < len) {
-    if (k in O) {
-      callbackFn.call(thisArg, O[k], k, O);
+
+  for (let i = 0; i < len; i += 1) {
+    if (Object.hasOwn(O, i)) {
+      callbackFn.call(thisArg, O[i], i, O);
     }
-    k++;
   }
 };
+
+// console.log([1, 2, 3].myForEach((el) => el * el), null) // [1, 4, 9];

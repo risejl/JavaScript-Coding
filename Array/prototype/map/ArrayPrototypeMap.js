@@ -7,9 +7,9 @@
 
 Array.prototype.myMap = function (callbackFn, thisArg) {
   const len = this.length;
-  const newArray = new Array(len);
+  const newArray = Array.from({ length: len });
 
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i += 1) {
     if (Object.hasOwn(this, i)) {
       newArray[i] = callbackFn.call(thisArg, this[i], i, this);
     }
@@ -17,3 +17,6 @@ Array.prototype.myMap = function (callbackFn, thisArg) {
 
   return newArray;
 };
+
+// console.log([1, 2, 3, 4].myMap((i) => i)); // [1, 2, 3, 4]
+// console.log([1, 2, 3, 4].myMap((i) => i * i)); // [1, 4, 9, 16])

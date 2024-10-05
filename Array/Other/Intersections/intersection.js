@@ -3,19 +3,22 @@
  * @returns {Array<unknown>} - An array containing the elements common to all input arrays.
  */
 
-export default function intersection(...arrays) {
-  if (arrays.length === 0) {
+function intersectArrays(...arrs) {
+  if (!arrs.length) {
     return [];
   }
 
-  const set = new Set(arrays[0]);
-  
-  for (let i = 1; i < arrays.length; i++) {
+  const set = new Set(arrs[0]);
+
+  for (let i = 1; i < arrs.length; i += 1) {
     set.forEach((value) => {
-      if (!arrays[i].includes(value)) {
+      if (!arrs[i].includes(value)) {
         set.delete(value);
       }
     });
   }
+
   return Array.from(set);
 }
+
+// console.log(intersectArrays([1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 6])); // output: [3, 4]

@@ -1,29 +1,30 @@
 /**
- * @param {number} init
- * @return { increment: Function, decrement: Function, reset: Function }
+ * @param {number} initialValue
+ * @return {Function}
  */
 
-const createCounter = function (init) {
-  let num = init;
+function makeCounter(initialValue = 0) {
+  let count = initialValue - 1;
 
-  return {
-    increment: function () {
-      return ++num;
-    },
-    decrement: function () {
-      return --num;
-    },
-    reset: function () {
-      num = init;
-      return num;
-    }
+  return function (...args) {
+    count += 1;
+    return count;
   }
 }
 
-// example
-/*
-const counter = createCounter(5);
-console.log(counter.increment()); // 6
-console.log(counter.reset()); // 5
-console.log(counter.decrement()); // 4
-*/
+// return an object
+
+/**
+ * @param {number} initialValue
+ * @return {{get: Function, increment: Function, decrement: Function, reset: Function }}
+ */
+function makeCounter (initialValue = 0) {
+  let count = initialValue;
+  
+  return {
+    get: () => count,
+    increment: () => ++count,
+    decrement: () => --count,
+    reset: () => (count = initialValue),
+  };
+}

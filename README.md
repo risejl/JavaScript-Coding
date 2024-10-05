@@ -24,10 +24,13 @@
   * Array Wrapper
   * Array-like to Array
   * Chunk
-  * Compact
+  * Difference
+  * Drop Right While
+  * Drop While
   * Flatten
-  * Group By
+  * Intersection By
   * Intersections
+  * Mean
   * Remove Duplicates
   * Shuffle
   * Sort By
@@ -39,26 +42,36 @@
   * Function.prototype.apply()
   * Function.prototype.bind()
 * Other function problems
-  * Number of arguments
+  * Number of arguments & parameters
   * Curry
   * Partial
   * Compose
   * Memoization
 
 ### Closure
-* Create hello world function
+* Add
+* Create a hello world function
 * Counter
+* Cycle
 * Once
 * Limit
-* Expect
+* To Be Or Not To Be
+
+### Design Pattern
+* Calculator with Method Chaining
+* Event Emitter
+* Singleton
 
 ### String
 * String prototype
   * String.prototype.repeat()
+  * String.prototype.trim()
 * Other string problems
   * Is alphaNumeric
   * Compare version numbers
   * Version numbers sorting
+  * Camel case to Snake case or vice visa
+  * Compress Duplicates
   * Most frequently occurring character
   * Find longest word length
   * Find word with longest length
@@ -67,6 +80,8 @@
 * Big integer addition
 * Add comma to number
 * Digit / Chinese number conversion
+* Add space to bank number
+* Clamp
 
 ### Object
 * Create an object
@@ -87,38 +102,57 @@
   * Object.is()
   * Object.assign()
 * Other object problems
-  * Is object empty
-  * new
-  * instanceOf
-  * Object map
-  * Squash object
+  * Compact
+  * Count By
   * Deep clone
   * Deep equal
   * Deep merge
+  * From pairs
+  * Get
+  * Group By
+  * instanceof
+  * Is object empty
+  * Iterable
+  * new
+  * Object Map
+  * Object to array
+  * Set
+  * Set object value safely
+  * Shallow copy
+  * Squash object
 
 ### Async
+* Callback
+  * Flatten thunk
 * Timer
-  * Cancel Timeout
-  * Cancel Interval
-  * Sleep
-  * Stimulate Traffic Light
   * Cache With Time Limit
+  * Cancel Interval
+  * Cancel Timeout
   * Debounce
+  * Resumable Interval
+  * setInterval
   * Throttle
 * Promise
   * A+ Promise
   * Static methods
     * resolve
     * reject
+    * withResolvers
     * race
     * all
     * any
     * allSettled
   * Other promise problems
     * Add two promises
-    * Promise time limit
-    * Promisify
+    * Auto-Retry Promise on Rejection
+    * Call APIs with Pagination
+    * Log Promise
+    * Map Async
+    * Map Async Limit
+    * Promise Merge
     * Promise scheduler
-    * Limit request
-    * Auto-retry promise on rejection
-    * Throttle promises
+    * Promise Time Limit
+    * Promisify
+    * Sleep
+    * Throttle Promises
+    * Traffic Light

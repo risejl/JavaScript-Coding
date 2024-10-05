@@ -1,25 +1,28 @@
-/** 
- * @param {Function} fn 
- * @return {Function | undefined} 
+/**
+ * @param {Function} fn
+ * @return {Function}
  */
 
-const once = function (fn) {
-  let flag = true;
+function once(fn) {
+  let ranOnce = false;
+  let value;
+
   return function (...args) {
-    if (flag) {
-      flag = false;
-      return fn.apply(this, args);
-    } else {
-      return undefined;
+    if (!ranOnce) {
+      value = fn.call(this, ...args);
+      ranOnce = true;
     }
+
+    return value;
   }
 }
 
-// example
 /*
-const fn = (a, b, c) => (a + b + c);
-const onceFn = once(fn);
+function func(num) {
+  return num;
+}
 
-console.log(onceFn(1, 2, 3)); // 6
-console.log(onceFn(2, 3, 6)); // `undefined`
+const onced = once(func);
+onced(1); // 1, func called with 1
+onced(2); // 1, even 2 is passed, previous result is returned 
 */

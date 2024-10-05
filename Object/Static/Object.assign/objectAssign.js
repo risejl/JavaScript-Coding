@@ -3,20 +3,30 @@
  * @param {any[]} sources
  * @return {object}
  */
-
 function myObjectAssign(target, ...sources) {
   if (target == null) {
-    throw new TypeError('Cannot convert undefined or null to object');
+    throw Error();
   }
-
+  
   target = Object(target);
+
+  function merge(keys = [], currSource) {
+    for (const key of keys) {
+      target[key] = currSource[key];
+
+      if (target[key] !== currSource[key]) {
+        throw Error();
+      }
+    }
+  }
 
   for (const source of sources) {
     if (source == null) {
-      for (const key of [...Object.keys(source), ...Object.getOwnPropertySymbols(source)]) {
-        target[key] = source[key];
-      }
+      continue;
     }
+
+    merge(Object.keys(source), source);
+    merge(Object.getOwnPropertySymbols(source), source);
   }
 
   return target;

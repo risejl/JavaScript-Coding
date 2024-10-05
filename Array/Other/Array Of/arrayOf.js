@@ -2,6 +2,6 @@
  * @return {Array}
  */
 
-const ArrayOf = function (){
+function arrayOf(arr) {
   return [].slice.call(arguments);
 }

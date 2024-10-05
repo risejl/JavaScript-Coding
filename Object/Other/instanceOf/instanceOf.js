@@ -1,11 +1,28 @@
 /**
  * @param {any} obj
- * @param {Function} fn
+ * @param {target} target
  * @return {boolean}
  */
-
 function myInstanceOf(obj, fn) {
-  return fn.prototype.isPrototypeOf(obj);
+  if (typeof obj !== 'object' || obj === null) {
+    return false;
+  }
+
+  if (typeof fn !== 'function') {
+    return false;
+  }
+
+  let proto = Object.getPrototypeOf(obj);
+
+  while (proto) {
+    if (proto === fn.prototype) {
+      return true;
+    }
+
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return false;
 }
 
 // example

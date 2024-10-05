@@ -8,8 +8,8 @@
 Array.prototype.myEvery = function (callbackFn, thisArg) {
   const len = this.length;
   let flag = true;
-  
-  for (let i = 0; i < len; i++) {
+
+  for (let i = 0; i < len; i += 1) {
     if (
       Object.hasOwn(this, i) &&
       !callbackFn.call(thisArg, this[i], i, this)
@@ -20,4 +20,7 @@ Array.prototype.myEvery = function (callbackFn, thisArg) {
   }
 
   return flag;
-};
+}
+
+// console.log([1, 2, 3].myEvery((item) => item > 2)); // false
+// console.log([1, 2, 3].myEvery((item) => item > 0)); // true

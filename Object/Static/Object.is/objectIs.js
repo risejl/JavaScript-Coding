@@ -1,17 +1,16 @@
 /**
- * @parma {any} a
- * @param {any} b
+ * @param {any} op1
+ * @param {any} op2
  * @return {boolean}
  */
 
-function myObjectIs(a, b) {
-  if (a === b) {
+function myObjectIs(op1, op2) {
+  if (op1 === op2) {
     return a !== 0 || 1 / a === 1 / b;
   } else {
     return a !== a && b !== b;
   }
 }
 
-// example
-// console.log(myObjectIs(0, -0)); // false
-// console.log(myObjectIs(NaN, NaN)); // true
+// Object.is(+0, -0) // false
+// Object.is(NaN, NaN) // true

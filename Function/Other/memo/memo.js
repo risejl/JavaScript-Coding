@@ -3,31 +3,84 @@
  * @return {Function}
  */
 
-function memoize(func) {
+function memoize(fn) {
   const cache = new Map();
-  
+
+  return function (arg) {
+    if (cache.has(arg)) {
+      return cache.get(arg);
+    }
+
+    const result = fn.call(this, arg);
+    cache.set(arg, result);
+    
+    return result;
+  }
+}
+
+/*
+function expensiveFunction(n) {
+  console.log('Computing...');
+  return n * 2;
+}
+
+// Create a memoized version of the function.
+const memoizedExpensiveFunction = memoize(expensiveFunction);
+
+// First call (computes and caches the result).
+console.log(memoizedExpensiveFunction(5)); // Output: Computing... 10
+
+// Second call with the same argument (returns the cached result).
+console.log(memoizedExpensiveFunction(5)); // Output: 10
+
+// Third call with a different argument (computes and caches the new result).
+console.log(memoizedExpensiveFunction(10)); // Output: Computing... 20
+
+// Fourth call with the same argument as the third call (returns the cached result).
+console.log(memoizedExpensiveFunction(10)); // Output: 20
+*/
+
+// When parameters could be array
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+
+function memoize(fn) {
+  const cache = new Map();
+
   return function (...args) {
     const key = JSON.stringify(args);
+
     if (cache.has(key)) {
       return cache.get(key);
     }
 
-    const result = func.apply(this, args);
+    const result = fn.call(this, ...args);
     cache.set(key, result);
+    
     return result;
-  };
+  }
 }
 
-// example
 /*
-function expensiveFunction(n) {
-  console.log('Computing ...');
-  return n * 2;
+function expensiveMul(a, b) {
+  console.log('Computing...');
+  return a * b;
 }
 
-const memoizedExpensiveFunction = memoize(expensiveFunction);
-console.log(memoizedExpensiveFunction(5)); // Computing... 10
-console.log(memoizedExpensiveFunction(5)); // return the cached: Computing... 10
-console.log(memoizedExpensiveFunction(10)); // Computing... 20
-console.log(memoizedExpensiveFunction(10)); // return the cached: Computing... 20
+// Create a memoized version of the function.
+const memoizedExpensiveMul = memoize(expensiveMul);
+
+// First call (computes and caches the result).
+console.log(memoizedExpensiveMul(3, 7)); // Output: Computing... 21
+
+// Second call with the same argument (returns the cached result).
+console.log(memoizedExpensiveMul(3, 7)); // Output: 21
+
+// Third call with a different argument (computes and caches the new result).
+console.log(memoizedExpensiveMul(5, 8)); // Output: Computing... 40
+
+// Fourth call with the same argument as the third call (returns the cached result).
+console.log(memoizedExpensiveMul(5, 8)); // Output: 40
 */

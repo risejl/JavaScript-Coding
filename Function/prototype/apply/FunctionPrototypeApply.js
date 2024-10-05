@@ -3,9 +3,11 @@
  * @param argArray A set of arguments to be passed to the function.
  * @return {any}
  */
+
 Function.prototype.myApply = function (thisArg, argArray = []) {
   const sym = Symbol();
   const wrapperObj = Object(thisArg);
+
   Object.defineProperty(wrapperObj, sym, {
     enumerable: false,
     value: this,
@@ -13,3 +15,20 @@ Function.prototype.myApply = function (thisArg, argArray = []) {
 
   return wrapperObj[sym](...argArray);
 };
+
+/*
+function multiplyAge(multiplier = 1) {
+  return this.age * multiplier;
+}
+
+const mary = {
+  age: 21,
+};
+
+const john = {
+  age: 42,
+};
+
+multiplyAge.myApply(mary); // 21
+multiplyAge.myApply(john, [2]); // 84
+*/

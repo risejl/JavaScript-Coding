@@ -1,11 +1,9 @@
 /**
- * @param {number} n 
+ * @param {number} num 
  * @return {string}
  */
 
-String.prototype.myRepeat = function (n) {
-  return (new Array(n + 1)).join(this);
+// s1
+String.prototype.myRepeat = function (num) {
+  return (new Array(num + 1)).join(this);
 }
-
-// example
-// console.log('hello world'.myRepeat(2)); // hello worldhello world

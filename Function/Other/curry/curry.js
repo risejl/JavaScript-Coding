@@ -1,18 +1,18 @@
 /**
- * @param {Function} func 
+ * @param {Function} fn 
  * @return {Function} 
  */
-function curry(func) {
+
+function curry(fn) {
   return function curried(...args) {
-    if (args.length >= func.length) {
-      return func.apply(this, args);
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
     }
 
     return curried.bind(this, ...args);
   }
 }
 
-// example
 // single parameter case
 /*
 function add(a, b) {
@@ -38,19 +38,19 @@ console.log(alreadyAddedThreeB(4)); // 7
 
 
 /**
- * @param {Function} func 
+ * @param {Function} fn 
  * @return {Function}
  */
-function curry(func) {
-  return function curried(...args) {
-    const fn = curried.bind(this, ...args);
 
-    fn[Symbol.toPrimitive] = () => func.apply(this, args);
-    return fn;
-  };
+function curry(fn) {
+  return function curried(...args) {
+    const bindFn = curried.bind(this, ...args);
+    bindFn[Symbol.toPrimitive] = () => fn.call(this, ...args);
+
+    return bindFn;
+  }
 }
 
-// example
 // non-fixed parameters case
 /*
 function multiply(...numbers) {
