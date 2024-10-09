@@ -124,16 +124,19 @@
 ### Async
 * Callback
   * Flatten thunk
+  * Invoke a callback after a specific second
 * Timer
-  * Cache With Time Limit
-  * Cancel Interval
-  * Cancel Timeout
+  * Repeat a task at a fixed interval
+  * Cache with time limit
+  * Cancel interval
+  * Cancel timeout
+  * Clear all timeout
   * Debounce
-  * Resumable Interval
-  * setInterval
+  * Resumable interval
+  * Implement setInterval
   * Throttle
 * Promise
-  * A+ Promise
+  * A+/Promise with `.finally()`
   * Static methods
     * resolve
     * reject
@@ -143,6 +146,9 @@
     * any
     * allSettled
   * Other promise problems
+    * Makes a http request
+    * Parallel URLs download
+    * Sequential asynchronous operations
     * Add two promises
     * Auto-Retry Promise on Rejection
     * Call APIs with Pagination

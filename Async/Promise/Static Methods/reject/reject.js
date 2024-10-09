@@ -9,10 +9,8 @@ function promiseReject(reason) {
   });
 }
 
-/*
-try {
-  promiseReject('Mayday!');
-} catch (err) {
-  console.log(err); // Mayday!
-}
-*/
+// Usage example
+const promise = promiseReject('err');
+promise.catch((err) => {
+  console.log(`Error: ${err}`); // => Error: err
+});

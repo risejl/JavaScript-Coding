@@ -3,6 +3,7 @@
  * @return {Promise<Array>}
  */
 
+// Use async await
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
     const results = Array.from({ length: iterable.length });
@@ -29,8 +30,36 @@ function promiseAll(iterable) {
   });
 }
 
-/*
-// Resolved example.
+
+// Use Promise chaining
+function promiseAll(iterable) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    let resolved = 0;
+
+    if (!iterable.length) {
+      resolve(results);
+      return;
+    }
+
+    iterable.forEach((item, index) => {
+      Promise.resolve(item)
+        .then((data) => {
+          results[index] = data;
+          resolved += 1;
+
+          if (resolved === iterable.length) {
+            resolve(results);
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  });
+}
+
+// Usage example
 const p0 = Promise.resolve(3);
 const p1 = 42;
 const p2 = new Promise((resolve, reject) => {
@@ -39,32 +68,7 @@ const p2 = new Promise((resolve, reject) => {
   }, 100);
 });
 
-await promiseAll([p0, p1, p2]); // [3, 42, 'foo']
-*/
-
-
-// How to make `Promise.all()` keeps the execution in order
-/**
- * @param {Array} iterable
- * @return {Promise<Array>}
- */
-
-function promiseAllOrdered(iterable) {
-  return new Promise((resolve, reject) => {
-    const results = Array.from({ length: iterable.length });
-    let resolved = 0;
-
-    iterable.forEach((item, index) => {
-      Promise.resolve(item)
-        .then((result) => {
-          results[index] = result;
-          resolved += 1;
-
-          if (resolved === iterable.length) {
-            resolve(results);
-          }
-        })
-        .catch(reject);
-    });
+promiseAll([p0, p1, p2])
+  .then((data) => {
+    console.log(data); // => [3, 42, 'foo']
   });
-}

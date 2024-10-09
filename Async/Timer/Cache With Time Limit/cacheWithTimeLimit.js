@@ -14,7 +14,7 @@ class TimeLimitedCache {
       value,
       ref: setTimeout(() => {
         this._cache.delete(key);
-      }, duration)
+      }, duration),
     });
 
     return found;
@@ -22,7 +22,7 @@ class TimeLimitedCache {
 
   get(key) {
     if (this._cache.has(key)) {
-      return this._cache.get(key).value;
+      return this._cache.get(key);
     } else {
       return -1;
     }
@@ -33,9 +33,12 @@ class TimeLimitedCache {
   }
 }
 
-/**
- * const timeLimitedCache = new TimeLimitedCache()
- * timeLimitedCache.set(1, 42, 1000); // false
- * timeLimitedCache.get(1) // 42
- * timeLimitedCache.count() // 1
- */
+// Usage example
+const timeLimitedCache = new TimeLimitedCache();
+console.log(timeLimitedCache.set(1, 'first', 1000)); // => false
+console.log(timeLimitedCache.get(1).value); // => 'first'
+console.log(timeLimitedCache.count()); // => 1 
+setTimeout(() => {
+  console.log(timeLimitedCache.count()); // => 0
+  console.log(timeLimitedCache.get(1)); // => -1
+}, 2000);

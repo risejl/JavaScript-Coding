@@ -1,32 +1,46 @@
 /**
- * @param {Thunk} thunk
- * @return {Thunk}
+ * @param {function} fn
+ * @return {function}
  */
 
 function flattenThunk(fn) {
   return function (callbackFn) {
-    function thunkWrapper(err, result) {
-      typeof result === 'function'
-        ? result(thunkWrapper)
-        : callbackFn(err, result);
+    function resolveThunk(err, result) {
+      if (err) {
+        callbackFn(err, undefined);
+        return;
+      }
+
+      if (typeof result === 'function') {
+        result(resolveThunk);
+      } else {
+        callbackFn(undefined, result);
+      }
     }
 
-    fn(thunkWrapper);
+    fn(resolveThunk);
   }
 }
 
-/*
-const func1 = (cb) => {
-  setTimeout(() => cb(null, 'ok'), 10)
-}
-const func2 = (cb) => {
-  setTimeout(() => cb(null, func1), 10)
-}
-const func3 = (cb) => {
-  setTimeout(() => cb(null, func2), 10)
+// Usage example
+function fn1(callbackFn) {
+  setTimeout(() => {
+    callbackFn(null, 'ok');
+  }, 10);
 }
 
-flattenThunk(func3)((error, data) => {
-   console.log(data) // 'ok'
+function fn2(callbackFn) {
+  setTimeout(() => {
+    callbackFn(null, fn1);
+  }, 10);
+}
+
+function fn3(callbackFn) {
+  setTimeout(() => {
+    callbackFn(null, fn2);
+  }, 10);
+}
+
+flattenThunk(fn3)((err, data) => {
+  console.log(data); // 'ok'
 });
-*/

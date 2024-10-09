@@ -14,10 +14,9 @@ function promiseWithResolvers() {
   return { promise, resolve, reject };
 }
 
-/*
+// Usage example
 const { promise, resolve, reject } = promiseWithResolvers();
 
 // Later in your code
 resolve('Success!');
-promise.then((result) => console.log(result)); // Output: Success!
-*/
+promise.then((result) => console.log(result)); // => Success!

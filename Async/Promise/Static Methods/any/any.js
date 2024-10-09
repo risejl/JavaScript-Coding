@@ -5,12 +5,14 @@
 
 function promiseAny(iterable) {
   return new Promise((resolve, reject) => {
-    if (!iterable.length) {
+    const len = iterable.length;
+    
+    if (!len) {
       resolve(new AggregateError([]));
     }
 
-    let pending = iterable.length;
-    const errors = Array.from({ length: iterable.length });
+    let pending = len;
+    const errors = Array.from({ length: len });
 
     iterable.forEach(async (item, index) => {
       try {
@@ -28,7 +30,7 @@ function promiseAny(iterable) {
   });
 }
 
-/*
+// Usage example
 const p0 = new Promise((resolve) => {
   setTimeout(() => {
     resolve(42);
@@ -40,5 +42,7 @@ const p1 = new Promise((resolve, reject) => {
   }, 400);
 });
 
-await promiseAny([p0, p1]); // 42
-*/
+promiseAny([p0, p1])
+  .then((data) => {
+    console.log(data); // => 42
+  });

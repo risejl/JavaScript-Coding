@@ -3,6 +3,7 @@
  * @param {number} wait 
  * @return {Function}
  */
+
 function debounce(fn, wait = 0) {
   let timerId = null;
 
@@ -17,10 +18,11 @@ function debounce(fn, wait = 0) {
   }
 }
 
-/*
+
+// Usage example
 let i = 0;
 function increment() {
-  i++;
+  i += 1;
 }
 const debouncedIncrement = debounce(increment, 100);
 
@@ -37,4 +39,3 @@ debouncedIncrement(); // i = 0
 // t = 150: Because 100ms have passed since
 //  the last debouncedIncrement() at t = 50,
 //  increment was invoked and i is now 1 .
-*/

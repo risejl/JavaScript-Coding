@@ -3,6 +3,7 @@
  * @param {number} wait 
  * @return {Function}
  */
+
 function throttle(fn, wait = 0) {
   let shouldThrottle = false;
 
@@ -20,7 +21,7 @@ function throttle(fn, wait = 0) {
   }
 }
 
-/*
+// Usage example
 let i = 0;
 function increment() {
   i++;
@@ -38,4 +39,3 @@ throttledIncrement(); // i = 1
 //  i can be incremented because it has been more than 100ms
 //  since the last throttledIncrement() call at t = 0.
 throttledIncrement(); // i = 2
-*/

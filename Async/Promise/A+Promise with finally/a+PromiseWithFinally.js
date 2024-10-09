@@ -12,7 +12,7 @@ class MyPromise {
         this.value = value;
         this.onFulfilledCallbacks.forEach((callbackFn) => callbackFn(this.value));
       }
-    }
+    } 
 
     const reject = (reason) => {
       if (this.state === 'pending') {
@@ -45,6 +45,7 @@ class MyPromise {
       ? onRejected
       : (reason) => { throw reason; };
 
+    // return a promise
     return new MyPromise((resolve, reject) => {
       const fulfilledHandler = () => {
         queueMicrotask(() => {
@@ -53,9 +54,9 @@ class MyPromise {
             this.handlePromiseResult(result, resolve, reject);
           } catch (err) {
             reject(err);
-          } 
+          }
         });
-      }
+      };
 
       const rejectedHandler = () => {
         queueMicrotask(() => {
@@ -66,7 +67,7 @@ class MyPromise {
             reject(err);
           }
         });
-      }
+      };
 
       if (this.state === 'fulfilled') {
         fulfilledHandler();
@@ -89,8 +90,8 @@ class MyPromise {
     }
 
     return this.then(
-      (value) => MyPromise.resolve(onFinally()).then(() => value),
-      (reason) => MyPromise.resolve(onFinally()).then(() => { throw reason; })
+      (value) => MyPromise.resolve((onFinally()).then(() => value)),
+      (reason) => MyPromise.resolve(onFinally()).then(() => { throw reason })
     );
   }
 
@@ -102,3 +103,15 @@ class MyPromise {
     return new MyPromise((_, reject) => reject(reason));
   }
 }
+
+// Usage example
+const promise = MyPromise.resolve(1);
+promise.then((value) => {
+  console.log(value);
+})
+.then(() => {
+  throw new Error('Error');
+})
+.catch((err) => {
+  console.log(`Error catched: ${err}`);
+});

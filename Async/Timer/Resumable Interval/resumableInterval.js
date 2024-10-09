@@ -43,7 +43,7 @@ function createResumableInterval(callbackFn, delay, ...args) {
   };
 }
 
-/*
+// Usage example
 let i = 0;
 // t = 0:
 const interval = createResumableInterval(() => {
@@ -60,4 +60,3 @@ interval.start(); // i is now 3.
 // t = 45: callback executes and i is now 4.
 // t = 50:
 interval.stop(); // i remains at 4.
-*/

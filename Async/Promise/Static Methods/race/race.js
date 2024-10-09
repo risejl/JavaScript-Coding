@@ -2,6 +2,7 @@
  * @param {Array} iterable 
  * @return {Promise}
  */
+
 function promiseRace(iterable) {
   return new Promise((resolve, reject) => {
     if (!iterable.length) {
@@ -19,7 +20,7 @@ function promiseRace(iterable) {
   });
 }
 
-/*
+// Usage example
 const p0 = new Promise((resolve) => {
   setTimeout(() => {
     resolve(42);
@@ -31,5 +32,8 @@ const p1 = new Promise((resolve, reject) => {
   }, 400);
 });
 
-await promiseRace([p0, p1]); // 42
-*/
+
+promiseRace([p0, p1])
+  .then((data) => {
+    console.log(data); // => 42
+  });
