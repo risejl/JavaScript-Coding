@@ -1,25 +1,30 @@
-async function sleep(duration) {
+function sleep(delay) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-    }, duration);
+    }, delay);
   });
-}
+};
+
 
 function logNumbers() {
   return sleep(1000)
     .then(() => {
-      console.log(1);
+      console.log(1); // => 1
       return sleep(1000);
     })
     .then(() => {
-      console.log(2);
+      console.log(2); // => 2
       return sleep(1000);
     })
     .then(() => {
-      console.log(3);
+      console.log(3); // => 3
       return sleep(1000);
     });
 }
 
-logNumbers().then(() => console.log('Done'));
+// Usage example
+logNumbers()
+  .then(() => {
+    console.log('finished!'); // => 'finished!'
+  });

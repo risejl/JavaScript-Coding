@@ -25,12 +25,12 @@ function trafficLight(delay, color) {
   });
 }
 
-
-/*
+// Usage example
 async function trafficRunner() {
-  await trafficLight(3000, 'red');
-  await trafficLight(3000, 'green');
+  await trafficLight(1000, 'red');
+  await trafficLight(2000, 'green');
   await trafficLight(3000, 'yellow');
   trafficRunner();
 }
-*/
+
+trafficRunner();

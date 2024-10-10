@@ -7,20 +7,17 @@ function promisify(fn) {
   return function (...args) {
     return new Promise((resolve, reject) => {
       fn.call(this, ...args, (err, result) => {
-        if (result) {
-          resolve(result);
-        } else {
+        if (err) {
           reject(err);
+        } else {
+          resolve(result);
         }
       });
     });
   }
 }
 
-
-/*
-// Example function with callback as last argument
-// The callback has the signature `(err, value) => any`
+// Usage example
 function foo(url, options, callback) {
   apiCall(url, options)
     .then((data) => callback(null, data))
@@ -29,13 +26,15 @@ function foo(url, options, callback) {
 
 const promisifiedFoo = promisify(foo);
 const data = await promisifiedFoo('example.com', { foo: 1 });
-*/
 
-const promisifyCustomSymbol = Symbol.for('util.promisify.custom');
+
+
 /**
  * @callback fn
  * @returns Function
  */
+const promisifyCustomSymbol = Symbol.for('util.promisify.custom');
+
 function promisify(fn) {
   if (fn[promisifyCustomSymbol]) {
     return fn[promisifyCustomSymbol];
@@ -54,9 +53,7 @@ function promisify(fn) {
   }
 }
 
-/*
-// Example function with callback as last argument
-// The callback has the signature `(err, value) => any`
+// Usage example
 function foo(url, options, callback) {
   apiCall(url, options)
     .then((data) => callback(null, data))
@@ -65,4 +62,3 @@ function foo(url, options, callback) {
 
 const promisifiedFoo = promisify(foo);
 const data = await promisifiedFoo('example.com', { foo: 1 });
-*/

@@ -2,6 +2,7 @@
  * @param {number} duration
  * @return {Promise<void>}
  */
+
 async function sleep(duration) {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -10,7 +11,7 @@ async function sleep(duration) {
   });
 }
 
-/*
+// Usage example
 async function greeting() {
   console.log('Hello!');
   await sleep(2000);
@@ -20,4 +21,3 @@ async function greeting() {
 greeting();
 // t = 0: Hello!
 // t = 2000: Bye.
-*/

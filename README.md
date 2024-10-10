@@ -152,13 +152,14 @@
     * Add two promises
     * Auto-Retry Promise on Rejection
     * Call APIs with Pagination
-    * Log Promise
+    * Log promise
     * Map Async
     * Map Async Limit
     * Promise Merge
     * Promise scheduler
-    * Promise Time Limit
+    * Promise time limit
     * Promisify
     * Sleep
     * Throttle Promises
-    * Traffic Light
+    * Traffic light
+    * Ping
