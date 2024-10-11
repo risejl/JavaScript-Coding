@@ -11,8 +11,7 @@ function isObjectEmpty(obj) {
   return true;
 }
 
-// example
-/*
+// Usage example
 const emptyObj = Object.create(null);
 const emptyObjLiteral = {};
 const nonEmptyObj = {
@@ -21,4 +20,3 @@ const nonEmptyObj = {
 console.log(isObjectEmpty(emptyObj)); // true
 console.log(isObjectEmpty(emptyObjLiteral)); // true
 console.log(isObjectEmpty(nonEmptyObj)); // false
-*/

@@ -7,10 +7,11 @@ function createCustomIterable(data) {
           if (index < data.length) {
             return {
               value: data[index++],
-              done: false
-            }        
+              done: false,
+            }
           } else {
             return {
+              value: undefined,
               done: true,
             }
           }
@@ -25,13 +26,19 @@ const customIterable = createCustomIterable([1, 2, 3, 4]);
 
 // Using for...of loop
 for (const item of customIterable) {
-    console.log(item);
+  console.log(item);
 }
+/**
+ * 1
+ * 2
+ * 3
+ * 4
+ */
 
 // Using spread operator
 const arrayFromIterable = [...customIterable];
-console.log(arrayFromIterable);
+console.log(arrayFromIterable); // => [1, 2, 3, 4]
 
 // Using Array.from()
 const anotherArray = Array.from(customIterable);
-console.log(anotherArray);
+console.log(anotherArray); // => [1, 2, 3, 4]

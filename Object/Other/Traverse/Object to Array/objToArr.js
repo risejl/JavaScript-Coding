@@ -1,3 +1,8 @@
+/**
+ * @param {object} obj 
+ * @return {Array}
+ */
+
 function objToArr(obj) {
   return Object.keys(obj).reduce((value, key) => {
     const op = Object.keys(obj[key])[0];
@@ -11,8 +16,7 @@ function objToArr(obj) {
   }, []);
 }
 
-// test case
-/*
+// Usage example
 const obj = {
   key1: {
     op1: "value1",
@@ -23,7 +27,7 @@ const obj = {
 }
 
 console.log(objToArr(obj));
-
+/*
 [
   { key: 'key1', op: 'op1', value: 'value1' },
   { key: 'key2', op: 'op2', value: 'value2' }

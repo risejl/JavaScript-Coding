@@ -2,23 +2,22 @@
 
 ## Languages supported:
 * JavaScript
-* TypeScript
 
-## Subjects & Problems
+## Categories & Problems
 
 ### Array
-* Array prototype
-  * Array.prototype.at()
-  * Array.prototype.concat()
-  * Array.prototype.every()
-  * Array.prototype.filter()
-  * Array.prototype.forEach()
-  * Array.prototype.last()
-  * Array.prototype.map()
-  * Array.prototype.reduce()
-  * Array.prototype.some()
-  * Array.prototype.square()
-* Other array problems
+#### Array prototype 
+  * `Array.prototype.at()`
+  * `Array.prototype.concat()`
+  * `Array.prototype.every()`
+  * `Array.prototype.filter()`
+  * `Array.prototype.forEach()`
+  * `Array.prototype.last()`
+  * `Array.prototype.map()`
+  * `Array.prototype.reduce()`
+  * `Array.prototype.some()`
+  * `Array.prototype.square()`
+#### Other
   * Array.of()
   * Array to Tree
   * Array Wrapper
@@ -37,11 +36,11 @@
 
 
 ### Function
-* Function prototype
-  * Function.prototype.call()
-  * Function.prototype.apply()
-  * Function.prototype.bind()
-* Other function problems
+#### Function prototype
+  * `Function.prototype.call()`
+  * `Function.prototype.apply()`
+  * `Function.prototype.bind()`
+#### Other
   * Number of arguments & parameters
   * Curry
   * Partial
@@ -63,10 +62,10 @@
 * Singleton
 
 ### String
-* String prototype
-  * String.prototype.repeat()
-  * String.prototype.trim()
-* Other string problems
+#### String prototype
+  * `String.prototype.repeat()`
+  * `String.prototype.trim()`
+#### Other
   * Is alphaNumeric
   * Compare version numbers
   * Version numbers sorting
@@ -84,24 +83,27 @@
 * Clamp
 
 ### Object
-* Create an object
+#### Create an object
   * Object literal
   * Function constructor
   * Class
-  * Object.create()
+  * `Object.create()`
   * Factory
-* Object inheritance
-  * Prototype Chain
-  * Prototype
-  * Constructor
-  * Parasite
-  * Combination
-  * Class
-* Object static methods
-  * Object.create()
-  * Object.is()
-  * Object.assign()
-* Other object problems
+#### Object inheritance
+  * Prototype-based
+  * Class-based
+  * Factory-based
+  * `Object.create()` - based
+#### Object static methods
+  * `Object.create()`
+  * `Object.is()`
+  * `Object.assign()`
+  * `Object.groupBy()`
+#### Other
+##### OOP
+  * `new`
+  * `instanceof`
+##### Traverse
   * Compact
   * Count By
   * Deep clone
@@ -109,11 +111,8 @@
   * Deep merge
   * From pairs
   * Get
-  * Group By
-  * instanceof
   * Is object empty
   * Iterable
-  * new
   * Object Map
   * Object to array
   * Set
@@ -122,10 +121,10 @@
   * Squash object
 
 ### Async
-* Callback
+#### Callback
   * Flatten thunk
   * Invoke a callback after a specific second
-* Timer
+#### Timer
   * Repeat a task at a fixed interval
   * Cache with time limit
   * Cancel interval
@@ -135,37 +134,37 @@
   * Resumable interval
   * Implement setInterval
   * Throttle
-* Promise
+#### Promise
   * A+/Promise with `.finally()`
-  * Static methods
-    * resolve
-    * reject
-    * withResolvers
-    * race
-    * all
-    * any
-    * allSettled
-  * Other promise problems
-    * Concurrent Data Fetching from Multiple APIs
-    * Makes a http request
-    * Parallel URLs download
-    * Sequential asynchronous operations
-    * Add two promises
-    * Auto-Retry Promise on Rejection
-    * Retrying API Requests with Automatic Retry
-    * Call APIs with Pagination
-    * Log promise
-    * Map Async
-    * Map Async Limit
-    * Promise Merge
-    * Promise scheduler
-    * Promise time limit
-    * Promisify
-    * Sleep
-    * Throttle Promises
-    * Traffic light
-    * Ping
-    * sequence
-    * parallel
-    * race
-    * Cancels the request if it takes longer than a specified time
+##### Static methods
+  * `Promise.resolve()`
+  * `Promise.reject()`
+  * `Promise.withResolvers()`
+  * `Promise.race()`
+  * `Promise.all()`
+  * `Promise.any()`
+  * `Promise.allSettled()`
+##### Other
+  * Concurrent Data Fetching from Multiple APIs
+  * Makes a http request
+  * Parallel URLs download
+  * Sequential asynchronous operations
+  * Add two promises
+  * Auto-Retry Promise on Rejection
+  * Retrying API Requests with Automatic Retry
+  * Call APIs with Pagination
+  * Log promise
+  * Map Async
+  * Map Async Limit
+  * Promise Merge
+  * Promise scheduler
+  * Promise time limit
+  * Promisify
+  * Sleep
+  * Throttle Promises
+  * Traffic light
+  * Ping
+  * sequence
+  * parallel
+  * race
+  * Cancels the request if it takes longer than a specified time
