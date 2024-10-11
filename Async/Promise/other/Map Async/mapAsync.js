@@ -4,9 +4,15 @@
  * @return {Array}
  */
 
+// Use Promise.all()
+function mapAsync(iterable, callbackFn) {
+  return Promise.all(iterable.map(callbackFn));
+}
+
+// Iterative
 function mapAsync(iterable, callbackFn) {
   return new Promise((resolve, reject) => {
-    const results = Array.from({ length: iterable.length });
+    const results = [];
     let unresolved = iterable.length;
 
     if (!unresolved) {
@@ -16,8 +22,8 @@ function mapAsync(iterable, callbackFn) {
 
     iterable.forEach((item, index) => {
       callbackFn(item)
-        .then((value) => {
-          results[index] = value;
+        .then((result) => {
+          results[index] = result;
           unresolved -= 1;
 
           if (!unresolved) {
@@ -31,14 +37,16 @@ function mapAsync(iterable, callbackFn) {
   });
 }
 
-/*
-const asyncDouble = (x) =>
-  new Promise((resolve) => {
+// Usage example
+function asyncDouble(x) {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(x * 2);
-    }, 10);
+    }, 1000);
   });
+}
 
-const doubled = await mapAsync([1, 2], asyncDouble);
-console.log(doubled); // [2, 4]
-*/
+mapAsync([1, 2], asyncDouble)
+  .then((results) => {
+    console.log(results); // => [2, 4]
+  });

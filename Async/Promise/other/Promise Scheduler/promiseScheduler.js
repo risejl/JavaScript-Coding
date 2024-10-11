@@ -1,51 +1,81 @@
 class Scheduler {
-  constructor(limit) {
-    this.queue = [];
-    this.maxCount = limit;
-    this.runCounts = 0;
+  constructor(concurrencyLimit) {
+    this.taskQueue = [];
+    this.concurrencyLimit = concurrencyLimit;
+    this.runningTasks = 0;
   }
-  
-  add(time, order) {
-    const promiseCreator = () => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          console.log(order);
-          resolve();
-        }, time);
-      });
-    };
-    this.queue.push(promiseCreator);
+
+  addTask(delay, taskId) {
+    const task = () => new Promise((resolve) => {
+      setTimeout(() => {
+        console.log(`Executing task: ${taskId}`);
+        resolve();
+      }, delay);
+    });
+
+    this.taskQueue.push(task);
   }
-  
-  taskStart() {
-    for (let i = 0; i < this.maxCount; i++) {
-      this.request();
+
+  async start() {
+    console.log(`Starting scheduler with concurrency limit: ${this.concurrencyLimit}`);
+    for (let i = 0; i < this.concurrencyLimit; i += 1) {
+      this.executeNextTask();
     }
   }
-  
-  request() {
-    if (!this.queue || !this.queue.length || this.runCounts >= this.maxCount) {
+
+  async executeNextTask() {
+    if (
+      !this.taskQueue.length || 
+      this.runningTasks >= this.concurrencyLimit
+    ) {
       return;
     }
-    this.runCounts++;
-    this.queue
-      .shift()()
-      .then(() => {
-        this.runCounts--;
-        this.request();
-      });
+
+    this.runningTasks++;
+    const task = this.taskQueue.shift();
+
+    try {
+      await task();
+    } catch (error) {
+      console.error(`Task error: ${error.message}`);
+    } finally {
+      this.runningTasks--;
+      this.executeNextTask();
+    }
+  }
+
+  get pendingTasksCount() {
+    return this.taskQueue.length;
+  }
+
+  get activeTasksCount() {
+    return this.runningTasks;
   }
 }
 
-/*
+// Usage example
 const scheduler = new Scheduler(2);
-const addTask = (time, order) => {
-  scheduler.add(time, order);
-};
 
-addTask(1000, "1");
-addTask(500, "2");
-addTask(300, "3");
-addTask(400, "4");
-scheduler.taskStart();
+scheduler.addTask(1000, "Task 1");
+scheduler.addTask(500, "Task 2");
+scheduler.addTask(300, "Task 3");
+scheduler.addTask(400, "Task 4");
+
+scheduler.start();
+
+setInterval(() => {
+  console.log(`Active tasks: ${scheduler.activeTasksCount}, Pending tasks: ${scheduler.pendingTasksCount}`);
+}, 500);
+
+/*
+Starting scheduler with concurrency limit: 2
+Executing task: Task 2
+Active tasks: 2, Pending tasks: 1
+Executing task: Task 3
+Executing task: Task 1
+Active tasks: 1, Pending tasks: 0
+Executing task: Task 4
+Active tasks: 0, Pending tasks: 0
+Active tasks: 0, Pending tasks: 0
+Active tasks: 0, Pending tasks: 0
 */

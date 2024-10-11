@@ -146,11 +146,13 @@
     * any
     * allSettled
   * Other promise problems
+    * Concurrent Data Fetching from Multiple APIs
     * Makes a http request
     * Parallel URLs download
     * Sequential asynchronous operations
     * Add two promises
     * Auto-Retry Promise on Rejection
+    * Retrying API Requests with Automatic Retry
     * Call APIs with Pagination
     * Log promise
     * Map Async
@@ -163,3 +165,7 @@
     * Throttle Promises
     * Traffic light
     * Ping
+    * sequence
+    * parallel
+    * race
+    * Cancels the request if it takes longer than a specified time
