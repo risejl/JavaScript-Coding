@@ -4,26 +4,14 @@
  * @return {T}
  */
 
-function deepClone(value) {
-  if (typeof value !== 'object' || value === null) {
-    return value;
-  }
+// I: use structuredClone API
 
-  if (Array.isArray(value)) {
-    return value.map((item) => deepClone(item));
-  }
+// II: use JSON.parse(JSON.stringify(value));
 
-  return Object.fromEntries(
-    Object.entries(value).map(([key, value]) => [key, deepClone(value)]),
-  );
-}
+// III: use lodash._deepClone();
 
-// support all kinds of data types and handle circular refernece
-/**
- * @template T
- * @param {T} value
- * @return {T}
- */
+// IV:
+// Handle primitive types and functions
 function isPrimitiveTypeOrFunction(value) {
   return (
     typeof value !== 'object' ||
@@ -32,86 +20,119 @@ function isPrimitiveTypeOrFunction(value) {
   );
 }
 
+// Check types
 function getType(value) {
   const type = typeof value;
-  
+
+  // primitive
   if (type !== 'object') {
     return type;
   }
 
+  // non-primitive
   return Object.prototype.toString
     .call(value)
     .slice(8, -1)
     .toLowerCase();
-  /*
-  return Object.prototype.toString
-    .call(value)
-    .replace(/^\[object (\S+)\]$/, '$1')
-    .toLowerCase();
-  */
 }
 
-export default function deepClone(value) {
-  return deepCloneWithCache(value, new Map());
+// deep clone
+function deepClone(value) {
+  // check circular reference
+  return deepCloneImpl(value, new Map());
 }
 
-function deepCloneWithCache(value, cache) {
+function deepCloneImpl(value, cache) {
+  // primitive case
   if (isPrimitiveTypeOrFunction(value)) {
     return value;
   }
 
+  // get type
   const type = getType(value);
 
+  // set
   if (type === 'set') {
     const cloned = new Set();
-
     value.forEach((item) => {
-      cloned.add(deepCloneWithCache(item, cache));
+      cloned.add(deepCloneImpl(item, cache));
     });
 
     return cloned;
   }
 
+  // map
   if (type === 'map') {
     const cloned = new Map();
-
     value.forEach((value_, key) => {
-      cloned.set(key, deepCloneWithCache(value_, cache));
+      cloned.set(key, deepCloneImpl(value_, cache));
     });
 
     return cloned;
   }
 
-  if (type === 'function') {
-    return value;
-  }
-
-  if (type === 'array') {
-    return value.map((item) => deepCloneWithCache(item));
-  }
-
+  // date
   if (type === 'date') {
     return new Date(value);
   }
 
+  // function
+  if (type === 'function') {
+    return value;
+  }
+
+  // regexp
   if (type === 'regexp') {
     return new RegExp(value);
   }
 
+  // array
+  if (Array.isArray(value)) {
+    return value.map((item) => deepCloneImpl(item, cache));
+  }
+
+  // circular reference
   if (cache.has(value)) {
     return cache.get(value);
   }
 
+  // object
   const cloned = Object.create(Object.getPrototypeOf(value));
-
   cache.set(value, cloned);
 
   for (const key of Reflect.ownKeys(value)) {
     const item = value[key];
     cloned[key] = isPrimitiveTypeOrFunction(item)
       ? item
-      : deepCloneWithCache(item, cache);
+      : deepCloneImpl(item, cache);
   }
 
   return cloned;
 }
+
+// Usage example
+const obj1 = {
+  num: 0,
+  str: '',
+  boolean: true,
+  unf: undefined,
+  nul: null,
+  obj: { name: 'foo', id: 1 },
+  arr: [0, 1, 2],
+  date: new Date(),
+  reg: new RegExp('/bar/ig'),
+  [Symbol('s')]: 'baz',
+};
+
+const clonedObj1 = deepClone(obj1);
+clonedObj1.arr.push(3);
+console.log(obj1.arr); // => [0, 1, 2]
+
+const obj2 = { a: {} };
+obj2.a.b = obj2; // Circular reference
+
+const clonedObj2 = deepClone(obj2); // Should not cause a stack overflow by recursing into an infinite loop.
+
+clonedObj2.a.b = 'something new';
+
+console.log(obj2.a.b === obj2); // => true

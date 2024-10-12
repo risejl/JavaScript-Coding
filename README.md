@@ -168,3 +168,4 @@
   * parallel
   * race
   * Cancels the request if it takes longer than a specified time
+  * Async methods chaining

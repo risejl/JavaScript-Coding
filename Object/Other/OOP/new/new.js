@@ -13,7 +13,7 @@ function myNew(constructor, ...args) {
   if (typeof result !== 'object' || result == null) {
     return obj;
   } else {
-    result;
+    return result;
   }
 }
 
