@@ -6,12 +6,14 @@ class Scheduler {
   }
 
   addTask(delay, taskId) {
-    const task = () => new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(`Executing task: ${taskId}`);
-        resolve();
-      }, delay);
-    });
+    function task() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log(`Executing task: ${taskId}`);
+          resolve();
+        }, delay);
+      });
+    }
 
     this.taskQueue.push(task);
   }
@@ -25,21 +27,21 @@ class Scheduler {
 
   async executeNextTask() {
     if (
-      !this.taskQueue.length || 
+      this.taskQueue.length === 0 ||
       this.runningTasks >= this.concurrencyLimit
     ) {
       return;
     }
 
-    this.runningTasks++;
+    this.runningTasks += 1;
     const task = this.taskQueue.shift();
 
     try {
       await task();
-    } catch (error) {
-      console.error(`Task error: ${error.message}`);
+    } catch (err) {
+      console.error(`Task error: ${err.message}`);
     } finally {
-      this.runningTasks--;
+      this.runningTasks -= 1;
       this.executeNextTask();
     }
   }

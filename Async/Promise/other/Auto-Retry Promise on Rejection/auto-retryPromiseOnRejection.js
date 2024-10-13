@@ -8,7 +8,7 @@
 function fetchWithAutoRetry(fetcher, maximumRetryCount = 5) {
   return fetcher()
     .catch((err) => {
-      if (!maximumRetryCount) {
+      if (maximumRetryCount === 0) {
         throw err;
       } else {
         return fetchWithAutoRetry(fetcher, maximumRetryCount - 1);
@@ -23,7 +23,7 @@ function fetchWithAutoRetry(fetcher, maximumRetryCount = 5) {
       fetcher()
         .then(resolve)
         .catch((err) => {
-          if (!count) {
+          if (count === 0) {
             reject(err);
           } else {
             attempt(count - 1);
