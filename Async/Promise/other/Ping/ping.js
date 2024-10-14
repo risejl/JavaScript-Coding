@@ -10,25 +10,19 @@ function calc(interval) {
   let start = Date.now();
   let count = 0;
   let timerId = null;
-  let isActive = true;
 
   function loop() {
     const drift = Date.now() - start - count * interval;
     count += 1;
 
-    timerId = setTimeout(() => {
-      if (!isActive) {
-        return;
-      }
+    timerId = setTimeout(async () => {
+      const result = await ping(1000);
+      console.log(result);
 
-      ping(1000).then((result) => {
-        console.log(result);
+      const elapsedTime = Math.floor((Date.now() - start) / 1000);
+      console.log(`Elapsed time: ${elapsedTime} seconds`);
 
-        const elapsedTime = Math.floor((Date.now() - start) / 1000);
-        console.log(`Elapsed time: ${elapsedTime} seconds`);
-
-        loop();
-      });
+      loop();
     }, interval - drift);
   }
 
@@ -36,24 +30,25 @@ function calc(interval) {
 
   return {
     clear: () => {
-      isActive = false;
       clearTimeout(timerId);
       console.log('Ping calculation aborted.');
     }
   };
 }
 
-// Usage example
-const abortCalc = calc(5000);
+// Example usage:
+const pingCalculator = calc(5000);
 
 setTimeout(() => {
-  abortCalc.clear();
-}, 15000);
+  pingCalculator.clear();
+}, 20000); // Stops after 20 seconds
 
 /*
 Ping successful
 Elapsed time: 6 seconds
 Ping successful
 Elapsed time: 11 seconds
+Ping successful
+Elapsed time: 16 seconds
 Ping calculation aborted.
 */
