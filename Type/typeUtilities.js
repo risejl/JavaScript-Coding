@@ -25,3 +25,12 @@ function isUndefined(value) {
 function isNull(value) {
   return value === null;
 }
+
+// Usage example
+console.log(isSymbol(Symbol('test'))); // => true
+console.log(isNull(null)); // => true
+console.log(isUndefined(undefined)); // => true
+console.log(isNumber(1)); // => true
+console.log(isString('')); // => true
+console.log(isBoolean(true)); // => true
+console.log(isBigInt(9007199254740991n)); // => true

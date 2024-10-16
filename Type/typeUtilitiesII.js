@@ -24,3 +24,9 @@ function isPlainObject(value) {
   const prototype = Object.getPrototypeOf(value);
   return prototype === Object.prototype || prototype === null;
 }
+
+// Usage example
+console.log(isArray(new Array())); // => true
+console.log(isObject(Object(null))); // => true
+console.log(isFunction(Object.prototype.toString)); // => true
+console.log(isPlainObject(Object.create(null))); // => true
