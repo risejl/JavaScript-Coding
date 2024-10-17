@@ -7,20 +7,26 @@ function sleep(delay) {
 };
 
 
+// promise based
 function logNumbers() {
-  return sleep(1000)
-    .then(() => {
-      console.log(1); // => 1
-      return sleep(1000);
-    })
-    .then(() => {
-      console.log(2); // => 2
-      return sleep(1000);
-    })
-    .then(() => {
-      console.log(3); // => 3
+  let promise = Promise.resolve();
+
+  for (let i = 1; i <= 5; i += 1) {
+    promise = promise.then(() => {
+      console.log(i);
       return sleep(1000);
     });
+  }
+
+  return promise;
+}
+
+// async-await based
+async function logNumbers() {
+  for (let i = 1; i <= 5; i += 1) {
+    console.log(i);
+    await sleep(1000);
+  }
 }
 
 // Usage example

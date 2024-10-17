@@ -34,6 +34,7 @@
   * Remove Duplicates
   * Shuffle
   * Sort By
+  * Generate Random Non-Duplicate Array
 
 
 ### Function
@@ -134,6 +135,7 @@
   * Debounce
   * Resumable interval
   * Implement setInterval
+  * Implement setTimeout
   * Throttle
 #### Promise
   * A+/Promise with `.finally()`
@@ -170,3 +172,4 @@
   * race
   * Cancels the request if it takes longer than a specified time
   * LazyMan
+  * Load Images Asynchronously

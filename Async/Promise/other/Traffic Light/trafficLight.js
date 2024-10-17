@@ -10,15 +10,19 @@ function yellow() {
   console.log('yellow');
 }
 
+const colorActions = {
+  red,
+  green,
+  yellow,
+}
+
 function trafficLight(delay, color) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      if (color === 'red') {
-        red();
-      } else if (color === 'green') {
-        green();
+      if (colorActions[color]) {
+        colorActions[color]();
       } else {
-        yellow();
+        console.warn(`Unknown color: ${color}`);
       }
       resolve();
     }, delay);
@@ -27,10 +31,17 @@ function trafficLight(delay, color) {
 
 // Usage example
 async function trafficRunner() {
-  await trafficLight(1000, 'red');
-  await trafficLight(2000, 'green');
-  await trafficLight(3000, 'yellow');
-  trafficRunner();
+  const trafficSequence = [
+    { delay: 1000, color: 'red' },
+    { delay: 2000, color: 'green' },
+    { delay: 3000, color: 'yellow' },
+  ]
+
+  while (true) {
+    for (const { delay, color } of trafficSequence) {
+      await trafficLight(delay, color);
+    }
+  }
 }
 
 trafficRunner();

@@ -5,23 +5,36 @@ const URL = 'https://randomuser.me/api/';
  * @return {promise}
  */
 
+// promise-based
 function fetchData(url) {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
+  return fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
 
-        return response.json();
-      })
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
+      return response.json();
+    })
+    .catch((err) => {
+      console.error('Fetch error:', err);
+      throw err;
+    });
+}
+
+// async-await based
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.error(`Request error: ${err}`);
+    throw err;
+  }
 }
 
 fetchData(URL)

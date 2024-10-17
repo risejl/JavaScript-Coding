@@ -17,10 +17,17 @@ function fetchData(url) {
     });
 }
 
-function repeat(task, interval) {
+function repeat(callbackFn, delay, count) {
+  let currentCount = 0;
+
   const timerId = setInterval(() => {
-    task();
-  }, interval);
+    if (currentCount < count) {
+      callbackFn();
+      currentCount += 1;
+    } else {
+      clearInterval(timerId);
+    }
+  }, delay);
 
   return {
     clear: () => clearInterval(timerId),
@@ -28,7 +35,7 @@ function repeat(task, interval) {
 }
 
 // Usage example
-const cancel = repeat(() => fetchData(URL), 2000);
+const cancel = repeat(() => fetchData(URL), 2000, 5);
 setTimeout(() => {
   cancel.clear();
-}, 5000);
+}, 11000);

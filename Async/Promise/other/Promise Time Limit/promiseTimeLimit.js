@@ -4,24 +4,19 @@
  * @return {Function}
  */
 
-function timeLimit(fn, limit) {
-  return async function (...args) {
-    return new Promise(async (resolve, reject) => {
-      const timerId = setTimeout(() => {
-        reject('Time limit exceeded');
-      }, limit);
-
-      try {
-        const value = await fn(...args);
-        resolve(value);
-      } catch (err) {
-        reject(err);
-      } finally {
-        clearTimeout(timerId);
-      }
+function timeLimit (fn, t) {
+  return function(...args) {
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => {
+        reject('Time Limit Exceeded');
+      }, t);
     });
+
+    const fnPromise = fn(...args);
+
+    return Promise.race([timeoutPromise, fnPromise]);
   }
-}
+};
 
 // Usage example
 const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 1000);
