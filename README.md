@@ -17,6 +17,7 @@
   * `Array.prototype.reduce()`
   * `Array.prototype.some()`
   * `Array.prototype.square()`
+  * `Array.prototype.indexOf()`
 #### Other
   * Array.of()
   * Array to Tree
@@ -121,6 +122,8 @@
   * Set object value safely
   * Shallow copy
   * Squash object
+#### Proxy
+* Accessing negative index
 
 ### Async
 #### Callback
@@ -173,3 +176,5 @@
   * Cancels the request if it takes longer than a specified time
   * LazyMan
   * Load Images Asynchronously
+#### Async-await
+  * Implement async-await using generator
