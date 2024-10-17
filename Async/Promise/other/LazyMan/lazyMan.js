@@ -6,7 +6,7 @@ class LazyMan {
 
     setTimeout(() => {
       return this.next();
-    });
+    }, 0);
   }
   
   eat(food) {

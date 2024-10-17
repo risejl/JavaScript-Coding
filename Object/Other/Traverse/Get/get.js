@@ -4,27 +4,30 @@
  * @param {*} [defaultValue]
  * @return {*}
  */
+
 function get(objectParam, pathParam, defaultValue) {
+  // Convert pathParam to array
   const path = Array.isArray(pathParam)
     ? pathParam
-    : pathParam.split('.');
-  let len = path.length;
-  let obj = objectParam;
-  let index = 0;
+    : pathParam.replaceAll('[', '.').replaceAll(']', '').split('.');
 
-  while (index < len && obj != null) {
-    obj = obj[String(path[index])];
-    index += 1;
+  if (path.length === 0) {
+    return defaultValue;
   }
 
-  const value = index && index === len
-    ? obj
-    : undefined;
+  let obj = objectParam;
 
-  return value !== undefined
-    ? value
-    : defaultValue;
+  for (const key of path) {
+    if (obj === null || obj[key] === undefined) {
+      return defaultValue;
+    }
+
+    obj = obj[key];
+  }
+
+  return obj;
 }
+
 
 // Usage example
 

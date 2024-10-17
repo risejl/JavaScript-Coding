@@ -6,22 +6,24 @@
 // Use async await
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
-    const results = Array.from({ length: iterable.length });
-    let unresolved = iterable.length;
+    let len = iterable.length;
+    let resolved = 0;
+    const results = Array.from({ length: len });
 
-    if (!unresolved) {
+    if (len === 0) {
       resolve(results);
       return;
     }
 
     iterable.forEach(async (item, index) => {
       try {
-        const value = await item;
-        results[index] = value;
-        unresolved -= 1;
+        const result = await item;
+        results[index] = result;
+        resolved += 1;
 
-        if (!unresolved) {
+        if (resolved === len) {
           resolve(results);
+          return;
         }
       } catch (err) {
         reject(err);
@@ -30,7 +32,7 @@ function promiseAll(iterable) {
   });
 }
 
-
+/*
 // Use Promise chaining
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
@@ -58,11 +60,12 @@ function promiseAll(iterable) {
     });
   });
 }
+*/
 
 // Usage example
 const p0 = Promise.resolve(3);
 const p1 = 42;
-const p2 = new Promise((resolve, reject) => {
+const p2 = new Promise((resolve) => {
   setTimeout(() => {
     resolve('foo');
   }, 100);

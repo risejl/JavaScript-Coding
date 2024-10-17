@@ -1,29 +1,29 @@
-/**
- * @param {Array<{id: number, name: string, parentId: number | null}>} flatArray - The flat array of objects, each representing a node with id, name, and parentId properties.
- * @param {number|null} [parentId=null] - The parent ID to start building the tree from. Initially null to start from root nodes.
- * @returns {Array<{id: number, name: string, children: Array}>} - The hierarchical tree structure.
- */
-
-function arrToTree(flatArr, parentId = null) {
+function arrToTree(arr) {
   const tree = [];
+  const hashmap = new Map();
 
-  flatArr.forEach((item) => {
-    if (item.parentId === parentId) {
-      const children = arrToTree(flatArr, item.id);
-      const node = {
-        id: item.id,
-        name: item.name,
-        children: children,
-      };
+  // create nodes and store references
+  arr.forEach(item => {
+    hashmap[item.id] = {
+      id: item.id,
+      name: item.name,
+      children: [],
+    };
+  });
 
-      tree.push(node);
+  // build the tree
+  arr.forEach(item => {
+    if (item.parentId === null) {
+      tree.push(hashmap[item.id]);
+    } else {
+      hashmap[item.parentId].children.push(hashmap[item.id]);
     }
   });
 
   return tree;
 }
 
-/*
+// Usage example
 const flatArray = [
     { id: 1, name: 'Node 1', parentId: null },
     { id: 2, name: 'Node 1.1', parentId: 1 },
@@ -37,4 +37,3 @@ const flatArray = [
 const tree = arrToTree(flatArray);
 
 console.log(tree); // [{ id: 1, name: 'Node 1', children: [ [Object], [Object] ] }, { id: 5, name: 'Node 2', children: [ [Object], [Object] ] }]
-*/

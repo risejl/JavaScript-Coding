@@ -6,7 +6,7 @@ class Scheduler {
   }
 
   addTask(delay, taskId) {
-    function task() {
+    const task = () => {
       return new Promise((resolve) => {
         setTimeout(() => {
           console.log(`Executing task: ${taskId}`);

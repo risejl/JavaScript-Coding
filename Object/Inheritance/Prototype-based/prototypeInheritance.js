@@ -11,7 +11,8 @@ function Child(name, age) {
   this.age = age;
 }
 
-Child.prototype = Object.create(Parent.prototype); // step2
+// Child.prototype = Object.create(Parent.prototype); // step2
+Object.setPrototypeOf(Child.prototype, Parent.prototype); // step2
 Child.prototype.constructor = Child; // step3
 
 Child.prototype.sayAge = function() {
