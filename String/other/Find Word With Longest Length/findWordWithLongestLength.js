@@ -1,10 +1,10 @@
 /**
- * @param {string} str 
+ * @param {string} str
  * @return {string[]}
  */
 
 function longestWord(str) {
-  const strArr = str.split(' ');
+  const strArr = str.split(" ");
   const result = [];
   let max = 0;
 
@@ -20,8 +20,8 @@ function longestWord(str) {
     }
   }
 
-  return result;
+  return result.join("");
 }
 
-// example
-// console.log(longestWord('The longest word is fasdfafaf')); // ['fasdfafaf']
+// Usage example
+console.log(longestWord("The longest word is thelongestword")); // => "thelongestword"

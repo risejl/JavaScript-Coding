@@ -87,7 +87,8 @@
 - Compare version numbers
 - Version numbers sorting
 - Camel case to Snake case or vice visa
-- Compress Duplicates
+- Compress a string
+- Uncompress a string
 - Most frequently occurring character
 - Find longest word length
 - Find word with longest length

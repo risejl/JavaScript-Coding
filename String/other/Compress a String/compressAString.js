@@ -5,12 +5,12 @@
 
 function compress(str) {
   if (!str) {
-    return '';
+    return "";
   }
 
-  let compressed = '';
+  let compressed = "";
   let count = 1;
-  
+
   for (let i = 1; i <= str.length; i += 1) {
     if (i < str.length && str[i] === str[i - 1]) {
       count += 1;
@@ -22,15 +22,14 @@ function compress(str) {
       count = 1;
     }
   }
-  
+
   return compressed;
 }
 
-/*
-compress('a') // 'a'
-compress('aa') // 'a2'
-compress('aaa') // 'a3'
-compress('aaab') // 'a3b'
-compress('aaabb') // 'a3b2'
-compress('aaabba') // 'a3b2a'
-*/
+// Usage example
+console.log(compress("a")); // 'a'
+console.log(compress("aa")); // 'a2'
+console.log(compress("aaa")); // 'a3'
+console.log(compress("aaab")); // 'a3b'
+console.log(compress("aaabb")); // 'a3b2'
+console.log(compress("aaabba")); // 'a3b2a'

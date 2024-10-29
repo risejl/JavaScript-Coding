@@ -22,8 +22,6 @@ function count(str) {
   return result.length === 1 ? result[0] : result;
 }
 
-// example
-/*
-console.log(count('abbccc')); // 'c'
-console.log(count('abbcccddd')); // ['c', 'd'];
-*/
+// Usage example
+console.log(count("abbccc")); // => 'c'
+console.log(count("abbcccddd")); // => ['c', 'd'];

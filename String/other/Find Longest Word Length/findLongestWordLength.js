@@ -1,6 +1,6 @@
 /**
- * @param {string} str 
- * @return {number} 
+ * @param {string} str
+ * @return {number}
  */
 
 function longestLength(str) {
@@ -14,5 +14,6 @@ function longestLength(str) {
   }
   return length;
 }
-// example
-// console.log(longestLength('The longest word is fasdfafaf')); // 9
+
+// Usage example
+console.log(longestLength("The longest word is thelongestword")); // => 14
