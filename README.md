@@ -97,10 +97,10 @@
 
 - Big integer addition
 - Add comma to number
-- Digit / Chinese number conversion
+- Arabic numerals to chinese characters
 - Add space to bank number
 - Clamp
-- Fixed to two digits
+- Round to two decimal places
 - Merge continous numbers
 
 ### Object

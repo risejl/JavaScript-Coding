@@ -5,8 +5,8 @@
  */
 
 function add(num1, num2) {
-  const num1Arr = num1.split('').map(Number);
-  const num2Arr = num2.split('').map(Number);
+  const num1Arr = num1.split("").map(Number);
+  const num2Arr = num2.split("").map(Number);
   let carry = 0;
   let result = [];
 
@@ -16,8 +16,8 @@ function add(num1, num2) {
     result.push(sum % 10);
   }
 
-  return result.reverse().join('');
+  return result.reverse().join("");
 }
 
-// example
-// console.log(add('999999999999999999', '1')); // '1000000000000000000'
+// Usage example
+console.log(add("999999999999999999", "1")); // => '1000000000000000000'
