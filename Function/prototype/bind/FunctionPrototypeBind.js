@@ -18,7 +18,7 @@ Function.prototype.myBind = function (thisArg, ...argArray) {
   };
 };
 
-/*
+// Usage example
 const john = {
   age: 42,
   getAge: function () {
@@ -31,4 +31,14 @@ console.log(unboundGetAge()); // undefined
 
 const boundGetAge = john.getAge.myBind(john);
 console.log(boundGetAge()); // 42
-*/
+
+const jack = {
+  age: 21,
+  getAge: function () {
+    return this.age;
+  },
+};
+
+// For multiple `.bind()` chaining, only the first one would work
+const boundJohnGetAge = john.getAge.myBind(john).myBind(jack);
+console.log(boundGetAge()); // 42

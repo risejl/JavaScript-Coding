@@ -5,18 +5,18 @@
  */
 
 Function.prototype.myCall = function (thisArg, ...argArray) {
-  const sym = Symbol(); 
-  const wrapperObj = Object(thisArg); 
+  const sym = Symbol();
+  const wrapperObj = Object(thisArg);
 
   Object.defineProperty(wrapperObj, sym, {
     enumerable: false,
-    value: this, 
+    value: this,
   });
 
   return wrapperObj[sym](...argArray);
 };
 
-/*
+// Usage example
 function multiplyAge(multiplier = 1) {
   return this.age * multiplier;
 }
@@ -31,4 +31,3 @@ const john = {
 
 console.log(multiplyAge.myCall(mary)); // 21
 console.log(multiplyAge.myCall(john, 2)); // 84
-*/

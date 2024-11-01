@@ -16,7 +16,7 @@ Function.prototype.myApply = function (thisArg, argArray = []) {
   return wrapperObj[sym](...argArray);
 };
 
-/*
+// Usage example
 function multiplyAge(multiplier = 1) {
   return this.age * multiplier;
 }
@@ -29,6 +29,5 @@ const john = {
   age: 42,
 };
 
-multiplyAge.myApply(mary); // 21
-multiplyAge.myApply(john, [2]); // 84
-*/
+console.log(multiplyAge.myApply(mary)); // 21
+console.log(multiplyAge.myApply(john, [2])); // 84
