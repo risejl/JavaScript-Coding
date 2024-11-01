@@ -29,5 +29,5 @@ const john = {
   age: 42,
 };
 
-console.log(multiplyAge.myCall(mary)); // 21
-console.log(multiplyAge.myCall(john, 2)); // 84
+console.log(multiplyAge.myCall(mary)); // => 21
+console.log(multiplyAge.myCall(john, 2)); // => 84

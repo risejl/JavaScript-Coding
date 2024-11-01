@@ -27,10 +27,10 @@ const john = {
 };
 
 const unboundGetAge = john.getAge;
-console.log(unboundGetAge()); // undefined
+console.log(unboundGetAge()); // => undefined
 
 const boundGetAge = john.getAge.myBind(john);
-console.log(boundGetAge()); // 42
+console.log(boundGetAge()); // => 42
 
 const jack = {
   age: 21,
@@ -41,4 +41,4 @@ const jack = {
 
 // For multiple `.bind()` chaining, only the first one would work
 const boundJohnGetAge = john.getAge.myBind(john).myBind(jack);
-console.log(boundGetAge()); // 42
+console.log(boundGetAge()); // => 42

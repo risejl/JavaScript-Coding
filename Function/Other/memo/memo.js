@@ -1,5 +1,5 @@
 /**
- * @param {Function} func 
+ * @param {Function} func
  * @return {Function}
  */
 
@@ -13,14 +13,14 @@ function memoize(fn) {
 
     const result = fn.call(this, arg);
     cache.set(arg, result);
-    
+
     return result;
-  }
+  };
 }
 
-/*
+// Usage example
 function expensiveFunction(n) {
-  console.log('Computing...');
+  console.log("Computing...");
   return n * 2;
 }
 
@@ -28,18 +28,18 @@ function expensiveFunction(n) {
 const memoizedExpensiveFunction = memoize(expensiveFunction);
 
 // First call (computes and caches the result).
-console.log(memoizedExpensiveFunction(5)); // Output: Computing... 10
+console.log(memoizedExpensiveFunction(5)); // => Computing... 10
 
 // Second call with the same argument (returns the cached result).
-console.log(memoizedExpensiveFunction(5)); // Output: 10
+console.log(memoizedExpensiveFunction(5)); // => 10
 
 // Third call with a different argument (computes and caches the new result).
-console.log(memoizedExpensiveFunction(10)); // Output: Computing... 20
+console.log(memoizedExpensiveFunction(10)); // => Computing... 20
 
 // Fourth call with the same argument as the third call (returns the cached result).
-console.log(memoizedExpensiveFunction(10)); // Output: 20
-*/
+console.log(memoizedExpensiveFunction(10)); // => 20
 
+// ----------------------------------------
 // When parameters could be array
 /**
  * @param {Function} fn
@@ -58,14 +58,14 @@ function memoize(fn) {
 
     const result = fn.call(this, ...args);
     cache.set(key, result);
-    
+
     return result;
-  }
+  };
 }
 
-/*
+// Usage example
 function expensiveMul(a, b) {
-  console.log('Computing...');
+  console.log("Computing...");
   return a * b;
 }
 
@@ -73,14 +73,13 @@ function expensiveMul(a, b) {
 const memoizedExpensiveMul = memoize(expensiveMul);
 
 // First call (computes and caches the result).
-console.log(memoizedExpensiveMul(3, 7)); // Output: Computing... 21
+console.log(memoizedExpensiveMul(3, 7)); // => Computing... 21
 
 // Second call with the same argument (returns the cached result).
-console.log(memoizedExpensiveMul(3, 7)); // Output: 21
+console.log(memoizedExpensiveMul(3, 7)); // => 21
 
 // Third call with a different argument (computes and caches the new result).
-console.log(memoizedExpensiveMul(5, 8)); // Output: Computing... 40
+console.log(memoizedExpensiveMul(5, 8)); // => Computing... 40
 
 // Fourth call with the same argument as the third call (returns the cached result).
-console.log(memoizedExpensiveMul(5, 8)); // Output: 40
-*/
+console.log(memoizedExpensiveMul(5, 8)); // => 40

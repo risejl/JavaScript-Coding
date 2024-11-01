@@ -1,18 +1,29 @@
 /**
-* @param {Function} fn
-* @return {number}
-*/
+ * @param {Function} fn
+ * @return {number}
+ */
 
-export default function FunctionLength(fn) {
+function FunctionLength(fn) {
   return fn.length;
 }
 
-/**
-* @param {...any} args
-* @return {number}
-*/
+// Usage example
+function myFunction(a, b, c) {
+  console.log(a, b, c);
+}
 
-export default function numOfArguments(...args) {
+console.log(FunctionLength(myFunction)); // => 3
+
+/**
+ * @param {...any} args
+ * @return {number}
+ */
+
+function numOfArguments(...args) {
   // return args.length;
   return arguments.length;
 }
+
+// Usage example
+console.log(numOfArguments(1, 2, 3, 4, 5)); // => 5
+console.log(numOfArguments()); // => 0
