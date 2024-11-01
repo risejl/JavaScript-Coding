@@ -1,12 +1,13 @@
 /**
-* @return {Function}
-*/
+ * @return {Function}
+ */
 
 function createHelloWorld() {
   return function (...args) {
-    return 'Hello World';
-  }
+    return "Hello World";
+  };
 }
 
-// const output = createHelloWorld();
-// console.log(output());
+// Usage example
+const output = createHelloWorld();
+console.log(output()); // => "Hello World"

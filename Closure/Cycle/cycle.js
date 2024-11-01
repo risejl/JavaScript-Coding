@@ -10,16 +10,15 @@ function cycle(...values) {
   return function (...args) {
     index = (index + 1) % values.length;
     return values[index];
-  }
+  };
 }
 
-/*
-const helloFn = cycle('hello');
-console.log(helloFn()); // "hello"
-console.log(helloFn()); // "hello"
+// Usage example
+const helloFn = cycle("hello");
+console.log(helloFn()); // => "hello"
+console.log(helloFn()); // => "hello"
 
-const onOffFn = cycle('on', 'off');
-console.log(onOffFn()); // "on"
-console.log(onOffFn()); // "off"
-console.log(onOffFn()); // "on"
-*/
+const onOffFn = cycle("on", "off");
+console.log(onOffFn()); // => "on"
+console.log(onOffFn()); // => "off"
+console.log(onOffFn()); // => "on"

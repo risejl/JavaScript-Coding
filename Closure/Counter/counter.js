@@ -9,18 +9,24 @@ function makeCounter(initialValue = 0) {
   return function (...args) {
     count += 1;
     return count;
-  }
+  };
 }
 
-// return an object
+// Usage example
+const counter = makeCounter(0);
+console.log(counter()); // => 0
+console.log(counter()); // => 1
+console.log(counter()); // => 2
 
+//------------------------------
+// return an object
 /**
  * @param {number} initialValue
  * @return {{get: Function, increment: Function, decrement: Function, reset: Function }}
  */
-function makeCounter (initialValue = 0) {
+function makeCounter(initialValue = 0) {
   let count = initialValue;
-  
+
   return {
     get: () => count,
     increment: () => ++count,
@@ -28,3 +34,12 @@ function makeCounter (initialValue = 0) {
     reset: () => (count = initialValue),
   };
 }
+
+// Usage example
+const counterObj = makeCounter(0);
+console.log(counterObj.get()); // => 0
+counterObj.increment();
+console.log(counterObj.get()); // => 1
+counterObj.decrement();
+counterObj.reset();
+console.log(counterObj.get()); // => 0

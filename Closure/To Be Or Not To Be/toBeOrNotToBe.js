@@ -1,7 +1,7 @@
 /**
-* @param {any} val
-* @return {true | Error}
-*/
+ * @param {any} val
+ * @return {true | Error}
+ */
 
 function expect(val) {
   return {
@@ -9,15 +9,25 @@ function expect(val) {
       if (val === arg) {
         return true;
       } else {
-        throw new Error('Not Equal');
+        throw new Error("Not Equal");
       }
     },
     notToBe: function (arg) {
       if (val !== arg) {
         return true;
       } else {
-        throw new Error('Equal');
+        throw new Error("Equal");
       }
-    }
-  }
+    },
+  };
+}
+
+// Usage example
+expect(5).toBe(5); // Passes
+expect(5).notToBe(6); // Passes
+
+try {
+  expect(5).toBe(6); // Throws an error
+} catch (error) {
+  console.log(error.message); // Not Equal
 }

@@ -1,6 +1,6 @@
 /**
- * @param {Function} func 
- * @param {Number} count 
+ * @param {Function} func
+ * @param {Number} count
  * @return {Function}
  */
 
@@ -15,11 +15,10 @@ function limit(fn, max) {
     }
 
     return value;
-  }
+  };
 }
 
-// example
-/*
+// Usage example
 let i = 1;
 function incrementBy(value) {
   i += value;
@@ -33,4 +32,3 @@ console.log(incrementByAtMostThrice(4)); // i is now 10; The function returns 10
 console.log(incrementByAtMostThrice(5)); // i is still 10 as this is the 4th invocation; The function returns 10 as it's the result of the last invocation.
 i = 4;
 console.log(incrementByAtMostThrice(2)); // i is still 4 as it is not modified. The function still returns 10.
-*/
