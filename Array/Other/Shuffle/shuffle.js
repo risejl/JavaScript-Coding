@@ -15,4 +15,5 @@ function shuffle(arr) {
   return arr;
 }
 
-// console.log(shuffle([1, 2, 3, 4]));
+// Usage example
+console.log(shuffle([1, 2, 3, 4])); // => [*, *, *, *]

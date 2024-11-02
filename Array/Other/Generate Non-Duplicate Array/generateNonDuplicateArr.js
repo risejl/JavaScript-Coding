@@ -1,3 +1,9 @@
+/**
+ * @param {number} range
+ * @param {number} outputCount
+ * @return {Array}
+ */
+
 function generateUniqueRandomArray(range, outputCount) {
   const arr = Array.from({ length: range }, (_, i) => i + 1);
   const result = [];
@@ -14,4 +20,4 @@ function generateUniqueRandomArray(range, outputCount) {
 
 // Usage example
 const uniqueRandomNumbers = generateUniqueRandomArray(10, 5);
-console.log(uniqueRandomNumbers); // => [3, 7, 1, 9, 5]
+console.log(uniqueRandomNumbers); // => [*, *, *, *, *]

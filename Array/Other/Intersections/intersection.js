@@ -21,4 +21,5 @@ function intersectArrays(...arrs) {
   return Array.from(set);
 }
 
-// console.log(intersectArrays([1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 6])); // output: [3, 4]
+// Usage example
+console.log(intersectArrays([1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 6])); // => [3, 4]

@@ -20,6 +20,7 @@ function chunk(arr, size = 1) {
   return newArray;
 }
 
-// console.log(chunk(['a', 'b', 'c', 'd'])); // => [['a'], ['b'], ['c'], ['d']]
-// console.log(chunk([1, 2, 3, 4], 2)); // => [[1, 2], [3, 4]]
-// console.log(chunk([1, 2, 3, 4], 3)); // => [[1, 2, 3], [4]]
+// Usage example
+console.log(chunk(["a", "b", "c", "d"])); // => [['a'], ['b'], ['c'], ['d']]
+console.log(chunk([1, 2, 3, 4], 2)); // => [[1, 2], [3, 4]]
+console.log(chunk([1, 2, 3, 4], 3)); // => [[1, 2, 3], [4]]

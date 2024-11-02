@@ -14,5 +14,6 @@ function dropWhile(arr, predicate) {
   return arr.slice(index);
 }
 
-// dropWhile([1, 2, 3, 4, 5], (value) => value < 3); // => [3, 4, 5]
-// dropWhile([1, 2, 3], (value) => value < 6); // => []
+// Usage example
+dropWhile([1, 2, 3, 4, 5], (value) => value < 3); // => [3, 4, 5]
+dropWhile([1, 2, 3], (value) => value < 6); // => []

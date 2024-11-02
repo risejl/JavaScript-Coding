@@ -7,5 +7,6 @@ function mean(arr) {
   return arr.reduce((sum, number) => sum + number, 0) / arr.length;
 }
 
-// console.log(mean([1, 2, 3])); // 2
-// console.log(mean([1, 2, 3, 4, 5])); // 3
+// Usage example
+console.log(mean([1, 2, 3])); // => 2
+console.log(mean([1, 2, 3, 4, 5])); // => 3

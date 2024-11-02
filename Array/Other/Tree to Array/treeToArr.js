@@ -1,7 +1,13 @@
+/**
+ * @param {Array} tree
+ * @param {number} parentId
+ * @return {Array}
+ */
+
 function treeToArr(tree, parentId = null) {
   const arr = [];
 
-  tree.forEach(node => {
+  tree.forEach((node) => {
     const { id, name } = node;
     arr.push({ id, name, parentId });
 
@@ -18,42 +24,42 @@ function treeToArr(tree, parentId = null) {
 const tree = [
   {
     id: 1,
-    name: 'Node 1',
+    name: "Node 1",
     children: [
       {
         id: 2,
-        name: 'Node 1.1',
+        name: "Node 1.1",
         children: [
           {
             id: 4,
-            name: 'Node 1.1.1',
-            children: []
-          }
-        ]
+            name: "Node 1.1.1",
+            children: [],
+          },
+        ],
       },
-        {
-          id: 3,
-          name: 'Node 1.2',
-          children: []
-        }
-      ]
+      {
+        id: 3,
+        name: "Node 1.2",
+        children: [],
+      },
+    ],
   },
   {
     id: 5,
-    name: 'Node 2',
+    name: "Node 2",
     children: [
       {
         id: 6,
-        name: 'Node 2.1',
-        children: []
+        name: "Node 2.1",
+        children: [],
       },
       {
         id: 7,
-        name: 'Node 2.2',
-        children: []
-      }
-    ]
-  }
+        name: "Node 2.2",
+        children: [],
+      },
+    ],
+  },
 ];
 const flatArray = treeToArr(tree);
 console.log(flatArray);
