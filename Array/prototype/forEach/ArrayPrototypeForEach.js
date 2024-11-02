@@ -7,11 +7,11 @@
 
 Array.prototype.myForEach = function (callbackFn, thisArg) {
   if (this == null) {
-    throw new TypeError('this is null or not defined');
+    throw new TypeError("this is null or not defined");
   }
 
-  if (typeof callbackFn !== 'function') {
-    throw new TypeError(callbackFn + ' is not a function');
+  if (typeof callbackFn !== "function") {
+    throw new TypeError(callbackFn + " is not a function");
   }
 
   const O = Object(this);
@@ -25,4 +25,8 @@ Array.prototype.myForEach = function (callbackFn, thisArg) {
   }
 };
 
-// console.log([1, 2, 3].myForEach((el) => el * el), null) // [1, 4, 9];
+// Usage example
+console.log(
+  [1, 2, 3].myForEach((el) => el * el),
+  null
+); // => [1, 4, 9];

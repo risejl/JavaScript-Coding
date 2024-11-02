@@ -11,7 +11,8 @@ Array.prototype.mySquare = function () {
   }
 
   return newArray;
-}
+};
 
-// console.log([1, 2, 3].mySquare()); // [1, 4, 9];
-// console.log([].mySquare()); // [];
+// Usage example
+console.log([1, 2, 3].mySquare()); // => [1, 4, 9];
+console.log([].mySquare()); // => [];

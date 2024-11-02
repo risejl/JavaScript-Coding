@@ -10,17 +10,15 @@ Array.prototype.mySome = function (callbackFn, thisArg) {
   let flag = false;
 
   for (let i = 0; i < len; i += 1) {
-    if (
-      Object.hasOwn(this, i) &&
-      callbackFn.call(thisArg, this[i], i, this)
-    ) {
+    if (Object.hasOwn(this, i) && callbackFn.call(thisArg, this[i], i, this)) {
       flag = true;
       break;
     }
   }
 
   return flag;
-}
+};
 
-// console.log([1, 2, 3].mySome((item) => item > 2)); // true
-// console.log([1, 2, 3].mySome((item) => item < 0)); // false
+// Usage example
+console.log([1, 2, 3].mySome((item) => item > 2)); // => true
+console.log([1, 2, 3].mySome((item) => item < 0)); // => false

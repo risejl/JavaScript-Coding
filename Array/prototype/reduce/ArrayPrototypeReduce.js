@@ -10,7 +10,7 @@ Array.prototype.myReduce = function (callbackFn, initialValue) {
   const len = this.length;
 
   if (!hasInitialValue && !len) {
-    throw new Error('Reduce of empty array with no initial value');
+    throw new Error("Reduce of empty array with no initial value");
   }
 
   let accumulator = hasInitialValue ? initialValue : this[0];
@@ -23,4 +23,10 @@ Array.prototype.myReduce = function (callbackFn, initialValue) {
   }
 
   return accumulator;
-}
+};
+
+// Usage example
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.myReduce((acc, num) => acc + num, 0);
+console.log(sum); // => 15
+const products = numbers.myReduce((acc, num) => acc * num, 1);

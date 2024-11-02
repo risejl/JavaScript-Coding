@@ -9,10 +9,7 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
   const newArray = [];
 
   for (let i = 0; i < this.length; i += 1) {
-    if (
-      Object.hasOwn(this, i) &&
-      callbackFn.call(thisArg, this[i], i, this)
-    ) {
+    if (Object.hasOwn(this, i) && callbackFn.call(thisArg, this[i], i, this)) {
       newArray.push(this[i]);
     }
   }
@@ -20,5 +17,6 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
   return newArray;
 };
 
-// console.log([1, 2, 3, 4].myFilter((value) => value % 2 == 0)); // [2, 4]
-// console.log([1, 2, 3, 4].myFilter((value) => value < 3)); // [1, 2]
+// Usage example
+console.log([1, 2, 3, 4].myFilter((value) => value % 2 == 0)); // => [2, 4]
+console.log([1, 2, 3, 4].myFilter((value) => value < 3)); // => [1, 2]

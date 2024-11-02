@@ -18,5 +18,6 @@ Array.prototype.myMap = function (callbackFn, thisArg) {
   return newArray;
 };
 
-// console.log([1, 2, 3, 4].myMap((i) => i)); // [1, 2, 3, 4]
-// console.log([1, 2, 3, 4].myMap((i) => i * i)); // [1, 4, 9, 16])
+// Usage example
+console.log([1, 2, 3, 4].myMap((i) => i)); // => [1, 2, 3, 4]
+console.log([1, 2, 3, 4].myMap((i) => i * i)); // => [1, 4, 9, 16])
