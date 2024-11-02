@@ -3,12 +3,12 @@ class Calculator {
     this.result = value;
   }
 
-  add(value){
+  add(value) {
     this.result += value;
     return this;
   }
 
-  subtract(value){
+  subtract(value) {
     this.result -= value;
     return this;
   }
@@ -25,20 +25,17 @@ class Calculator {
     this.result /= value;
     return this;
   }
-  
+
   power(value) {
     this.result **= value;
     return this;
   }
- 
+
   getResult() {
     return this.result;
   }
 }
 
-/*
-Input: actions = ["Calculator", "add", "subtract", "getResult"], 
-values = [10, 5, 7]
-Output: 8
-Explaination: new Calculator(10).add(5).subtract(7).getResult() // 10 + 5 - 7 = 8
-*/
+// Usage example
+const calculator = new Calculator(10);
+console.log(calculator.add(5).subtract(7).getResult()); // => 8
