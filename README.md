@@ -73,6 +73,7 @@
 - Calculator with Method Chaining
 - Event Emitter
 - Singleton
+- Factory
 
 ### String
 
