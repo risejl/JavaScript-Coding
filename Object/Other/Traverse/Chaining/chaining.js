@@ -1,11 +1,11 @@
 /**
  * @param {object} obj
  * @param {string} start
- * @return 
+ * @return
  */
 
 function format(obj, start) {
-  let result = '';
+  let result = "";
   let current = start;
 
   while (current) {
@@ -21,12 +21,13 @@ function format(obj, start) {
 
   result += current;
   return result;
-} 
+}
 
+// Usage example
 const origin = [
-  { source: 'b', target: 'c' },
-  { source: 'a', target: 'b' },
-  { source: 'c', target: 'd' }
+  { source: "b", target: "c" },
+  { source: "a", target: "b" },
+  { source: "c", target: "d" },
 ];
 
-console.log(format(origin, 'a')); // => "abcd"
+console.log(format(origin, "a")); // => "abcd"

@@ -1,5 +1,5 @@
 /**
- * @param {object} obj 
+ * @param {object} obj
  * @return {Array}
  */
 
@@ -9,7 +9,7 @@ function objToArr(obj) {
     value.push({
       key: key,
       op: op,
-      value: obj[key][op]
+      value: obj[key][op],
     });
 
     return value;
@@ -24,7 +24,7 @@ const obj = {
   key2: {
     op2: "value2",
   },
-}
+};
 
 console.log(objToArr(obj));
 /*

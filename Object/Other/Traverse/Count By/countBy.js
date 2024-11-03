@@ -16,7 +16,8 @@ function countBy(arr, iteratee) {
   return result;
 }
 
-// console.log(countBy([6.1, 4.2, 6.3], Math.floor)); // => { '4': 1, '6': 2 }
-// console.log(countBy([{ n: 3 }, { n: 5 }, { n: 3 }], (o) => o.n)); // => { '3': 2, '5': 1 }
-// console.log(countBy([], (o) => o)); // => {}
-// console.log(countBy([{ n: 1 }, { n: 2 }], (o) => o.m)); // => { undefined: 2 }
+// Usage example
+console.log(countBy([6.1, 4.2, 6.3], Math.floor)); // => { '4': 1, '6': 2 }
+console.log(countBy([{ n: 3 }, { n: 5 }, { n: 3 }], (o) => o.n)); // => { '3': 2, '5': 1 }
+console.log(countBy([], (o) => o)); // => {}
+console.log(countBy([{ n: 1 }, { n: 2 }], (o) => o.m)); // => { undefined: 2 }

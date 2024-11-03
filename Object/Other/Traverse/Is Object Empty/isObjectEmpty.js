@@ -15,7 +15,7 @@ function isObjectEmpty(obj) {
 const emptyObj = Object.create(null);
 const emptyObjLiteral = {};
 const nonEmptyObj = {
-  name: "Jack"
+  name: "Jack",
 };
 console.log(isObjectEmpty(emptyObj)); // true
 console.log(isObjectEmpty(emptyObjLiteral)); // true

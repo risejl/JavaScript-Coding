@@ -15,5 +15,6 @@ function objectMap(obj, fn) {
   return result;
 }
 
-// const double = (x) => x * 2;
-// objectMap({ foo: 1, bar: 2 }, double); // => { foo: 2, bar: 4}
+// Usage example
+const double = (x) => x * 2;
+console.log(objectMap({ foo: 1, bar: 2 }, double)); // => { foo: 2, bar: 4}

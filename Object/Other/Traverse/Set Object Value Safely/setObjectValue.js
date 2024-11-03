@@ -1,3 +1,10 @@
+/**
+ * @param {Object} obj
+ * @param {Array} keys
+ * @param {any} value
+ * @returns
+ */
+
 function setObjectValue(obj, keys, value) {
   let currentObj = obj;
 
@@ -14,7 +21,10 @@ function setObjectValue(obj, keys, value) {
       currentObj[key] = value;
     } else {
       // Create a new object if the current key doesn't exist or is not an object
-      if (typeof currentObj[key] !== 'object' || Array.isArray(currentObj[key])) {
+      if (
+        typeof currentObj[key] !== "object" ||
+        Array.isArray(currentObj[key])
+      ) {
         currentObj[key] = {};
       }
 
@@ -26,26 +36,23 @@ function setObjectValue(obj, keys, value) {
   return obj;
 }
 
-/*
+// Usage example
 const obj = {
   a: {
     b: {
-      c: 42
-    }
-  }
+      c: 42,
+    },
+  },
 };
 
-const updatedObj = setObjectValue(obj, ['a', 'b', 'c'], 100);
-console.log(updatedObj);
-// Output: { a: { b: { c: 100 } } }
+const updatedObj = setObjectValue(obj, ["a", "b", "c"], 100);
+console.log(updatedObj); // => { a: { b: { c: 100 } } }
 
 const anotherObj = {
   x: {
-    y: null
-  }
+    y: null,
+  },
 };
 
-const updatedAnotherObj = setObjectValue(anotherObj, ['x', 'y', 'z'], 'value');
-console.log(updatedAnotherObj);
-// Output: { x: { y: null } } (original object returned because 'y' is null);
-*/
+const updatedAnotherObj = setObjectValue(anotherObj, ["x", "y", "z"], "value");
+console.log(updatedAnotherObj); // => { x: { y: null } } (original object returned because 'y' is null);

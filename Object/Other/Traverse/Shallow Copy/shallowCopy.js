@@ -1,30 +1,32 @@
+/**
+ * @param {Object} obj
+ * @return {Object}
+ */
 function shallowClone(obj) {
   const copyObj = {};
-  
+
   for (const key in obj) {
     if (Object.hasOwn(obj, key)) {
       copyObj[key] = obj[key];
     }
   }
-  
+
   return copyObj;
 }
 
-// test case
-/*
+// Usage example
 const obj = {
-  "name": "Mitchell",
-  "age": 25,
+  name: "Mike",
+  age: 25,
 };
 
 const nestedObj = {
-  "name": "Mitchell",
-  "address": {
-    "province": "Liaoning",
-    "city": "Dalian"
-  }
+  name: "Mike",
+  address: {
+    state: "NY",
+    city: "NYC",
+  },
 };
 
-console.log(shallowClone(obj));
-console.log(shallowClone(nestedObj));
-*/
+console.log(shallowClone(obj)); // => { name: 'Mike', age: 25 }
+console.log(shallowClone(nestedObj)); // => { name: 'Mike', address: { state: 'NY', city: 'NYC' } }

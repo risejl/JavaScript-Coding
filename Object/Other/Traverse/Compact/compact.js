@@ -15,19 +15,17 @@ function compact(arr) {
   return newArray;
 }
 
-// compact([0, 1, false, 2, '', 3, null]); // => [1, 2, 3]
-// compact(['hello', 123, [], {}, function () {}]); // => ['hello', 123, [], {}, function() {}]
+// Usage example
+console.log(compact([0, 1, false, 2, "", 3, null])); // => [1, 2, 3]
+console.log(compact(["hello", 123, [], {}, function () {}])); // => ['hello', 123, [], {}, function() {}]
 
-
-
-// handle circular reference
-
+// support circular reference
 /**
  * @param {Object|Array} obj
  * @return {Object|Array}
  */
 function compactObject(obj) {
-  if (typeof obj !== 'object' || obj == null) {
+  if (typeof obj !== "object" || obj == null) {
     return obj;
   }
 
@@ -53,5 +51,6 @@ function compactObject(obj) {
   return compactObj;
 }
 
-// compact([0, 1, false, 2, '', 3, null]); // => [1, 2, 3]
-// compact({ foo: true, bar: null }); // => { foo: true }
+// Usage example
+console.log(compact([0, 1, false, 2, "", 3, null])); // => [1, 2, 3]
+console.log(compact({ foo: true, bar: null })); // => { foo: true }
