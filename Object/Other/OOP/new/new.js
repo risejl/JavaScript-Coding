@@ -10,7 +10,7 @@ function myNew(constructor, ...args) {
 
   const result = constructor.call(obj, ...args);
 
-  if (typeof result !== 'object' || result == null) {
+  if (typeof result !== "object" || result == null) {
     return obj;
   } else {
     return result;
@@ -18,9 +18,8 @@ function myNew(constructor, ...args) {
 }
 
 // Usage example
-
 function Person(name) {
   this.name = name;
 }
-const person = myNew(Person, 'Mike');
+const person = myNew(Person, "Mike");
 console.log(person); // => Person { name: 'Mike' }

@@ -9,13 +9,12 @@ function myInstanceOf(obj, fn) {
   return fn.prototype.isPrototypeOf(obj);
 }
 
-
 function myInstanceOf(obj, fn) {
-  if (typeof obj !== 'object' || obj === null) {
+  if (typeof obj !== "object" || obj === null) {
     return false;
   }
 
-  if (typeof fn !== 'function') {
+  if (typeof fn !== "function") {
     return false;
   }
 
@@ -33,16 +32,15 @@ function myInstanceOf(obj, fn) {
 }
 
 // Usage example
-
 class A {}
 class B extends A {}
-const b = new B()
+const b = new B();
 console.log(myInstanceOf(b, B)); // => true
 console.log(myInstanceOf(b, A)); // => true
 console.log(myInstanceOf(b, Object)); // => true
 function C() {}
 console.log(myInstanceOf(b, C)); // => false
-C.prototype = B.prototype
+C.prototype = B.prototype;
 console.log(myInstanceOf(b, C)); // => true
-C.prototype = {}
+C.prototype = {};
 console.log(myInstanceOf(b, C)); // => false

@@ -1,3 +1,8 @@
+/**
+ * @param {any} data
+ * @return {object}
+ */
+
 function createCustomIterable(data) {
   return {
     [Symbol.iterator]() {
@@ -8,17 +13,17 @@ function createCustomIterable(data) {
             return {
               value: data[index++],
               done: false,
-            }
+            };
           } else {
             return {
               value: undefined,
               done: true,
-            }
+            };
           }
-        }
-      }
-    }
-  }
+        },
+      };
+    },
+  };
 }
 
 // Usage example:
