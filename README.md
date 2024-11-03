@@ -109,7 +109,7 @@
 
 #### Create an object
 
-- Object literal
+- Object initializer
 - Function constructor
 - Class
 - `Object.create()`
