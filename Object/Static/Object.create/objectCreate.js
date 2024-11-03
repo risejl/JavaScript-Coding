@@ -3,15 +3,14 @@
  * @return {object}
  */
 function myObjectCreate(proto) {
-  function MyConstructor() {};
+  function MyConstructor() {}
 
   MyConstructor.prototype = proto.prototype ?? proto;
 
   return new MyConstructor();
 }
 
-// example
-/*
+// Usage example
 const person = {
   isHuman: false,
   printIntroduction: function () {
@@ -19,7 +18,6 @@ const person = {
   },
 };
 const me = myObjectCreate(person);
-me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+me.name = "Matthew"; // => "name" is a property set on "me", but not on "person"
 me.isHuman = true; // Inherited properties can be overwritten
-me.printIntroduction(); // "My name is Matthew. Am I human? true"
-*/
+me.printIntroduction(); // => "My name is Matthew. Am I human? true"

@@ -7,7 +7,7 @@ function myObjectAssign(target, ...sources) {
   if (target == null) {
     throw Error();
   }
-  
+
   target = Object(target);
 
   function merge(keys = [], currSource) {
@@ -32,12 +32,10 @@ function myObjectAssign(target, ...sources) {
   return target;
 }
 
-// example
-/*
+// Usage example
 const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
 const returnedTarget = Object.assign(target, source);
 
-console.log(target); // Object { a: 1, b: 4, c: 5 }
-console.log(returnedTarget === target); // true
-*/
+console.log(target); // => Object { a: 1, b: 4, c: 5 }
+console.log(returnedTarget === target); // => true
