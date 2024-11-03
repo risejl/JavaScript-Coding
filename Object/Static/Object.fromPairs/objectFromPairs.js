@@ -10,6 +10,7 @@ function fromPairs(pairs) {
   return Object.fromEntries(pairs);
 }
 
+// Iterative solution
 function fromPairs(pairs) {
   const result = {};
 
@@ -22,9 +23,9 @@ function fromPairs(pairs) {
 
 // Usage example
 const pairs = [
-  ['a', 1],
-  ['b', 2],
-  ['c', 3],
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
 ];
 
 console.log(fromPairs(pairs)); // => { a: 1, b: 2, c: 3 }
