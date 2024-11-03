@@ -12,5 +12,6 @@ function myObjectIs(op1, op2) {
   }
 }
 
-// Object.is(+0, -0) // false
-// Object.is(NaN, NaN) // true
+// Usage example
+Object.is(+0, -0); // false
+Object.is(NaN, NaN); // true
