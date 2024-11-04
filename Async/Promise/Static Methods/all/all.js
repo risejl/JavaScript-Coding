@@ -3,7 +3,7 @@
  * @return {Promise<Array>}
  */
 
-// Use async await
+// Async await
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
     let len = iterable.length;
@@ -32,8 +32,7 @@ function promiseAll(iterable) {
   });
 }
 
-/*
-// Use Promise chaining
+// Promise chaining
 function promiseAll(iterable) {
   return new Promise((resolve, reject) => {
     const results = [];
@@ -60,18 +59,16 @@ function promiseAll(iterable) {
     });
   });
 }
-*/
 
 // Usage example
 const p0 = Promise.resolve(3);
 const p1 = 42;
 const p2 = new Promise((resolve) => {
   setTimeout(() => {
-    resolve('foo');
+    resolve("foo");
   }, 100);
 });
 
-promiseAll([p0, p1, p2])
-  .then((data) => {
-    console.log(data); // => [3, 42, 'foo']
-  });
+promiseAll([p0, p1, p2]).then((data) => {
+  console.log(data); // => [3, 42, 'foo']
+});

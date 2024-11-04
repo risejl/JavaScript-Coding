@@ -1,5 +1,5 @@
 function asyncAdd(a, b, callbackFn) {
-  setTimeout(()=>{
+  setTimeout(() => {
     callbackFn(null, a + b);
   }, Math.random() * 1000);
 }
@@ -17,7 +17,7 @@ async function sum(...args) {
         resolve(result);
       });
     });
-  }
+  };
 
   for (const arg of args) {
     total = await add(total, arg);
@@ -26,10 +26,11 @@ async function sum(...args) {
   return total;
 }
 
-async function total(){
+// Usage example
+async function total() {
   const res1 = await sum(1, 2, 3, 4, 5, 6, 4);
   const res2 = await sum(1, 2, 3, 4, 5, 6, 4);
   return [res1, res2];
 }
 
-total().then(result => console.log(result));
+total().then((result) => console.log(result));

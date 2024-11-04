@@ -1,5 +1,5 @@
 /**
- * @param {Array} iterable 
+ * @param {Array} iterable
  * @return {Promise}
  */
 
@@ -28,12 +28,10 @@ const p0 = new Promise((resolve) => {
 });
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('Err!');
+    reject("Err!");
   }, 400);
 });
 
-
-promiseRace([p0, p1])
-  .then((data) => {
-    console.log(data); // => 42
-  });
+promiseRace([p0, p1]).then((data) => {
+  console.log(data); // => 42
+});
