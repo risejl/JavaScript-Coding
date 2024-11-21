@@ -4,6 +4,15 @@
  * @return {Array}
  */
 
+// Method 1: set.difference()
+function difference(arr, values) {
+  return Array.from(
+    new Set(arr.filter(Boolean)).difference(new Set(values.filter(Boolean)))
+  );
+}
+
+// Method 2: Set + loop
+/*
 function difference(arr, values) {
   const newArray = [];
   const valueSet = new Set(values);
@@ -21,6 +30,7 @@ function difference(arr, values) {
 
   return newArray;
 }
+*/
 
 // Usage example
 console.log(difference([1, 2, 3], [2, 3])); // => [1]

@@ -31,6 +31,7 @@
 - Array-like to Array
 - Chunk
 - Difference
+- Union
 - Drop Right While
 - Drop While
 - Flatten
