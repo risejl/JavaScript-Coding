@@ -68,3 +68,26 @@ console.log(multiplyByFifteen(2)); // => 30
 
 console.log(curriedMultiply(1)(2)(3)(4)); // => 24
 console.log(curriedMultiply(1, 2, 3, 4)); // => 24
+
+//-------------------------------------------
+// support placeholder "_"
+function curry(fn) {
+  return function curried(...args) {
+    const complete =
+      args.length >= fn.length &&
+      !args.slice(0, fn.length).includes(curry.placeholder);
+
+    if (complete) {
+      return fn.call(this, ...args);
+    }
+
+    return function (...newArgs) {
+      const res = args.map((arg) =>
+        arg === curry.placeholder && newArgs.length ? newArgs.shift() : arg
+      );
+      return curried(...res, ...newArgs);
+    };
+  };
+}
+
+curry.placeholder = Symbol();
