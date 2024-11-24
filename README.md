@@ -42,6 +42,7 @@
 - Shuffle
 - Sort By
 - Generate Random Non-Duplicate Array
+- Decode message
 
 ### Function
 
@@ -224,3 +225,13 @@
 #### Async-await
 
 - Implement async-await using generator
+
+### Algorithms
+
+#### Binary Search
+
+- First bad version
+
+#### Stack
+
+- Implement a queue by stacks
