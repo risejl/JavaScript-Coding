@@ -1,9 +1,11 @@
+// Time: O(1) | Space: O(1)
+
 function isArray(value) {
   return Array.isArray(value);
 }
 
 function isFunction(value) {
-  return typeof value === 'function';
+  return typeof value === "function";
 }
 
 function isObject(value) {
@@ -12,7 +14,7 @@ function isObject(value) {
     return false;
   }
 
-  return typeof value === 'object';
+  return typeof value === "object";
 }
 
 function isPlainObject(value) {
