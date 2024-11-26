@@ -3,22 +3,29 @@
  * @return {string[]}
  */
 
-function sortVersions(versions) {
-  return versions.sort((a, b) => {
-    const aParts = a.split(".").map(Number);
-    const bParts = b.split(".").map(Number);
+// Time: O(n^2logn) | Space: O(n)
+function sortVersions(versionsArr) {
+  versionsArr.sort((a, b) => {
+    const aArr = a.split(".");
+    const bArr = b.split(".");
 
-    for (let i = 0; i < Math.max(aParts.length, bParts.length); i += 1) {
-      const aPart = aParts[i] ?? 0;
-      const bPart = bParts[i] ?? 0;
+    for (let i = 0; i < Math.max(aArr.length, bArr.length); i += 1) {
+      const aItem = Number(aArr[i] ?? 0);
+      const bItem = Number(bArr[i] ?? 0);
 
-      if (aPart !== bPart) {
-        return aPart - bPart;
+      if (aItem > bItem) {
+        return 1;
+      } else if (aItem < bItem) {
+        return -1;
+      } else {
+        continue;
       }
     }
 
     return 0;
   });
+
+  return versionsArr;
 }
 
 // Usage example

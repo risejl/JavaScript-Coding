@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// Time: O(n) | Space: O(1)
 function compress(str) {
   if (!str) {
     return "";

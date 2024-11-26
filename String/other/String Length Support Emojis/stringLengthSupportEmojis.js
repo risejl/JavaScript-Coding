@@ -3,6 +3,7 @@
  * @return {Number}
  */
 
+// Time: O(1) | Space: O(1)
 function getStringLength(str) {
   return Array.from(new Intl.Segmenter().segment(str)).length;
 }

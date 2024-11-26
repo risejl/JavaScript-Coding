@@ -3,24 +3,20 @@
  * @return {string[]}
  */
 
+// Time: O(n) | Space: O(n)
 function longestWord(str) {
   const strArr = str.split(" ");
-  const result = [];
-  let max = 0;
+  let maxLen = 0;
+  let maxWord = "";
 
   for (const char of strArr) {
-    if (char.length > max) {
+    if (char.length > maxLen) {
       max = char.length;
+      maxWord = char;
     }
   }
 
-  for (const char of strArr) {
-    if (char.length === max) {
-      result.push(char);
-    }
-  }
-
-  return result.join("");
+  return maxWord;
 }
 
 // Usage example

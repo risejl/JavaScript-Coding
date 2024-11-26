@@ -3,6 +3,7 @@
  * @returns {string}
  */
 
+// Time: O(n) | Space: O(n)
 function uncompress(str) {
   const stack = [];
   let currentNum = 0;

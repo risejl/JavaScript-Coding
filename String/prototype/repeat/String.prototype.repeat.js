@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// Time: O(1) | Space: O(1)
 String.prototype.myRepeat = function (count) {
   if (count < 0) {
     throw new RangeError("count must be non-negative");

@@ -4,6 +4,7 @@
  * @return {number}
  */
 
+// Time: O(n) | Space: O(1)
 function compareVersion(version1, version2) {
   const v1Arr = version1.split(".");
   const v2Arr = version2.split(".");

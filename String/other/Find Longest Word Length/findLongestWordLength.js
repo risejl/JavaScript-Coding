@@ -3,16 +3,17 @@
  * @return {number}
  */
 
+// Time: O(n) | Space: O(1)
 function longestLength(str) {
   const strArr = str.split(" ");
-  let length = 0;
+  let maxLen = 0;
 
   for (let i = 0; i < strArr.length; i++) {
-    if (strArr[i].length > length) {
-      length = strArr[i].length;
+    if (strArr[i].length > maxLen) {
+      maxLen = strArr[i].length;
     }
   }
-  return length;
+  return maxLen;
 }
 
 // Usage example

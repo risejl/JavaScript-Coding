@@ -3,6 +3,7 @@
  * @returns {string | string[]}
  */
 
+// Time: O(n) | Space: O(n)
 function count(str) {
   const map = new Map();
   const result = [];
