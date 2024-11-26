@@ -3,6 +3,7 @@
  * @return {arr}
  */
 
+// Time: O(n) | Space: O(n)
 function mergeContinousNumbers(arr) {
   if (!arr || arr.length === 0) {
     return [];

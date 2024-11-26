@@ -226,6 +226,12 @@
 
 - Implement async-await using generator
 
+### Data Structures
+
+#### Map
+
+- Create a simple store for DOM element
+
 ### Algorithms
 
 #### Binary Search
@@ -235,3 +241,11 @@
 #### Stack
 
 - Implement a queue by stacks
+
+### DOM
+
+- Implement a simple DOM wrapper to support method chaining like jQuery
+
+### Router
+
+- Create a browser history

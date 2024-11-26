@@ -4,6 +4,7 @@
  * @return {string}
  */
 
+// Time: O(n) | Space: O(n)
 function add(num1, num2) {
   const num1Arr = num1.split("").map(Number);
   const num2Arr = num2.split("").map(Number);

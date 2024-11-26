@@ -5,8 +5,11 @@
  * @return {number}
  */
 
+// Time: O(1) | Space: O(1)
 function clamp(value, lower, upper) {
-  return Math.min(upper, Math.max(lower, value));
+  return Math.max(lower, Math.min(upper, value));
+  // or
+  // return Math.min(upper, Math.max(lower, value));
 }
 
 // Usage example

@@ -3,6 +3,7 @@
  * @returns any
  */
 
+// Time: O(1) | Space: O(1)
 function fixedTwoDigits(value) {
   if (typeof value !== "number") {
     return value;

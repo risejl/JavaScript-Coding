@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// Time: O(n) | Space: O(1)
 function addSpacesEveryFourDigits(num) {
   const numStr = String(num);
   let result = "";

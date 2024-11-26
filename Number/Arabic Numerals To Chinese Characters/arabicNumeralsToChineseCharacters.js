@@ -3,20 +3,30 @@
  * @return {string}
  */
 
-function digitToChinese(digit) {
-  const digitMap = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
-  return digitMap[digit];
-}
-
+// Time: O(n) | Space: O(n)
 function arabicToChineseNumber(arabicNumber) {
-  let chineseNumber = "";
+  const map = {
+    0: "零",
+    1: "一",
+    2: "二",
+    3: "三",
+    4: "四",
+    5: "五",
+    6: "六",
+    7: "七",
+    8: "八",
+    9: "九",
+  };
+  // or
+  // const map = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
+  let result = "";
 
-  for (let i = 0; i < arabicNumber.length; i++) {
-    chineseNumber += digitToChinese(arabicNumber[i]);
+  const stArr = arabicNumber.split("");
+  for (let i = 0; i < stArr.length; i += 1) {
+    result += map[stArr[i]];
   }
 
-  return chineseNumber;
+  return result;
 }
-
 // Usage example
-console.log(arabicToChineseNumber("12345")); // => 一二三四五
+console.log(arabicToChineseNumber("12345")); // => "一二三四五"
