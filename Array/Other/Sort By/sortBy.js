@@ -4,6 +4,7 @@
  * @return {Array}
  */
 
+// Time: O(1) | Space: O(1)
 function sortBy(arr, fn) {
   return arr.sort((a, b) => fn(a) - fn(b));
 }

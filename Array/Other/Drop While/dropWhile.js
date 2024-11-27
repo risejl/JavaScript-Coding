@@ -4,6 +4,7 @@
  * @return {Array}
  */
 
+// Time: O(n) | Space: O(1)
 function dropWhile(arr, predicate) {
   let index = 0;
 

@@ -5,6 +5,7 @@
  * @returns {Array<Array<T>>} The new array of chunks.
  */
 
+// Time: O(n) | Space: O(n)
 function chunk(arr, size = 1) {
   if (!Array.isArray(arr) || size < 1) {
     return [];

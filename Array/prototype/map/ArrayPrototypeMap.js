@@ -5,6 +5,7 @@
  * @return {Array<U>}
  */
 
+// Time: O(n) | Space: O(n)
 Array.prototype.myMap = function (callbackFn, thisArg) {
   const len = this.length;
   const newArray = Array.from({ length: len });

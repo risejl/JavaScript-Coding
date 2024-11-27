@@ -5,6 +5,7 @@
  * @return {Array<U>}
  */
 
+// Time: O(n) | Space: O(1)
 Array.prototype.myForEach = function (callbackFn, thisArg) {
   if (this == null) {
     throw new TypeError("this is null or not defined");

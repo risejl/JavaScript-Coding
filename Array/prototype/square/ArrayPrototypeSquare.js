@@ -2,6 +2,7 @@
  * @return {Array<number>}
  */
 
+// Time: O(n) | Space: (n)
 Array.prototype.mySquare = function () {
   const len = this.length;
   const newArray = Array.from({ length: len });

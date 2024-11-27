@@ -3,6 +3,7 @@
  * @return {Number}
  */
 
+// Time: O(1) | Space: O(1)
 function mean(arr) {
   return arr.reduce((sum, number) => sum + number, 0) / arr.length;
 }

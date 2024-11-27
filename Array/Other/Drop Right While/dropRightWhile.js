@@ -3,6 +3,8 @@
  * @param {Function} predicate
  * @return {Array}
  */
+
+// Time: O(n) | Space: O(1)
 function dropRightWhile(arr, predicate) {
   let index = arr.length - 1;
 

@@ -4,6 +4,7 @@
  * @returns {Array}
  */
 
+// Time: O(n) | Space: O(n)
 function intersectionBy(iteratee, ...arrs) {
   if (!arrs.length) {
     return [];

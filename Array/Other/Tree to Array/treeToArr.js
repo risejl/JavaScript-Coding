@@ -4,6 +4,7 @@
  * @return {Array}
  */
 
+// Time: O(n) | Space: O(h)
 function treeToArr(tree, parentId = null) {
   const arr = [];
 

@@ -3,6 +3,7 @@
  * @return {string}
  */
 
+// Time: O(n) | Space: O(1)
 function decode(message) {
   if (!message.length || !message[0].length) {
     return "";
@@ -22,22 +23,22 @@ function decode(message) {
       // Moving down-right
       if (row + 1 >= rows || col + 1 >= cols) {
         goingDown = false;
-        row--;
-        col++;
+        row -= 1;
+        col += 1;
         continue;
       }
-      row++;
-      col++;
+      row += 1;
+      col += 1;
     } else {
       // Moving up-right
       if (row - 1 < 0 || col + 1 >= cols) {
         goingDown = true;
-        row++;
-        col++;
+        row += 1;
+        col += 1;
         continue;
       }
-      row--;
-      col++;
+      row -= 1;
+      col += 1;
     }
   }
 

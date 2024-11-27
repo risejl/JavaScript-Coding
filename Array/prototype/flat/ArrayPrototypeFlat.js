@@ -4,6 +4,7 @@
  * @returns { Array }
  */
 
+// Time: O(n) | Space: O(n)
 function flatten(arr, depth = 1) {
   const newArray = [];
 
@@ -19,8 +20,5 @@ function flatten(arr, depth = 1) {
 }
 
 // Usage example
-const words = ["spray", "elite", "exuberant", "destruction", "present"];
-
-const result = words.filter((word) => word.length > 6);
-
-console.log(result); // => ["exuberant", "destruction", "present"]
+const array = [[1, 2], [1], 1, [[[1]]]];
+console.log(flatten(array)); // => [ 1, 2, 1, 1, [ [ 1 ] ] ]

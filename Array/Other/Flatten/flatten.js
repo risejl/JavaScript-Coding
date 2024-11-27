@@ -3,6 +3,7 @@
  * @return {Array}
  */
 
+// Time: O(n) | Space: O(n)
 function flatten(arr) {
   const newArray = [];
   const copy = [...arr];

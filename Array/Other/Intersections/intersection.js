@@ -3,7 +3,8 @@
  * @returns {Array<unknown>} - An array containing the elements common to all input arrays.
  */
 
-// Method 1: set.intersection()
+// Solution 1: set.intersection()
+// Time: O(n) | Space: O(n)
 function intersectArrays(...arrs) {
   if (!arrs.length) {
     return [];
@@ -18,8 +19,8 @@ function intersectArrays(...arrs) {
   return Array.from(set);
 }
 
-/*
-// Method 2: Set + loop
+// Solution 2: Set + loop
+// Time: O(n) | Space: O(n)
 function intersectArrays(...arrs) {
   if (!arrs.length) {
     return [];
@@ -37,7 +38,6 @@ function intersectArrays(...arrs) {
 
   return Array.from(set);
 }
-*/
 
 // Usage example
 console.log(intersectArrays([1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 6])); // => [3, 4]

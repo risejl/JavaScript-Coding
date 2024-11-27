@@ -3,6 +3,7 @@
  * @return {Array}
  */
 
+// Time: O(n) | Space: O(n)
 function arrToTree(arr) {
   const tree = [];
   const hashmap = new Map();

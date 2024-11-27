@@ -5,6 +5,7 @@
  * @return {U}
  */
 
+// Time: O(n) | Space: O(1)
 Array.prototype.myReduce = function (callbackFn, initialValue) {
   const hasInitialValue = initialValue !== undefined;
   const len = this.length;

@@ -5,6 +5,7 @@
  * @return {Array<T>}
  */
 
+// Time: O(n) | Space: O(n)
 Array.prototype.myFilter = function (callbackFn, thisArg) {
   const newArray = [];
 

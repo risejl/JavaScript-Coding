@@ -1,9 +1,10 @@
 /**
  * @param {any} searchElement
- * @param {number} fromIndex 
+ * @param {number} fromIndex
  * @return {number}
  */
 
+// Time: O(n) | Space: O(1)
 Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
   const len = this.length;
 
@@ -18,11 +19,11 @@ Array.prototype.myIndexOf = function (searchElement, fromIndex = 0) {
   }
 
   return -1;
-}
+};
 
 // Usage example
 console.log([1, 2, 3, 4, 5].myIndexOf(3)); // => 2
 console.log([1, 2, 3, 4, 5].myIndexOf(6)); // => -1
 console.log([1, 2, 3, 4, 5].myIndexOf(1)); // => 0
-console.log(['a', 'b', 'c'].myIndexOf('b')); // => 1
+console.log(["a", "b", "c"].myIndexOf("b")); // => 1
 console.log([NaN].myIndexOf(NaN)); // => -1 (since NaN !== NaN)

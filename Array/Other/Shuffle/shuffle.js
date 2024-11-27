@@ -2,6 +2,8 @@
  * @param {any[]} arr
  * @returns {void}
  */
+
+// Time: O(n) | Space: O(n)
 function shuffle(arr) {
   if (arr.length < 1) {
     return [];

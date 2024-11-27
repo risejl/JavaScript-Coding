@@ -5,6 +5,7 @@
  * @return {boolean}
  */
 
+// Time: O(n) | Space: O(1)
 Array.prototype.mySome = function (callbackFn, thisArg) {
   const len = this.length;
   let flag = false;

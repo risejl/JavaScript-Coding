@@ -3,6 +3,7 @@
  * @return {any | undefiend}
  */
 
+// Time: O(1) | Space: O(1)
 Array.prototype.myAt = function (index) {
   const len = this.length;
 

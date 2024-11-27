@@ -4,6 +4,7 @@
  * @return {Array}
  */
 
+// Time: O(n) | Space: O(n)
 function generateUniqueRandomArray(range, outputCount) {
   const arr = Array.from({ length: range }, (_, i) => i + 1);
   const result = [];

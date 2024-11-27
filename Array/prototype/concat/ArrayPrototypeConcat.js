@@ -4,6 +4,7 @@
  * @return {Array<T>}
  */
 
+// Time: O(n) | Space: O(n)
 Array.prototype.myConcat = function (...items) {
   const newArray = [...this];
 

@@ -2,8 +2,22 @@
  * @return {Array}
  */
 
+// Solution 1
+// Time: O(1) | Space: O(1)
 function arrayOf(arr) {
   return [].slice.call(arguments);
+}
+
+// Solution 2
+// Time: O(1) | Space: O(1)
+function arrayOf(arr) {
+  return [...arguments];
+}
+
+// Solution 3
+// Time: O(1) | Space: O(1)
+function arrayOf(arr) {
+  return Array.from(arguments);
 }
 
 // Usage example
