@@ -3,6 +3,7 @@
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function memoize(fn) {
   const cache = new Map();
 
@@ -46,6 +47,7 @@ console.log(memoizedExpensiveFunction(10)); // => 20
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function memoize(fn) {
   const cache = new Map();
 

@@ -3,7 +3,8 @@
  * @return {number}
  */
 
-function FunctionLength(fn) {
+// Time: O(1) | Space: O(1)
+function functionLength(fn) {
   return fn.length;
 }
 
@@ -12,16 +13,18 @@ function myFunction(a, b, c) {
   console.log(a, b, c);
 }
 
-console.log(FunctionLength(myFunction)); // => 3
+console.log(functionLength(myFunction)); // => 3
 
 /**
  * @param {...any} args
  * @return {number}
  */
 
+// Time: O(1) | Space: O(1)
 function numOfArguments(...args) {
-  // return args.length;
   return arguments.length;
+  // or
+  // return args.length;
 }
 
 // Usage example

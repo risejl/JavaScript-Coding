@@ -4,6 +4,14 @@
  * @return {any}
  */
 
+// Solution 1
+// Time: O(1) | Space: O(1)
+Function.prototype.myCall = function (thisArg, ...args) {
+  return this.apply(thisArg, args);
+};
+
+// Solution 2
+// Time: O(1) | Space: O(1)
 Function.prototype.myCall = function (thisArg, ...argArray) {
   const sym = Symbol();
   const wrapperObj = Object(thisArg);

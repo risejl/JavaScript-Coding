@@ -4,6 +4,24 @@
  * @return {Function}
  */
 
+// Solution 1
+// Time: O(1) | Space: O(1)
+Function.prototype.myBind = function (thisArg, argArray) {
+  return (...innerArgs) => {
+    return this.call(thisArg, ...argArray, ...innerArgs);
+  };
+};
+
+// Solution 2
+// Time: O(1) | Space: O(1)
+Function.prototype.myBind = function (thisArg, argArray = []) {
+  return (...innerArgs) => {
+    return this.apply(thisArg, [...argArray, ...innerArgs]);
+  };
+};
+
+// Solution 3
+// Time: O(1) | Space: O(1)
 Function.prototype.myBind = function (thisArg, ...argArray) {
   const sym = Symbol();
   const wrapperObj = Object(thisArg);

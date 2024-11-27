@@ -3,6 +3,7 @@
  * @return Function
  */
 
+// Time: O(n) | Space: O(1)
 function compose(...fns) {
   return function (x) {
     let result = x;

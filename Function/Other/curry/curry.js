@@ -3,6 +3,7 @@
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function curry(fn) {
   return function curried(...args) {
     if (args.length >= fn.length) {
@@ -42,6 +43,7 @@ console.log(alreadyAddedThreeB(4)); // => 7
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function curry(fn) {
   return function curried(...args) {
     const bindFn = curried.bind(this, ...args);
@@ -71,6 +73,7 @@ console.log(curriedMultiply(1, 2, 3, 4)); // => 24
 
 //-------------------------------------------
 // support placeholder "_"
+// Time: O(1) | Space: O(1)
 function curry(fn) {
   return function curried(...args) {
     const complete =
