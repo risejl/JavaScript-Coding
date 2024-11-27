@@ -3,6 +3,7 @@
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function once(fn) {
   let ranOnce = false;
   let value;

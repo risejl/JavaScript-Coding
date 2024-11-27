@@ -4,6 +4,7 @@
  * @returns () => T
  */
 
+// Time: O(1) | Space: O(1)
 function cycle(...values) {
   let index = -1;
 

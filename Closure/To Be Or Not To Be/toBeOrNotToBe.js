@@ -3,6 +3,7 @@
  * @return {true | Error}
  */
 
+// Time: O(1) | Space: O(1)
 function expect(val) {
   return {
     toBe: function (arg) {

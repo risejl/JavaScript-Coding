@@ -2,6 +2,7 @@
  * @param {number} num
  */
 
+// Time: O(1) | Space: O(1)
 function sum(num) {
   const func = function (num2) {
     return num2 ? sum(num + num2) : num;

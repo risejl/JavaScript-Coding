@@ -3,6 +3,7 @@
  * @return {Function | number}
  */
 
+// Time: O(1) | Space: O(1)
 function add(...args) {
   let sum = args.reduce((acc, val) => acc + val, 0);
 

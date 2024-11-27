@@ -3,6 +3,7 @@
  * @return {Function}
  */
 
+// Time: O(1) | Space: O(1)
 function makeCounter(initialValue = 0) {
   let count = initialValue - 1;
 
@@ -24,6 +25,8 @@ console.log(counter()); // => 2
  * @param {number} initialValue
  * @return {{get: Function, increment: Function, decrement: Function, reset: Function }}
  */
+
+// Time: O(1) | Space: O(1)
 function makeCounter(initialValue = 0) {
   let count = initialValue;
 
