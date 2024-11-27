@@ -12,4 +12,4 @@ String.prototype.myTrim = function () {
 
 // Usage example
 const str = "  Hello, World!  ";
-console.log(str.trim()); // => "Hello, World!"
+console.log(str.myTrim()); // => "Hello, World!"

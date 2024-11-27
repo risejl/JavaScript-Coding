@@ -30,10 +30,10 @@ String.prototype.myRepeat = function (count) {
 };
 
 // Usage example
-console.log("abc".repeat(0)); // => ""
-console.log("abc".repeat(1)); // => "abc"
-console.log("abc".repeat(2)); // => "abcabc"
-console.log("abc".repeat(-1)); // => RangeError
+console.log("abc".myRepeat(0)); // => ""
+console.log("abc".myRepeat(1)); // => "abc"
+console.log("abc".myRepeat(2)); // => "abcabc"
+console.log("abc".myRepeat(-1)); // => RangeError
 ```
 
 ---
@@ -65,7 +65,7 @@ String.prototype.myTrim = function () {
 
 // Usage example
 const str = "  Hello, World!  ";
-console.log(str.trim()); // => "Hello, World!"
+console.log(str.myTrim()); // => "Hello, World!"
 ```
 
 ---
