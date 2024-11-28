@@ -26,20 +26,10 @@ function mySetInterval(callbackFn, delay) {
 
   return {
     clear: () => cancelAnimationFrame(timerId),
-  }
+  };
 }
 
-
-const interval = mySetInterval(() => {
-  console.log('Interval tick');
-}, 1000);
-
-// cancel
-setTimeout(() => {
-  interval.clear();
-}, 5000);
-
-
+// -------------------------------------------
 
 // use `setTimeout`
 function mySetInterval(callbackFn, delay) {
@@ -63,11 +53,12 @@ function mySetInterval(callbackFn, delay) {
 
   return {
     clear: () => clearTimeout(timerId),
-  }
+  };
 }
 
+// Usage example
 const interval = mySetInterval(() => {
-  console.log('Interval tick');
+  console.log("Interval tick");
 }, 1000);
 
 // cancel

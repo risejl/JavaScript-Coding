@@ -62,7 +62,8 @@ function debounce(func, wait, option = { leading: false, trailing: true }) {
   };
 }
 
-//--------------------------------------------------------------------
+//--------------------------------------------------
+// Advanced version of debounce
 function debounce(func, wait = 0) {
   let timeoutId = null;
   let context = undefined;
