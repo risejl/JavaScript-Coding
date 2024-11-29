@@ -10,7 +10,7 @@ function promisify(callbackFn) {
         }
       }, ...args);
     });
-  }
+  };
 }
 
 /**
@@ -32,7 +32,7 @@ function sequence(fns) {
     } catch (err) {
       callbackFn(err, undefined);
     }
-  }
+  };
 }
 
 // Usage example
@@ -54,18 +54,21 @@ function asyncFunc3(callback, result) {
   }, 1000);
 }
 
-
 const asyncFunctions = [asyncFunc1, asyncFunc2, asyncFunc3];
 const sequentialExecution = sequence(asyncFunctions);
 
 console.log("Starting sequential execution...");
-sequentialExecution((err, result) => {
-  if (err) {
-    console.error('Error:', err);
-  } else {
-    console.log('Final Result:', result);
-  }
-}, 5, 3); 
+sequentialExecution(
+  (err, result) => {
+    if (err) {
+      console.error("Error:", err);
+    } else {
+      console.log("Final Result:", result);
+    }
+  },
+  5,
+  3
+);
 /*
 => Starting sequential execution...
 => Final Result: 26 (after about 3 seconds)

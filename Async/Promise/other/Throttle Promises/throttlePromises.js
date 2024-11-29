@@ -1,12 +1,12 @@
 /**
- * @param {() => Promise<any>} fns 
- * @param {number} max 
+ * @param {() => Promise<any>} fns
+ * @param {number} max
  * @return {Promise}
  */
 
 function throttlePromises(fns, max) {
   const results = [];
-  
+
   async function doWork(iterator) {
     for (let [index, element] of iterator) {
       const result = await element();
@@ -22,22 +22,22 @@ function throttlePromises(fns, max) {
 
 // Usage example
 const asyncFunctions = [
-  () => new Promise(resolve => setTimeout(() => resolve('Task 1'), 1000)),
-  () => new Promise(resolve => setTimeout(() => resolve('Task 2'), 1500)),
-  () => new Promise(resolve => setTimeout(() => resolve('Task 3'), 800)),
-  () => new Promise(resolve => setTimeout(() => resolve('Task 4'), 1200)),
-  () => new Promise(resolve => setTimeout(() => resolve('Task 5'), 900))
+  () => new Promise((resolve) => setTimeout(() => resolve("Task 1"), 1000)),
+  () => new Promise((resolve) => setTimeout(() => resolve("Task 2"), 1500)),
+  () => new Promise((resolve) => setTimeout(() => resolve("Task 3"), 800)),
+  () => new Promise((resolve) => setTimeout(() => resolve("Task 4"), 1200)),
+  () => new Promise((resolve) => setTimeout(() => resolve("Task 5"), 900)),
 ];
 
 const maxConcurrent = 2;
 
 throttlePromises(asyncFunctions, maxConcurrent)
-  .then(results => {
-    console.log('All tasks completed');
-    console.log('Results:', results);
+  .then((results) => {
+    console.log("All tasks completed");
+    console.log("Results:", results);
   })
-  .catch(error => {
-    console.error('An error occurred:', error);
+  .catch((error) => {
+    console.error("An error occurred:", error);
   });
 
 // All tasks completed

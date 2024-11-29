@@ -10,11 +10,11 @@ function isPlainObject(value) {
 
 function mergeResult(result1, result2) {
   try {
-    if (typeof result1 === 'number' && typeof result2 === 'number') {
+    if (typeof result1 === "number" && typeof result2 === "number") {
       return result1 + result2;
     }
-    
-    if (typeof result1 === 'string' && typeof result2 === 'string') {
+
+    if (typeof result1 === "string" && typeof result2 === "string") {
       return result1 + result2;
     }
 
@@ -26,9 +26,9 @@ function mergeResult(result1, result2) {
       return { ...result1, ...result2 };
     }
 
-    throw 'Unsupported data types';
+    throw "Unsupported data types";
   } catch {
-    throw 'Unsupported data types';
+    throw "Unsupported data types";
   }
 }
 
@@ -63,11 +63,9 @@ function promiseMerge(p1, p2) {
 }
 
 // Usage example
-
 const p1 = Promise.resolve(10);
 const p2 = Promise.resolve(20);
 
-promiseMerge(p1, p2)
-  .then((result) => {
-    console.log(result); // => 30
-  });
+promiseMerge(p1, p2).then((result) => {
+  console.log(result); // => 30
+});

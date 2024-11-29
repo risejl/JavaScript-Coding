@@ -13,13 +13,15 @@ class Scheduler {
           resolve();
         }, delay);
       });
-    }
+    };
 
     this.taskQueue.push(task);
   }
 
   async start() {
-    console.log(`Starting scheduler with concurrency limit: ${this.concurrencyLimit}`);
+    console.log(
+      `Starting scheduler with concurrency limit: ${this.concurrencyLimit}`
+    );
     for (let i = 0; i < this.concurrencyLimit; i += 1) {
       this.executeNextTask();
     }
@@ -66,7 +68,9 @@ scheduler.addTask(400, "Task 4");
 scheduler.start();
 
 setInterval(() => {
-  console.log(`Active tasks: ${scheduler.activeTasksCount}, Pending tasks: ${scheduler.pendingTasksCount}`);
+  console.log(
+    `Active tasks: ${scheduler.activeTasksCount}, Pending tasks: ${scheduler.pendingTasksCount}`
+  );
 }, 500);
 
 /*

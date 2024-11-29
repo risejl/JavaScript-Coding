@@ -2,6 +2,7 @@
  * @param {Object} obj
  * @return {Object}
  */
+
 function squashObject(obj) {
   const outObj = {};
 

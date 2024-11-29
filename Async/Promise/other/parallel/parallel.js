@@ -10,7 +10,7 @@ function promisify(callbackFn) {
         }
       }, ...args);
     });
-  }
+  };
 }
 
 /**
@@ -23,7 +23,7 @@ function parallel(fns) {
     return Promise.all(fns.map((fn) => promisify(fn)(...args)))
       .then((data) => callbackFn(undefined, data))
       .catch((err) => callbackFn(err, undefined));
-  }
+  };
 }
 
 // Usage example
@@ -50,8 +50,8 @@ const parallelExecution = parallel(asyncFunctions);
 
 parallelExecution((err, results) => {
   if (err) {
-    console.error('Error:', err);
+    console.error("Error:", err);
   } else {
-    console.log('Results:', results);
+    console.log("Results:", results);
   }
 }, 5); // => Results: [ 10, 15, 25 ]

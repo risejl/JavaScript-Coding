@@ -1,4 +1,4 @@
-const URL = 'https://jsonplaceholder.typicode.com/posts/1';
+const URL = "https://jsonplaceholder.typicode.com/posts/1";
 const TIMEOUT = 5000;
 
 function fetchDataWithTimeout(url, timeout) {
@@ -20,8 +20,8 @@ function fetchDataWithTimeout(url, timeout) {
       return response.json();
     })
     .catch((err) => {
-      if (err.name === 'AbortError') {
-        throw new Error('Fetch operation timed out');
+      if (err.name === "AbortError") {
+        throw new Error("Fetch operation timed out");
       } else {
         throw err;
       }
@@ -30,13 +30,13 @@ function fetchDataWithTimeout(url, timeout) {
 
 // Usage example
 fetchDataWithTimeout(URL, TIMEOUT)
-  .then(data => {
-    console.log('Fetched data:', data);
-    console.log('Title:', data.title);
-    console.log('Body:', data.body);
+  .then((data) => {
+    console.log("Fetched data:", data);
+    console.log("Title:", data.title);
+    console.log("Body:", data.body);
   })
-  .catch(error => {
-    console.error('Error:', error.message);
+  .catch((error) => {
+    console.error("Error:", error.message);
   });
 
 /*

@@ -1,26 +1,30 @@
 class MyPromise {
   constructor(executor) {
-    this.state = 'pending';
+    this.state = "pending";
     this.value = undefined;
     this.reason = undefined;
     this.onFulfilledCallbacks = [];
     this.onRejectedCallbacks = [];
 
     const resolve = (value) => {
-      if (this.state === 'pending') {
-        this.state = 'fulfilled';
+      if (this.state === "pending") {
+        this.state = "fulfilled";
         this.value = value;
-        this.onFulfilledCallbacks.forEach((callbackFn) => callbackFn(this.value));
+        this.onFulfilledCallbacks.forEach((callbackFn) =>
+          callbackFn(this.value)
+        );
       }
-    } 
+    };
 
     const reject = (reason) => {
-      if (this.state === 'pending') {
-        this.state = 'rejected';
+      if (this.state === "pending") {
+        this.state = "rejected";
         this.reason = reason;
-        this.onRejectedCallbacks.forEach((callbackFn) => callbackFn(this.reason));
+        this.onRejectedCallbacks.forEach((callbackFn) =>
+          callbackFn(this.reason)
+        );
       }
-    }
+    };
 
     try {
       executor(resolve, reject);
@@ -38,12 +42,14 @@ class MyPromise {
   }
 
   then(onFulfilled, onRejected) {
-    onFulfilled = typeof onFulfilled === 'function'
-      ? onFulfilled
-      : (value) => value;
-    onRejected = typeof onRejected === 'function'
-      ? onRejected
-      : (reason) => { throw reason; };
+    onFulfilled =
+      typeof onFulfilled === "function" ? onFulfilled : (value) => value;
+    onRejected =
+      typeof onRejected === "function"
+        ? onRejected
+        : (reason) => {
+            throw reason;
+          };
 
     // return a promise
     return new MyPromise((resolve, reject) => {
@@ -69,9 +75,9 @@ class MyPromise {
         });
       };
 
-      if (this.state === 'fulfilled') {
+      if (this.state === "fulfilled") {
         fulfilledHandler();
-      } else if (this.state === 'rejected') {
+      } else if (this.state === "rejected") {
         rejectedHandler();
       } else {
         this.onFulfilledCallbacks.push(fulfilledHandler);
@@ -85,13 +91,16 @@ class MyPromise {
   }
 
   finally(onFinally) {
-    if (typeof onFinally !== 'function') {
+    if (typeof onFinally !== "function") {
       return this.then();
     }
 
     return this.then(
-      (value) => MyPromise.resolve((onFinally()).then(() => value)),
-      (reason) => MyPromise.resolve(onFinally()).then(() => { throw reason })
+      (value) => MyPromise.resolve(onFinally()).then(() => value),
+      (reason) =>
+        MyPromise.resolve(onFinally()).then(() => {
+          throw reason;
+        })
     );
   }
 
@@ -106,12 +115,13 @@ class MyPromise {
 
 // Usage example
 const promise = MyPromise.resolve(1);
-promise.then((value) => {
-  console.log(value);
-})
-.then(() => {
-  throw new Error('Error');
-})
-.catch((err) => {
-  console.log(`Error catched: ${err}`);
-});
+promise
+  .then((value) => {
+    console.log(value); // => 1
+  })
+  .then(() => {
+    throw new Error("Error");
+  })
+  .catch((err) => {
+    console.log(`Error catched: ${err}`); // => Error catched: Error: Error
+  });

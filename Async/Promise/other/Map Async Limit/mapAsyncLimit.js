@@ -12,7 +12,7 @@ async function mapAsyncLimit(iterable, callbackFn, size = Infinity) {
   for (let i = 0; i < iterable.length; i += size) {
     const chunk = iterable.slice(i, i + size);
     const chunkResults = await Promise.all(chunk.map(callbackFn));
-    
+
     results.push(...chunkResults);
   }
 
@@ -27,7 +27,7 @@ function mapAsyncLimit(iterable, callbackFn, size = Infinity) {
     let nextIndex = 0;
     let len = iterable.length;
 
-    if (!len) {
+    if (len === 0) {
       resolve(results);
       return;
     }
@@ -67,7 +67,7 @@ function mapAsyncLimit(iterable, callbackFn, size = Infinity) {
     let nextIndex = 0;
     let len = iterable.length;
 
-    if (!len) {
+    if (len === 0) {
       resolve(results);
       return;
     }
@@ -88,7 +88,8 @@ function mapAsyncLimit(iterable, callbackFn, size = Infinity) {
           if (nextIndex < len) {
             processItem(nextIndex);
           }
-        }).catch(reject);
+        })
+        .catch(reject);
     }
 
     for (let i = 0; i < Math.min(len, size); i += 1) {
@@ -113,9 +114,9 @@ async function runExample() {
   const chunkSize = 3;
 
   console.log("Starting async processing...");
-  
+
   const results = await mapAsyncLimit(numbers, asyncSquare, chunkSize);
-  
+
   console.log("All processing complete.");
   console.log("Results:", results);
 }

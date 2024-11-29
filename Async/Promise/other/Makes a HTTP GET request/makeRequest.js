@@ -1,4 +1,4 @@
-const URL = 'https://randomuser.me/api/';
+const URL = "https://randomuser.me/api/";
 
 /**
  * @param {string} url
@@ -16,7 +16,7 @@ function fetchData(url) {
       return response.json();
     })
     .catch((err) => {
-      console.error('Fetch error:', err);
+      console.error("Fetch error:", err);
       throw err;
     });
 }

@@ -10,7 +10,7 @@ function promiseResolve(value) {
   }
 
   // Thenable
-  if (typeof value.then === 'function') {
+  if (typeof value.then === "function") {
     return new Promise(value.then.bind(value));
   }
 
@@ -21,8 +21,8 @@ function promiseResolve(value) {
 const resolvedThenable = promiseResolve({
   then(resolve, reject) {
     resolve(1);
-  }
-})
+  },
+});
 
 const promise = resolvedThenable;
 promise.then((data) => {

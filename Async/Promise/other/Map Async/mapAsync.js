@@ -15,7 +15,7 @@ function mapAsync(iterable, callbackFn) {
     const results = [];
     let unresolved = iterable.length;
 
-    if (!unresolved) {
+    if (unresolved === 0) {
       resolve(results);
       return;
     }
@@ -26,7 +26,7 @@ function mapAsync(iterable, callbackFn) {
           results[index] = result;
           unresolved -= 1;
 
-          if (!unresolved) {
+          if (unresolved === 0) {
             resolve(results);
           }
         })
@@ -46,7 +46,6 @@ function asyncDouble(x) {
   });
 }
 
-mapAsync([1, 2], asyncDouble)
-  .then((results) => {
-    console.log(results); // => [2, 4]
-  });
+mapAsync([1, 2], asyncDouble).then((results) => {
+  console.log(results); // => [2, 4]
+});

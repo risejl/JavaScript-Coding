@@ -14,26 +14,14 @@ function promisify(fn) {
         }
       });
     });
-  }
+  };
 }
-
-// Usage example
-function foo(url, options, callback) {
-  apiCall(url, options)
-    .then((data) => callback(null, data))
-    .catch((err) => callback(err));
-}
-
-const promisifiedFoo = promisify(foo);
-const data = await promisifiedFoo('example.com', { foo: 1 });
-
-
 
 /**
  * @callback fn
  * @returns Function
  */
-const promisifyCustomSymbol = Symbol.for('util.promisify.custom');
+const promisifyCustomSymbol = Symbol.for("util.promisify.custom");
 
 function promisify(fn) {
   if (fn[promisifyCustomSymbol]) {
@@ -50,7 +38,7 @@ function promisify(fn) {
         }
       });
     });
-  }
+  };
 }
 
 // Usage example
@@ -61,4 +49,4 @@ function foo(url, options, callback) {
 }
 
 const promisifiedFoo = promisify(foo);
-const data = await promisifiedFoo('example.com', { foo: 1 });
+const data = await promisifiedFoo("example.com", { foo: 1 });

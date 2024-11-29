@@ -3,6 +3,7 @@
  * @param {Function} fn
  * @returns Object
  */
+
 function objectMap(obj, fn) {
   const result = {};
 

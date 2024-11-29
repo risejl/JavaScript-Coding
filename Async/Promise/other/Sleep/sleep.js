@@ -13,9 +13,9 @@ async function sleep(duration) {
 
 // Usage example
 async function greeting() {
-  console.log('Hello!');
+  console.log("Hello!");
   await sleep(2000);
-  console.log('Bye.'); // Only logs after 2000 milliseconds (2 seconds)
+  console.log("Bye."); // Only logs after 2000 milliseconds (2 seconds)
 }
 
 greeting();

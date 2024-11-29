@@ -1,4 +1,4 @@
-const URL = 'https://jsonplaceholder.typicode.com/posts';
+const URL = "https://jsonplaceholder.typicode.com/posts";
 
 function fetchWithRetry(url, maxRetries) {
   return new Promise((resolve, reject) => {
@@ -19,9 +19,13 @@ function fetchWithRetry(url, maxRetries) {
         .catch((err) => {
           retries += 1;
           if (retries >= maxRetries) {
-            reject(new Error(`Max retries reached. Last error: ${err.message}`));
+            reject(
+              new Error(`Max retries reached. Last error: ${err.message}`)
+            );
           } else {
-            console.log(`Request failed, retrying... (${retries}/${maxRetries})`);
+            console.log(
+              `Request failed, retrying... (${retries}/${maxRetries})`
+            );
             fetchData(url);
           }
         });
@@ -31,6 +35,7 @@ function fetchWithRetry(url, maxRetries) {
   });
 }
 
+// Usage example
 fetchWithRetry(URL, 5)
   .then((data) => {
     console.log(data);

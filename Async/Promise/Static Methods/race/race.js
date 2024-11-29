@@ -5,7 +5,7 @@
 
 function promiseRace(iterable) {
   return new Promise((resolve, reject) => {
-    if (!iterable.length) {
+    if (iterable.length === 0) {
       return;
     }
 
@@ -26,7 +26,7 @@ const p0 = new Promise((resolve) => {
     resolve(42);
   }, 100);
 });
-const p1 = new Promise((resolve, reject) => {
+const p1 = new Promise((_, reject) => {
   setTimeout(() => {
     reject("Err!");
   }, 400);

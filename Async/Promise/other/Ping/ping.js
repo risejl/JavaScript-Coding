@@ -1,7 +1,7 @@
 function ping(delay) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('Ping successful');
+      resolve("Ping successful");
     }, delay);
   });
 }
@@ -31,8 +31,8 @@ function calc(interval) {
   return {
     clear: () => {
       clearTimeout(timerId);
-      console.log('Ping calculation aborted.');
-    }
+      console.log("Ping calculation aborted.");
+    },
   };
 }
 

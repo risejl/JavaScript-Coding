@@ -1,4 +1,5 @@
-const URL = 'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU';
+const URL =
+  "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU";
 
 function fetchData(url) {
   return fetch(url)
@@ -31,7 +32,7 @@ function repeat(callbackFn, delay, count) {
 
   return {
     clear: () => clearInterval(timerId),
-  }
+  };
 }
 
 // Usage example

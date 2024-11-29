@@ -6,14 +6,13 @@
 
 // Recursive approach
 function fetchWithAutoRetry(fetcher, maximumRetryCount = 5) {
-  return fetcher()
-    .catch((err) => {
-      if (maximumRetryCount === 0) {
-        throw err;
-      } else {
-        return fetchWithAutoRetry(fetcher, maximumRetryCount - 1);
-      }
-    });
+  return fetcher().catch((err) => {
+    if (maximumRetryCount === 0) {
+      throw err;
+    } else {
+      return fetchWithAutoRetry(fetcher, maximumRetryCount - 1);
+    }
+  });
 }
 
 // Iterative approach
@@ -40,19 +39,19 @@ function simulateAPICall() {
   return new Promise((resolve, reject) => {
     // Simulate a 50% chance of failure
     if (Math.random() < 0.5) {
-      reject(new Error('API call failed'));
+      reject(new Error("API call failed"));
     } else {
-      resolve('API call succeeded');
+      resolve("API call succeeded");
     }
   });
 }
 
 fetchWithAutoRetry(simulateAPICall, 3)
-  .then(result => {
-    console.log('Success:', result);
+  .then((result) => {
+    console.log("Success:", result);
   })
-  .catch(error => {
-    console.error('All retries failed:', error.message);
+  .catch((error) => {
+    console.error("All retries failed:", error.message);
   });
 
 // Example output (may vary due to randomness):

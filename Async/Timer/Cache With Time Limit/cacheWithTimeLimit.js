@@ -35,9 +35,9 @@ class TimeLimitedCache {
 
 // Usage example
 const timeLimitedCache = new TimeLimitedCache();
-console.log(timeLimitedCache.set(1, 'first', 1000)); // => false
+console.log(timeLimitedCache.set(1, "first", 1000)); // => false
 console.log(timeLimitedCache.get(1).value); // => 'first'
-console.log(timeLimitedCache.count()); // => 1 
+console.log(timeLimitedCache.count()); // => 1
 setTimeout(() => {
   console.log(timeLimitedCache.count()); // => 0
   console.log(timeLimitedCache.get(1)); // => -1

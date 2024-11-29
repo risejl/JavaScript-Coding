@@ -6,8 +6,8 @@
 function promiseAny(iterable) {
   return new Promise((resolve, reject) => {
     const len = iterable.length;
-    
-    if (!len) {
+
+    if (pending === 0) {
       resolve(new AggregateError([]));
     }
 
@@ -22,7 +22,7 @@ function promiseAny(iterable) {
         errors[index] = err;
         pending -= 1;
 
-        if (!pending) {
+        if (pending === 0) {
           reject(new AggregateError(errors));
         }
       }
@@ -38,11 +38,10 @@ const p0 = new Promise((resolve) => {
 });
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('Err!');
+    reject("Err!");
   }, 400);
 });
 
-promiseAny([p0, p1])
-  .then((data) => {
-    console.log(data); // => 42
-  });
+promiseAny([p0, p1]).then((data) => {
+  console.log(data); // => 42
+});

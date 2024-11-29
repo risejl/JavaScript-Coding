@@ -14,9 +14,7 @@
 // Handle primitive types and functions
 function isPrimitiveTypeOrFunction(value) {
   return (
-    typeof value !== 'object' ||
-    value === null ||
-    typeof value === 'function'
+    typeof value !== "object" || value === null || typeof value === "function"
   );
 }
 
@@ -25,15 +23,12 @@ function getType(value) {
   const type = typeof value;
 
   // primitive
-  if (type !== 'object') {
+  if (type !== "object") {
     return type;
   }
 
   // non-primitive
-  return Object.prototype.toString
-    .call(value)
-    .slice(8, -1)
-    .toLowerCase();
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
 }
 
 // deep clone
@@ -52,7 +47,7 @@ function deepCloneImpl(value, cache) {
   const type = getType(value);
 
   // set
-  if (type === 'set') {
+  if (type === "set") {
     const cloned = new Set();
     value.forEach((item) => {
       cloned.add(deepCloneImpl(item, cache));
@@ -62,7 +57,7 @@ function deepCloneImpl(value, cache) {
   }
 
   // map
-  if (type === 'map') {
+  if (type === "map") {
     const cloned = new Map();
     value.forEach((value_, key) => {
       cloned.set(key, deepCloneImpl(value_, cache));
@@ -72,17 +67,17 @@ function deepCloneImpl(value, cache) {
   }
 
   // date
-  if (type === 'date') {
+  if (type === "date") {
     return new Date(value);
   }
 
   // function
-  if (type === 'function') {
+  if (type === "function") {
     return value;
   }
 
   // regexp
-  if (type === 'regexp') {
+  if (type === "regexp") {
     return new RegExp(value);
   }
 
@@ -113,15 +108,15 @@ function deepCloneImpl(value, cache) {
 // Usage example
 const obj1 = {
   num: 0,
-  str: '',
+  str: "",
   boolean: true,
   unf: undefined,
   nul: null,
-  obj: { name: 'foo', id: 1 },
+  obj: { name: "foo", id: 1 },
   arr: [0, 1, 2],
   date: new Date(),
-  reg: new RegExp('/bar/ig'),
-  [Symbol('s')]: 'baz',
+  reg: new RegExp("/bar/ig"),
+  [Symbol("s")]: "baz",
 };
 
 const clonedObj1 = deepClone(obj1);
@@ -133,6 +128,6 @@ obj2.a.b = obj2; // Circular reference
 
 const clonedObj2 = deepClone(obj2); // Should not cause a stack overflow by recursing into an infinite loop.
 
-clonedObj2.a.b = 'something new';
+clonedObj2.a.b = "something new";
 
 console.log(obj2.a.b === obj2); // => true

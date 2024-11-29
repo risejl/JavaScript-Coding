@@ -1,6 +1,6 @@
 /**
- * @param {Promise} promise1 
- * @param {Promise} promise2 
+ * @param {Promise} promise1
+ * @param {Promise} promise2
  * @return {Promise}
  */
 
@@ -14,7 +14,4 @@ async function addTwoPromises(promise1, promise2) {
 }
 
 // Usage example
-addTwoPromises(
-  Promise.resolve(2), Promise.resolve(2)
-)
-.then(console.log); // => 4
+addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log); // => 4

@@ -1,14 +1,14 @@
 class LazyMan {
   constructor(name) {
     this.name = name;
-    console.log(`My name is ${name}`);
     this.taskQueue = [];
+    console.log(`My name is ${name}`);
 
     setTimeout(() => {
       return this.next();
     }, 0);
   }
-  
+
   eat(food) {
     this.taskQueue.push(() => {
       console.log(`I am eating ${food}`);
@@ -20,7 +20,7 @@ class LazyMan {
 
   sleep(delay) {
     this.taskQueue.push(() => {
-      console.log('I am sleeping...');
+      console.log("I am sleeping...");
       setTimeout(() => {
         console.log(`After ${delay} seconds`);
         this.next();
@@ -31,16 +31,16 @@ class LazyMan {
   }
 
   next() {
-    const fn = this.taskQueue.shift();
-    if (typeof fn === 'function') {
-      fn();
+    const task = this.taskQueue.shift();
+    if (typeof task === "function") {
+      task();
     }
   }
 }
 
 // Usage example
-const lazyMan = new LazyMan('jack');
-lazyMan.eat('apple').sleep(5000).eat('hamburger').sleep(3000).eat('pear');
+const lazyMan = new LazyMan("jack");
+lazyMan.eat("apple").sleep(5000).eat("hamburger").sleep(3000).eat("pear");
 
 /*
 My name is jack

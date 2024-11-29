@@ -4,8 +4,7 @@ function sleep(delay) {
       resolve();
     }, delay);
   });
-};
-
+}
 
 // promise based
 function logNumbers() {
@@ -30,7 +29,6 @@ async function logNumbers() {
 }
 
 // Usage example
-logNumbers()
-  .then(() => {
-    console.log('finished!'); // => 'finished!'
-  });
+logNumbers().then(() => {
+  console.log("finished!"); // => 'finished!'
+});

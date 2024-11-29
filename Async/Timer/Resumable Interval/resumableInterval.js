@@ -13,7 +13,7 @@ function createResumableInterval(callbackFn, delay, ...args) {
     clearInterval(timerId);
     timerId = null;
   }
-  
+
   function start() {
     if (stopped || timerId) {
       return;

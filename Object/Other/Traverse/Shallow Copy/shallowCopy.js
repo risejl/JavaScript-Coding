@@ -2,6 +2,7 @@
  * @param {Object} obj
  * @return {Object}
  */
+
 function shallowClone(obj) {
   const copyObj = {};
 

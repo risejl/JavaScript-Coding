@@ -6,12 +6,12 @@
 
 function invokeLater(callbackFn, delay) {
   const timerId = setTimeout(() => {
-    callbackFn(null, 'run');
+    callbackFn(null, "run");
   }, delay);
 
   return {
     clear: () => clearTimeout(timerId),
-  }
+  };
 }
 
 // Usage example
