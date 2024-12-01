@@ -451,4 +451,5 @@ console.log("test😁".length); // => 6
 - [165. Compare Version Numbers - LeetCode](https://leetcode.com/problems/compare-version-numbers/description/)
 - [97. compress a string - BFE.dev](https://bigfrontend.dev/problem/compress-a-string)
 - [173. uncompress string - BFE.dev](https://bigfrontend.dev/problem/uncompress-string)
-- [145. most frequently occurring character -BFE.dev](https://bigfrontend.dev/problem/most-frequently-occurring-character)
+- [145. most frequently occurring character - BFE.dev](https://bigfrontend.dev/problem/most-frequently-occurring-character)
+- [94. emoji - BFE.dev](https://bigfrontend.dev/quiz/emoji)

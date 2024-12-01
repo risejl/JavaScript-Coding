@@ -15,7 +15,7 @@ function invokeLater(callbackFn, delay) {
 }
 
 // Usage example
-const cancel = invokeLater((err, data) => {
+const cancel = invokeLater((_, data) => {
   console.log(data);
   cancel.clear();
 }, 2000);

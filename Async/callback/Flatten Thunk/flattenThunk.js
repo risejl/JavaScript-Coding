@@ -5,7 +5,7 @@
 
 function flattenThunk(fn) {
   return function (callbackFn) {
-    function resolveThunk(err, result) {
+    const resolveThunk = (err, result) => {
       if (err) {
         callbackFn(err, undefined);
         return;
@@ -16,7 +16,7 @@ function flattenThunk(fn) {
       } else {
         callbackFn(undefined, result);
       }
-    }
+    };
 
     fn(resolveThunk);
   };
