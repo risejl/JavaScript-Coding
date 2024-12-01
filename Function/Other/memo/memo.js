@@ -85,3 +85,38 @@ console.log(memoizedExpensiveMul(5, 8)); // => Computing... 40
 
 // Fourth call with the same argument as the third call (returns the cached result).
 console.log(memoizedExpensiveMul(5, 8)); // => 40
+
+/* pass the case for parameters are all empty arrays */
+
+function createKey() {
+  let count = 0;
+  let map = new Map();
+
+  return function (input) {
+    if (map.has(input)) {
+      return map.get(input);
+    }
+
+    map.set(input, ++count);
+    return count;
+  };
+}
+
+function memoize(fn) {
+  const cache = new Map();
+  const keyGenerator = createKey();
+
+  return function (...args) {
+    const numbers = args.map(keyGenerator);
+    const key = numbers.join(",");
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    const value = fn.call(this, ...args);
+    cache.set(key, value);
+
+    return value;
+  };
+}

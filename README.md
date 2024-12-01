@@ -21,6 +21,7 @@
 - `Array.prototype.some()`
 - `Array.prototype.square()`
 - `Array.prototype.indexOf()`
+- `Array.prototype.snail()`
 
 #### Other
 

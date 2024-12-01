@@ -6,23 +6,21 @@
 // Time: O(n) | Space: O(n)
 function arrToTree(arr) {
   const tree = [];
-  const hashmap = new Map();
+  const map = new Map();
 
-  // create nodes and store references
   arr.forEach((item) => {
-    hashmap[item.id] = {
+    map.set(item.id, {
       id: item.id,
       name: item.name,
       children: [],
-    };
+    });
   });
 
-  // build the tree
   arr.forEach((item) => {
     if (item.parentId == null) {
-      tree.push(hashmap[item.id]);
+      tree.push(map.get(item.id));
     } else {
-      hashmap[item.parentId].children.push(hashmap[item.id]);
+      map.get(item.parentId).children.push(map.get(item.id));
     }
   });
 
