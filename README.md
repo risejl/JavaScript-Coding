@@ -246,14 +246,40 @@
 
 - Implement a queue by stacks
 
-### DOM
+### Browser
+
+#### DOM
 
 - Implement a simple DOM wrapper to support method chaining like jQuery
+- VDOM
+- Calculate the number of tags in a document
+- Lazy image loading
 
-### Router
+#### Router
 
 - Create a browser history
+- URL Parsing
+- Get URL postfix
+- Hash Router
+
+#### Web APIs
+
+- localStorage with expiration
+- Get the size of sessionStorage
+- Ajax
+- JSONP
 
 ### CSS
 
 - Calculate and compare CSS specificity
+
+### JSON
+
+- `JSON.parse()`
+- `JSON.stringify()`
+
+### Date
+
+- Date Interval
+- Timestamp Date Conversion
+- Formate Date
