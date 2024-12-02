@@ -60,6 +60,7 @@
 - Partial
 - Compose
 - Memoization
+- Batch function
 
 ### Closure
 
@@ -146,6 +147,7 @@
 - Deep clone
 - Deep equal
 - Deep merge
+- Deep omit
 - From pairs
 - Get
 - Is object empty
@@ -180,6 +182,7 @@
 - Implement setInterval
 - Implement setTimeout
 - Throttle
+- Delay `setTimeout`
 
 #### Promise
 
@@ -250,3 +253,7 @@
 ### Router
 
 - Create a browser history
+
+### CSS
+
+- Calculate and compare CSS specificity
