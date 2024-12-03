@@ -12,7 +12,7 @@ function ajax(options) {
   const params = options.data;
 
   if (options.type === "GET") {
-    xhr.open("GET", options.url + "?" + param, true);
+    xhr.open("GET", options.url + "?" + params, true);
     xhr.send(null);
   } else if (options.type === "POST") {
     xhr.open("POST", options.url, true);

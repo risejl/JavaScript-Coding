@@ -15,7 +15,7 @@ function fetchData(url) {
       return response.blob();
     })
     .catch((err) => {
-      throw new Error("Error");
+      throw err;
     });
 }
 

@@ -11,6 +11,7 @@ function add(...args) {
     sum += moreArgs.reduce((acc, val) => acc + val, 0);
     return innerAdd;
   }
+
   innerAdd.getValue = function () {
     return sum;
   };

@@ -1,6 +1,5 @@
 function calculateSpecificity(selector) {
   // Initialize counts for different specificity levels
-  let inlineStyle = 0;
   let idCount = 0;
   let classCount = 0;
   let elementCount = 0;

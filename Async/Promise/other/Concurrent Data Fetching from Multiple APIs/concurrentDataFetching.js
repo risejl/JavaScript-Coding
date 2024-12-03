@@ -8,7 +8,7 @@ const URL_ARR = [
 function fetchData(url) {
   return fetch(url).then((response) => {
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.statu}`);
+      throw new Error(`HTTP error: ${response.status}`);
     }
 
     return response.blob();

@@ -6,6 +6,12 @@
 
 ## Categories
 
+### Algorithms
+
+#### Binary Search
+
+- First bad version
+
 ### Array
 
 #### Array prototype
@@ -14,36 +20,106 @@
 - `Array.prototype.concat()`
 - `Array.prototype.every()`
 - `Array.prototype.filter()`
+- `Array.prototype.flat()`
 - `Array.prototype.forEach()`
+- `Array.prototype.indexOf()`
 - `Array.prototype.last()`
 - `Array.prototype.map()`
 - `Array.prototype.reduce()`
+- `Array.prototype.snail()`
 - `Array.prototype.some()`
 - `Array.prototype.square()`
-- `Array.prototype.indexOf()`
-- `Array.prototype.snail()`
 
 #### Other
 
 - Array.of()
 - Array to Tree
-- Tree to Array
 - Array Wrapper
 - Array-like to Array
 - Chunk
+- Combinations
+- Decode message
 - Difference
-- Union
 - Drop Right While
 - Drop While
 - Flatten
+- Generate Random Non-Duplicate Array
 - Intersection By
 - Intersections
 - Mean
 - Remove Duplicates
 - Shuffle
 - Sort By
-- Generate Random Non-Duplicate Array
-- Decode message
+- Tree to Array
+- Union
+
+### Async
+
+#### Async-await
+
+- Implement async-await using generator
+
+#### Callback
+
+- Flatten thunk
+- Invoke a callback after a specific second
+
+#### Promise
+
+- A+/Promise with `.finally()`
+
+##### Static methods
+
+- `Promise.all()`
+- `Promise.allSettled()`
+- `Promise.any()`
+- `Promise.race()`
+- `Promise.reject()`
+- `Promise.resolve()`
+- `Promise.withResolvers()`
+
+##### Other
+
+- Add two promises
+- Async addition
+- Concurrent Data Fetching from Multiple APIs
+- Makes a http request
+- Parallel URLs download
+- Sequential asynchronous operations
+- Auto-Retry Promise on Rejection
+- Retrying API Requests with Automatic Retry
+- Call APIs with Pagination
+- Log promise
+- Map Async
+- Map Async Limit
+- Promise Merge
+- Promise scheduler
+- Promise time limit
+- Promisify
+- Sleep
+- Throttle Promises
+- Traffic light
+- Ping
+- sequence
+- parallel
+- race
+- Cancels the request if it takes longer than a specified time
+- LazyMan
+- Load Images Asynchronously
+
+#### Timer
+
+- Repeat a task at a fixed interval
+- Cache with time limit
+- Cancel interval
+- Cancel timeout
+- Clear all timeout
+- Debounce
+- Resumable interval
+- Implement setInterval
+- Implement setTimeout
+- Throttle
+- Delay `setTimeout`
 
 ### Function
 
@@ -163,88 +239,11 @@
 
 - Accessing negative index
 
-### Async
-
-#### Callback
-
-- Flatten thunk
-- Invoke a callback after a specific second
-
-#### Timer
-
-- Repeat a task at a fixed interval
-- Cache with time limit
-- Cancel interval
-- Cancel timeout
-- Clear all timeout
-- Debounce
-- Resumable interval
-- Implement setInterval
-- Implement setTimeout
-- Throttle
-- Delay `setTimeout`
-
-#### Promise
-
-- A+/Promise with `.finally()`
-
-##### Static methods
-
-- `Promise.resolve()`
-- `Promise.reject()`
-- `Promise.withResolvers()`
-- `Promise.race()`
-- `Promise.all()`
-- `Promise.any()`
-- `Promise.allSettled()`
-
-##### Other
-
-- Concurrent Data Fetching from Multiple APIs
-- Makes a http request
-- Parallel URLs download
-- Sequential asynchronous operations
-- Add two promises
-- Auto-Retry Promise on Rejection
-- Retrying API Requests with Automatic Retry
-- Call APIs with Pagination
-- Log promise
-- Map Async
-- Map Async Limit
-- Promise Merge
-- Promise scheduler
-- Promise time limit
-- Promisify
-- Sleep
-- Throttle Promises
-- Traffic light
-- Ping
-- sequence
-- parallel
-- race
-- Cancels the request if it takes longer than a specified time
-- LazyMan
-- Load Images Asynchronously
-
-#### Async-await
-
-- Implement async-await using generator
-
 ### Data Structures
 
 #### Map
 
 - Create a simple store for DOM element
-
-### Algorithms
-
-#### Binary Search
-
-- First bad version
-
-#### Stack
-
-- Implement a queue by stacks
 
 ### Browser
 
