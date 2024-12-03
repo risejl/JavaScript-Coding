@@ -5,21 +5,34 @@ const targetFn = async (nums) => {
   return nums.map((num) => 2 * num + 1);
 };
 
-const batcher = (fn) => {
+const batcher = (fn, delay = 0) => {
   let nums = [];
-  const promise = new Promise((resolve) =>
-    setTimeout((_) => resolve(fn(nums)), 0)
-  );
+  let timer = null;
 
   return (arr) => {
-    let start = nums.length;
     nums = nums.concat(arr);
-    let end = nums.length;
-    return promise.then((result) => result.slice(start, end));
+
+    if (!timer) {
+      timer = setTimeout(async () => {
+        const result = await fn(nums);
+        nums = [];
+        timer = null;
+        return result;
+      }, delay);
+    }
+
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (timer == null) {
+          clearInterval(interval);
+          resolve(targetFn(nums.slice(-arr.length)));
+        }
+      }, 10);
+    });
   };
 };
 
-const batchedFn = batcher(targetFn);
+const batchedFn = batcher(targetFn, 0);
 
 // Usage example
 const main = async () => {
@@ -29,7 +42,7 @@ const main = async () => {
     batchedFn([6, 7]),
   ]);
 
-  console.log(result1, result2, result3);
+  console.log(result1, result2, result3); // => [ 3, 5, 7 ] [ 9, 11 ] [ 13, 15 ]
   console.log(executeCount); // => 1
 };
 

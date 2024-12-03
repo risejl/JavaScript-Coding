@@ -21,11 +21,13 @@
 - `Array.prototype.every()`
 - `Array.prototype.filter()`
 - `Array.prototype.flat()`
+- `Array.prototype.flatMap()`
 - `Array.prototype.forEach()`
 - `Array.prototype.indexOf()`
 - `Array.prototype.last()`
 - `Array.prototype.map()`
 - `Array.prototype.reduce()`
+- `Array.prototype.sample()`
 - `Array.prototype.snail()`
 - `Array.prototype.some()`
 - `Array.prototype.square()`
@@ -164,26 +166,31 @@
 
 #### Other
 
-- Is alphaNumeric
-- Compare version numbers
-- Version numbers sorting
+- AlphaNumeric
 - Camel case to Snake case or vice visa
+- Compare version numbers
 - Compress a string
-- Uncompress a string
-- Most frequently occurring character
 - Find longest word length
 - Find word with longest length
-- Length of a string(support emojis)
+- Generate a random string
+- Most frequently occurring character
+- String length(support emojis)
+- Uncompress a string
+- Version numbers sorting
 
 ### Number
 
-- Big integer addition
 - Add comma to number
-- Arabic numerals to chinese characters
 - Add space to bank number
+- Arabic numerals to chinese characters
+- Big integer addition
 - Clamp
-- Round to two decimal places
+- FizzBuzz
+- Is integer
 - Merge continous numbers
+- Rand7 based on rand5
+- Round to two decimal places
+- Sample size
 
 ### Object
 
@@ -218,22 +225,24 @@
 
 ##### Traverse
 
+- Chaining
 - Compact
 - Count By
-- Deep clone
-- Deep equal
-- Deep merge
-- Deep omit
-- From pairs
+- Deep Clone
+- Deep Equal
+- Deep Merge
+- Deep Omit
 - Get
-- Is object empty
-- Iterable
+- Is Object Empty
+- Key By
+- Max By
+- From pairs
 - Object Map
-- Object to array
+- Object to Array
 - Set
-- Set object value safely
-- Shallow copy
-- Squash object
+- Set Object Value Safely
+- Shallow Copy
+- Squash Object
 
 #### Proxy
 
@@ -257,9 +266,10 @@
 #### Router
 
 - Create a browser history
-- URL Parsing
-- Get URL postfix
 - Hash Router
+- Get URL postfix
+- URL format
+- URL Parsing
 
 #### Web APIs
 

@@ -5,13 +5,11 @@
  */
 
 function omit(obj, keys) {
-  const result = { ...obj };
+  const keysSet = new Set(keys);
 
-  keys.forEach((key) => {
-    delete result[key];
-  });
-
-  return result;
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => !keysSet.has(key))
+  );
 }
 
 /**
@@ -21,17 +19,9 @@ function omit(obj, keys) {
  */
 
 function omitBy(obj, callbackFn) {
-  const result = { ...obj };
-
-  Object.entries(result).forEach(([key, value]) => {
-    const isDrop = callbackFn(value, key);
-
-    if (isDrop) {
-      delete result[key];
-    }
-  });
-
-  return result;
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key, value]) => !callbackFn(value, key))
+  );
 }
 
 // Usage example
