@@ -4,10 +4,12 @@
  * @return {Array<Array<number>>}
  */
 
+// Time: O(n) | Space: O(n^2)
 Array.prototype.snail = function (rowsCount, colsCount) {
-  if (rowsCount * colsCount !== this.length) {
+  if (this.length === 0 || rowsCount * colsCount !== this.length) {
     return [];
   }
+
   const result = Array.from({ length: rowsCount }, () => {
     return Array.from({ length: colsCount }, () => 0);
   });
@@ -34,10 +36,10 @@ const arr = [
 console.log(arr.snail(5, 4));
 /*
 [
- [19,17,16,15],
- [10,1,14,4],
- [3,2,12,20],
- [7,5,18,11],
- [9,8,6,13]
+  [19,17,16,15],
+  [10,1,14,4],
+  [3,2,12,20],
+  [7,5,18,11],
+  [9,8,6,13]
 ]
 */

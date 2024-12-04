@@ -3,20 +3,23 @@
  * @returns {string | string[]}
  */
 
-// Time: O(n) | Space: O(n)
+// Time: O(n) | Space: O(1)
 function count(str) {
-  const map = new Map();
-  const result = [];
+  const bin = Array.from({ length: 256 }, () => 0);
+  let maxCount = 0;
 
   for (const char of str) {
-    map.set(char, (map.get(char) ?? 0) + 1);
+    bin[char.charCodeAt(0)] += 1;
+
+    if (bin[char.charCodeAt(0)] > maxCount) {
+      maxCount = bin[char.charCodeAt(0)];
+    }
   }
 
-  const max = Math.max(...map.values());
-
-  for (const [key, value] of map) {
-    if (value === max) {
-      result.push(key);
+  const result = [];
+  for (let i = 0; i < bin.length; i += 1) {
+    if (bin[i] === maxCount) {
+      result.push(String.fromCharCode(i));
     }
   }
 

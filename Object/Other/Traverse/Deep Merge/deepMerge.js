@@ -21,7 +21,7 @@ function deepMerge(valueA, valueB) {
     const newObj = { ...valueA };
 
     for (const key in valueB) {
-      if (Object.prototype.hasOwnProperty.call(valueA, key)) {
+      if (Object.hasOwn(valueA, key)) {
         newObj[key] = deepMerge(valueA[key], valueB[key]);
       } else {
         newObj[key] = valueB[key];

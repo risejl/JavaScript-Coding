@@ -19,6 +19,7 @@ function flatten(arr, depth = 1) {
   return newArray;
 }
 
-// Usage example
 const array = [[1, 2], [1], 1, [[[1]]]];
 console.log(flatten(array)); // => [ 1, 2, 1, 1, [ [ 1 ] ] ]
+console.log(flatten(array, 2)); // => [ 1, 2, 1, 1, [ 1 ] ]
+console.log(flatten(array, 3)); // => [ 1, 2, 1, 1, 1 ]

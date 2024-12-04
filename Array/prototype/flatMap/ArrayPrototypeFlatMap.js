@@ -5,9 +5,9 @@
  */
 
 Array.prototype.myFlatMap = function (callbackFn, thisArg) {
-  return this.reduce((acc, element, index, array) => {
+  return this.reduce((result, element, index, array) => {
     const mappedValue = callbackFn.call(thisArg, element, index, array);
-    return acc.concat(mappedValue);
+    return result.concat(mappedValue);
   }, []);
 };
 

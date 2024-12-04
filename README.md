@@ -38,8 +38,8 @@
 - Array to Tree
 - Array Wrapper
 - Array-like to Array
+- Cartesian Product
 - Chunk
-- Combinations
 - Decode message
 - Difference
 - Drop Right While

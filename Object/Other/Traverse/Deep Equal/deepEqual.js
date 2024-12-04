@@ -1,9 +1,9 @@
 function shouldDeepCompare(type) {
-  return type === "[object Object]" || type === "[object Array]";
+  return type === "object" || type === "array";
 }
 
 function getType(value) {
-  return Object.prototype.toString.call(value);
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
 }
 
 /**

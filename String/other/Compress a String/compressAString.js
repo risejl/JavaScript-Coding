@@ -5,7 +5,7 @@
 
 // Time: O(n) | Space: O(1)
 function compress(str) {
-  if (!str) {
+  if (str.length === 0) {
     return "";
   }
 
@@ -19,8 +19,8 @@ function compress(str) {
       compressed += str[i - 1];
       if (count > 1) {
         compressed += count;
+        count = 1;
       }
-      count = 1;
     }
   }
 

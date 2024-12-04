@@ -5,14 +5,12 @@ const URL_ARR = [
   "https://fastly.picsum.photos/id/3/5000/3333.jpg?hmac=GDjZ2uNWE3V59PkdDaOzTOuV3tPWWxJSf4fNcxu4S2g",
 ];
 
-function fetchData(url) {
-  return fetch(url).then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-
-    return response.blob();
-  });
+async function fetchData(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+  return await response.blob();
 }
 
 Promise.all(URL_ARR.map(fetchData))

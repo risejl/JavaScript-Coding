@@ -6,19 +6,17 @@ const URL = "https://randomuser.me/api/";
  */
 
 // promise-based
-function fetchData(url) {
-  return fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      return response.json();
-    })
-    .catch((err) => {
-      console.error("Fetch error:", err);
-      throw err;
-    });
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    return await response.json();
+  } catch (err) {
+    console.error("Fetch error:", err);
+    throw err;
+  }
 }
 
 // async-await based

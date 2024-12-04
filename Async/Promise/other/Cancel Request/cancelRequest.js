@@ -1,7 +1,7 @@
 const URL = "https://jsonplaceholder.typicode.com/posts/1";
 const TIMEOUT = 5000;
 
-function fetchDataWithTimeout(url, timeout) {
+async function fetchDataWithTimeout(url, timeout) {
   const controller = new AbortController();
   const { signal } = controller;
 
@@ -9,23 +9,21 @@ function fetchDataWithTimeout(url, timeout) {
     controller.abort();
   }, timeout);
 
-  return fetch(url, { signal })
-    .then((response) => {
-      clearTimeout(timerId);
+  try {
+    const response = await fetch(url, { signal });
+    clearTimeout(timerId);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return response.json();
-    })
-    .catch((err) => {
-      if (err.name === "AbortError") {
-        throw new Error("Fetch operation timed out");
-      } else {
-        throw err;
-      }
-    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (err) {
+    if (err.name === "AbortError") {
+      throw new Error("Fetch operation timed out");
+    } else {
+      throw err;
+    }
+  }
 }
 
 // Usage example

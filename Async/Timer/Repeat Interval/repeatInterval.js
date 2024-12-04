@@ -1,21 +1,17 @@
 const URL =
   "https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU";
 
-function fetchData(url) {
-  return fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      return response.blob();
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(`Error: ${err}`);
-    });
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.blob();
+    console.log(data);
+  } catch (err) {
+    console.log(`Error: ${err}`);
+  }
 }
 
 function repeat(callbackFn, delay, count) {
