@@ -5,14 +5,16 @@
  */
 
 // Recursive approach
-function fetchWithAutoRetry(fetcher, maximumRetryCount = 5) {
-  return fetcher().catch((err) => {
+async function fetchWithAutoRetry(fetcher, maximumRetryCount = 5) {
+  try {
+    return await fetcher();
+  } catch (err) {
     if (maximumRetryCount === 0) {
       throw err;
     } else {
       return fetchWithAutoRetry(fetcher, maximumRetryCount - 1);
     }
-  });
+  }
 }
 
 // Iterative approach

@@ -4,7 +4,7 @@
  * @return {Promise}
  */
 
-function throttlePromises(fns, max) {
+async function throttlePromises(fns, max) {
   const results = [];
 
   async function doWork(iterator) {
@@ -17,7 +17,8 @@ function throttlePromises(fns, max) {
   const iterator = Array.from(fns).entries();
   const workers = Array(max).fill(iterator).map(doWork);
 
-  return Promise.all(workers).then(() => results);
+  await Promise.all(workers);
+  return results;
 }
 
 // Usage example

@@ -9,17 +9,16 @@ function loadImage(url) {
   });
 }
 
-function loadImages(urls) {
+async function loadImages(urls) {
   const promises = urls.map(loadImage);
 
-  return Promise.all(promises)
-    .then((images) => {
-      images.forEach((img) => document.body.appendChild(img));
-      console.log("All images loaded successfully!");
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  try {
+    const images = await Promise.all(promises);
+    images.forEach((img) => document.body.appendChild(img));
+    console.log("All images loaded successfully!");
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 // Usage example

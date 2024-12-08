@@ -19,10 +19,13 @@ function promisify(callbackFn) {
  */
 
 function race(fns) {
-  return function (callbackFn, ...args) {
-    return Promise.race(fns.map((fn) => promisify(fn)(...args)))
-      .then((data) => callbackFn(undefined, data))
-      .catch((err) => callbackFn(err, undefined));
+  return async function (callbackFn, ...args) {
+    try {
+      const data = await Promise.race(fns.map((fn) => promisify(fn)(...args)));
+      return callbackFn(undefined, data);
+    } catch (err) {
+      return callbackFn(err, undefined);
+    }
   };
 }
 
