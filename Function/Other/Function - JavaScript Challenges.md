@@ -48,6 +48,64 @@ console.log(numOfArguments()); // => 0
 
 ---
 
+### Batch functions
+
+Batching is a common technique for performance optimization. For example, `useState()` hook in React use batching to flush the pending updates to prevent multiple re-rendering [thrashing](<https://en.wikipedia.org/wiki/Thrashing_(computer_science)>)
+
+```js
+let executeCount = 0;
+
+const targetFn = async (nums) => {
+  executeCount += 1;
+  return nums.map((num) => 2 * num + 1);
+};
+
+const batcher = (fn, delay = 0) => {
+  let nums = [];
+  let timer = null;
+
+  return (arr) => {
+    nums = nums.concat(arr);
+
+    if (!timer) {
+      timer = setTimeout(async () => {
+        const result = await fn(nums);
+        nums = [];
+        timer = null;
+        return result;
+      }, delay);
+    }
+
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (timer == null) {
+          clearInterval(interval);
+          resolve(targetFn(nums.slice(-arr.length)));
+        }
+      }, 10);
+    });
+  };
+};
+
+const batchedFn = batcher(targetFn, 0);
+
+// Usage example
+const main = async () => {
+  const [result1, result2, result3] = await Promise.all([
+    batchedFn([1, 2, 3]),
+    batchedFn([4, 5]),
+    batchedFn([6, 7]),
+  ]);
+
+  console.log(result1, result2, result3); // => [ 3, 5, 7 ] [ 9, 11 ] [ 13, 15 ]
+  console.log(executeCount); // => 1
+};
+
+main();
+```
+
+---
+
 ### Compose
 
 The thing to notice is that the functions are invoked in the reverse order of passing.
@@ -188,6 +246,72 @@ curry.placeholder = Symbol();
 
 ---
 
+### Koa-compose
+
+Middleware composition used in koa framework. The idea is similar to compose.
+
+```js
+/**
+ * @param {Array} middlewares
+ * @return
+ */
+
+function compose(middlewares) {
+  return function (context) {
+    const dispatch = (index) => {
+      if (index === middlewares.length) {
+        return Promise.resolve();
+      }
+
+      const middleware = middlewares[index];
+      return Promise.resolve(middleware(context, () => dispatch(index + 1)));
+    };
+
+    return dispatch(0);
+  };
+}
+
+// Example usage
+const m1 = async (_, next) => {
+  console.log("Middleware 1 start");
+  await next(); // Call the next middleware
+  console.log("Middleware 1 end");
+};
+
+const m2 = async (_, next) => {
+  console.log("Middleware 2 start");
+  await next(); // Call the next middleware
+  console.log("Middleware 2 end");
+};
+
+const m3 = async (_, next) => {
+  console.log("Middleware 3 start");
+  await next(); // Call the next middleware
+  console.log("Middleware 3 end");
+};
+
+// Compose the middlewares
+const composedMiddleware = compose([m1, m2, m3]);
+
+// Simulate Koa's context and call the composed middleware
+composedMiddleware({}, () => Promise.resolve()).then(() => {
+  console.log("All middlewares executed");
+});
+
+// =>
+/*
+Middleware 1 start
+Middleware 2 start
+Middleware 3 start
+Middleware 3 end
+Middleware 2 end
+Middleware 1 end
+All middlewares executed
+ */
+```
+
+---
+
 ### Memo
 
 This challenge is about memorization which is a technique for storing expensive computing and saving resources.
@@ -282,6 +406,41 @@ console.log(memoizedExpensiveMul(5, 8)); // => Computing... 40
 
 // Fourth call with the same argument as the third call (returns the cached result).
 console.log(memoizedExpensiveMul(5, 8)); // => 40
+
+/* pass the case for parameters are all empty arrays */
+
+function createKey() {
+  let count = 0;
+  let map = new Map();
+
+  return function (input) {
+    if (map.has(input)) {
+      return map.get(input);
+    }
+
+    map.set(input, ++count);
+    return count;
+  };
+}
+
+function memoize(fn) {
+  const cache = new Map();
+  const keyGenerator = createKey();
+
+  return function (...args) {
+    const numbers = args.map(keyGenerator);
+    const key = numbers.join(",");
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    const value = fn.call(this, ...args);
+    cache.set(key, value);
+
+    return value;
+  };
+}
 ```
 
 ---
@@ -289,7 +448,6 @@ console.log(memoizedExpensiveMul(5, 8)); // => 40
 ### Partial
 
 This challenge is about partial application.
-
 The solution needs to support placeholder `_`.
 The idea is to check the passed parameters, if it is a placeholder, then skip it.
 
@@ -341,3 +499,5 @@ console.log(func123(4)); // => [1, 2, 3, 4]
 - [2666. Allow One Function Call - LeetCode](https://leetcode.com/problems/allow-one-function-call/description/?envType=study-plan-v2&envId=30-days-of-javascript)
 - [2623. Memoize - LeetCode](https://leetcode.com/problems/memoize/description/?envType=study-plan-v2&envId=30-days-of-javascript)
 - [2703. Return Length of Arguments Passed - LeetCode](https://leetcode.com/problems/return-length-of-arguments-passed/description/?envType=study-plan-v2&envId=30-days-of-javascript)
+- [Thrashing (computer science) - Wikipedia.org](<https://en.wikipedia.org/wiki/Thrashing_(computer_science)>)
+- [Batch processing - Wikipedia.org](https://en.wikipedia.org/wiki/Batch_processing)

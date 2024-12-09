@@ -3,6 +3,7 @@
  * @return {string | number}
  */
 
+// Time: O(1) | Space: O(1)
 function fizzBuzz(num) {
   if (num % 3 === 0 && num % 5 === 0) {
     return "FizzBuzz";

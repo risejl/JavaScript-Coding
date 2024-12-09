@@ -4,7 +4,7 @@
  * @return {object}
  */
 
-function setTimeout(callbackFn, delay) {
+function mySetTimeout(callbackFn, delay) {
   let elapsedTime = 0;
   const interval = 100;
 
@@ -16,6 +16,12 @@ function setTimeout(callbackFn, delay) {
       callbackFn();
     }
   }, interval);
+
+  return {
+    clear: () => {
+      clearTimeout(intervalId);
+    },
+  };
 }
 
 // Usage example

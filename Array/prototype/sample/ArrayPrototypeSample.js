@@ -2,6 +2,7 @@
  * @return {any}
  */
 
+// Time: O(1) | Space: O(1)
 Array.prototype.mySample = function () {
   const randIdx = Math.floor(Math.random() * this.length);
 

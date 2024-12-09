@@ -8,30 +8,7 @@ Closure means you always need to return a function.
 
 ---
 
-### Hello World
-
-Returns a function which returns "Hello World".
-
-```js
-/**
- * @return {Function}
- */
-
-// Time: O(1) | Space: O(1)
-function createHelloWorld() {
-  return function (...args) {
-    return "Hello World";
-  };
-}
-
-// Usage example
-const output = createHelloWorld();
-console.log(output()); // => "Hello World"
-```
-
----
-
-### add
+### Add
 
 The `sum` variable stores the accumulated result. Returns a function to collect more parameters.
 
@@ -63,33 +40,6 @@ console.log(add(1)(2)(3).getValue()); // => 6
 console.log(add(1)(2, 3).getValue()); // => 6
 console.log(add(1, 2)(3).getValue()); // => 6
 console.log(add(1, 2, 3).getValue()); // => 6
-```
-
----
-
-### Sum
-
-```js
-/**
- * @param {number} num
- */
-
-// Time: O(1) | Space: O(1)
-function sum(num) {
-  const func = function (num2) {
-    return num2 ? sum(num + num2) : num;
-  };
-
-  func.valueOf = () => num;
-  return func;
-}
-
-// Usage example
-const sum1 = sum(1);
-console.log(sum1(2) == 3); // => true
-console.log(sum1(3) == 4); // => true
-console.log(sum(1)(2)(3) == 6); // => true
-console.log(sum(5)(-1)(2) == 6); // => true
 ```
 
 ---
@@ -185,6 +135,29 @@ console.log(onOffFn()); // => "on"
 
 ---
 
+### Hello World
+
+Returns a function which returns "Hello World".
+
+```js
+/**
+ * @return {Function}
+ */
+
+// Time: O(1) | Space: O(1)
+function createHelloWorld() {
+  return function (...args) {
+    return "Hello World";
+  };
+}
+
+// Usage example
+const output = createHelloWorld();
+console.log(output()); // => "Hello World"
+```
+
+---
+
 ### Limit
 
 The inner function can access the `count` variable.
@@ -266,6 +239,33 @@ console.log(onced(2)); // => 1, even 2 is passed, previous result is returned
 
 ---
 
+### Sum
+
+```js
+/**
+ * @param {number} num
+ */
+
+// Time: O(1) | Space: O(1)
+function sum(num) {
+  const func = function (num2) {
+    return num2 ? sum(num + num2) : num;
+  };
+
+  func.valueOf = () => num;
+  return func;
+}
+
+// Usage example
+const sum1 = sum(1);
+console.log(sum1(2) == 3); // => true
+console.log(sum1(3) == 4); // => true
+console.log(sum(1)(2)(3) == 6); // => true
+console.log(sum(5)(-1)(2) == 6); // => true
+```
+
+---
+
 ### To be or not to be
 
 ```js
@@ -320,5 +320,4 @@ try {
 - [46. implement `_.once()` - BFE.dev](https://bigfrontend.dev/problem/implement-once)
 - [2704. To Be Or Not To Be - BFE.dev](https://leetcode.com/problems/to-be-or-not-to-be/)
 - [161. toBe() or not.toBe() - BFE.dev](https://bigfrontend.dev/problem/jest-assertion)
-- [
-  "Hello, World!" program - Wikipedia.org](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)
+- ["Hello, World!" program - Wikipedia.org](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)

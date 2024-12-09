@@ -4,6 +4,7 @@
  * @return {Array} - An array containing the sampled elements.
  */
 
+// Time: O(n) | Space: O(n)
 function sampleSize(arr, size) {
   if (size > arr.length) {
     throw new Error("Size cannot be greater than the array length");

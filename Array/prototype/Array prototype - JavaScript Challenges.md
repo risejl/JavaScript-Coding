@@ -174,6 +174,31 @@ console.log(flatten(array)); // => [ 1, 2, 1, 1, [ [ 1 ] ] ]
 
 ---
 
+### `Array.prototype.flatMap()`
+
+```js
+/**
+ * @param {functioon} callbackFn
+ * @param {object | undefined} thisArg
+ * @return {array}
+ */
+
+// Time: O(1) | Space: O(1)
+Array.prototype.myFlatMap = function (callbackFn, thisArg) {
+  return this.reduce((result, element, index, array) => {
+    const mappedValue = callbackFn.call(thisArg, element, index, array);
+    return result.concat(mappedValue);
+  }, []);
+};
+
+// Usage example
+const arr1 = [1, 2, 1];
+const result = arr1.myFlatMap((num) => (num === 2 ? [2, 2] : 1));
+console.log(result); // => [1, 2, 2, 1];
+```
+
+---
+
 ### `Array.prototype.forEach()`
 
 Invoking callback function on every item in the array.
@@ -353,6 +378,81 @@ const products = numbers.myReduce((acc, num) => acc * num, 1);
 
 ---
 
+### `Array.prototype.sample()`
+
+```js
+/**
+ * @return {any}
+ */
+
+// Time: O(1) | Space: O(1)
+Array.prototype.mySample = function () {
+  const randIdx = Math.floor(Math.random() * this.length);
+
+  return this[randIdx];
+};
+
+// Usage example
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr.mySample()); // => *
+```
+
+---
+
+### `Array.prototype.snail()`
+
+It's a reverse-problem of Spiral Matrix of LeetCode.
+
+```js
+/**
+ * @param {number} rowsCount
+ * @param {number} colsCount
+ * @return {Array<Array<number>>}
+ */
+
+// Time: O(n) | Space: O(n^2)
+Array.prototype.snail = function (rowsCount, colsCount) {
+  if (this.length === 0 || rowsCount * colsCount !== this.length) {
+    return [];
+  }
+
+  const result = Array.from({ length: rowsCount }, () => {
+    return Array.from({ length: colsCount }, () => 0);
+  });
+  let isReversed = false;
+
+  for (let i = 0; i < this.length; i += 1) {
+    const row = !isReversed ? i % rowsCount : rowsCount - 1 - (i % rowsCount);
+    const col = Math.floor(i / rowsCount);
+
+    result[row][col] = this[i];
+
+    if (i % rowsCount === rowsCount - 1) {
+      isReversed = !isReversed;
+    }
+  }
+
+  return result;
+};
+
+// Usage example
+const arr = [
+  19, 10, 3, 7, 9, 8, 5, 2, 1, 17, 16, 14, 12, 18, 6, 13, 11, 20, 4, 15,
+];
+console.log(arr.snail(5, 4));
+/*
+[
+  [19,17,16,15],
+  [10,1,14,4],
+  [3,2,12,20],
+  [7,5,18,11],
+  [9,8,6,13]
+]
+*/
+```
+
+---
+
 ### `Array.prototype.some()`
 
 The solution structure is similar to `.every()`.
@@ -424,6 +524,7 @@ console.log([].mySquare()); // => [];
 - [Array.prototype.every() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 - [Array.prototype.filter() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 - [Array.prototype.flat() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+- [Array.prototype.flatMap() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)
 - [Array.prototype.forEach() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [Array.prototype.indexOf() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
 - [Array.prototype.map() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)

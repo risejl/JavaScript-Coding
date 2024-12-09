@@ -4,6 +4,7 @@
  * @return {array}
  */
 
+// Time: O(1) | Space: O(1)
 Array.prototype.myFlatMap = function (callbackFn, thisArg) {
   return this.reduce((result, element, index, array) => {
     const mappedValue = callbackFn.call(thisArg, element, index, array);

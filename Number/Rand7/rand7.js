@@ -6,6 +6,7 @@ function rand5() {
  * @return {number}
  */
 
+// Time: O(1) | Space: O(1)
 function rand7() {
   const num = 5 * rand5() + rand5();
   if (num < 21) {

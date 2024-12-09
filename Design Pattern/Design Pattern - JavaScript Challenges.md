@@ -146,3 +146,5 @@ person2.greet(); // => 'Hello, my name is Jane Smith'
 - [2694. Event Emitter - LeetCode](https://leetcode.com/problems/event-emitter/description/)
 - [Singleton pattern - Wikipedia.org](https://en.wikipedia.org/wiki/Singleton)
 - [Singleton pattern - patterns.dev](https://www.patterns.dev/vanilla/singleton-pattern)
+- [Design Pattern - Wikipedia.org](https://en.wikipedia.org/wiki/Software_design_pattern)
+- [Factory method pattern - Wikipedia.org](https://en.wikipedia.org/wiki/Factory_method_pattern)

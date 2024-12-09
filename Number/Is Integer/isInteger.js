@@ -3,6 +3,7 @@
  * @return {boolean}
  */
 
+// Time: O(1) | Space: O(1)
 function isInteger(value) {
   return Number.isInteger(value);
 }

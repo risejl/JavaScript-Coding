@@ -53,7 +53,7 @@ ajax({
   dataType: "json",
   data: {},
   url: "https://xxxx",
-  success: function (text, xml) {
+  success: function (text) {
     console.log(text);
   },
   fail: function (status) {

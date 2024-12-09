@@ -8,6 +8,8 @@ You can find all the code in this post in the repo [Github](https://github.com/m
 
 ### ArrayOf
 
+The operations perform array copy.
+
 - Solution 1: `.slice.call()`
 - Solution 2: `...` operator
 - Solution 3: `Array.from()`
@@ -46,6 +48,8 @@ console.log(combinedArray); // => [ [ 1, 2, 3 ], [ 4, 5, 6 ] ]
 ---
 
 ### Array to tree
+
+Converting an array to a tree-like structure.
 
 For this challenge, you can use a `Map` to store the all the items for efficient access later.
 
@@ -154,6 +158,49 @@ console.log(arrayLikeToArray(arrayLike)); // => ['a', 'b', 'c']
 
 ---
 
+### Cartesian Product
+
+Backtracking is the method to find all the possible combinations.
+
+```js
+/**
+ * @param {array} arrs
+ * @return {array}
+ */
+
+// Time: O(m * n) | Space: O(n)
+function generateCombinations(arrs) {
+  const result = [];
+
+  function backtrack(start, current) {
+    if (start === arrs.length) {
+      result.push(current.join(""));
+      return;
+    }
+
+    for (const item of arrs[start]) {
+      current.push(item);
+      backtrack(start + 1, current);
+      current.pop();
+    }
+  }
+
+  backtrack(0, []);
+
+  return result;
+}
+
+// Usage example
+const nestedArray = [
+  ["a", "b"],
+  [1, 2],
+  [3, 4],
+];
+console.log(generateCombinations(nestedArray)); // => ['a13', 'a14', 'a23', 'a24', 'b13', 'b14', 'b23', 'b24']
+```
+
+---
+
 ### Chunk
 
 Use `.slice()` to select subarrays with the given size.
@@ -190,7 +237,162 @@ console.log(chunk([1, 2, 3, 4], 3)); // => [[1, 2, 3], [4]]
 
 ---
 
-### Combinations
+### Complement
+
+Set operations.
+
+Solution 1: `set.difference()`
+Solution 2: Set + loop
+
+```js
+/**
+ * @param {Array} array
+ * @param {Array} values
+ * @return {Array}
+ */
+
+// Solution 1: set.difference()
+// Time: O(1) | Space: O(n)
+function difference(arr, values) {
+  return Array.from(
+    new Set(arr.filter(Boolean)).difference(new Set(values.filter(Boolean)))
+  );
+}
+
+// Solution 2: Set + loop
+// Time: O(n) | Space: O(n)
+function difference(arr, values) {
+  const newArray = [];
+  const valueSet = new Set(values);
+
+  for (let i = 0; i < arr.length; i += 1) {
+    const value = arr[i];
+
+    if (
+      !valueSet.has(value) &&
+      !(value === undefined && !Object.hasOwn(arr, i))
+    ) {
+      newArray.push(value);
+    }
+  }
+
+  return newArray;
+}
+
+// Usage example
+console.log(difference([1, 2, 3], [2, 3])); // => [1]
+console.log(difference([1, 2, 3, 4], [2, 3, 1])); // => [4]
+console.log(difference([1, 2, 3], [2, 3, 1, 4])); // => []
+console.log(difference([1, , 3], [1])); // => [3]
+```
+
+### Decode a message
+
+```js
+/**
+ * @param {string[][]} message
+ * @return {string}
+ */
+
+// Time: O(n) | Space: O(1)
+function decode(message) {
+  if (!message.length || !message[0].length) {
+    return "";
+  }
+
+  let result = "";
+  let row = 0;
+  let col = 0;
+  let goingDown = true;
+  const rows = message.length;
+  const cols = message[0].length;
+
+  while (col < cols) {
+    result += message[row][col];
+
+    if (goingDown) {
+      // Moving down-right
+      if (row + 1 >= rows || col + 1 >= cols) {
+        goingDown = false;
+        row -= 1;
+        col += 1;
+        continue;
+      }
+      row += 1;
+      col += 1;
+    } else {
+      // Moving up-right
+      if (row - 1 < 0 || col + 1 >= cols) {
+        goingDown = true;
+        row += 1;
+        col += 1;
+        continue;
+      }
+      row -= 1;
+      col += 1;
+    }
+  }
+
+  return result;
+}
+
+// Usage example
+const message = [
+  ["I", "B", "C", "A", "L", "K", "A"],
+  ["D", "R", "F", "C", "A", "E", "A"],
+  ["G", "H", "O", "E", "L", "A", "D"],
+];
+
+console.log(decode(message)); // => IROCLED
+```
+
+---
+
+Set's difference operation.
+
+```js
+/**
+ * @param {Array} array
+ * @param {Array} values
+ * @return {Array}
+ */
+
+// Solution 1: set.difference()
+// Time: O(1) | Space: O(n)
+function difference(arr, values) {
+  return Array.from(
+    new Set(arr.filter(Boolean)).difference(new Set(values.filter(Boolean)))
+  );
+}
+
+// Solution 2: Set + loop
+// Time: O(n) | Space: O(n)
+function difference(arr, values) {
+  const newArray = [];
+  const valueSet = new Set(values);
+
+  for (let i = 0; i < arr.length; i += 1) {
+    const value = arr[i];
+
+    if (
+      !valueSet.has(value) &&
+      !(value === undefined && !Object.hasOwn(arr, i))
+    ) {
+      newArray.push(value);
+    }
+  }
+
+  return newArray;
+}
+
+// Usage example
+console.log(difference([1, 2, 3], [2, 3])); // => [1]
+console.log(difference([1, 2, 3, 4], [2, 3, 1])); // => [4]
+console.log(difference([1, 2, 3], [2, 3, 1, 4])); // => []
+console.log(difference([1, , 3], [1])); // => [3]
+```
+
+---
 
 Challenges like finding all the possible combinations can often be solved by backtracking.
 
@@ -232,8 +434,6 @@ console.log(generateCombinations(nestedArray)); // => ['a13', 'a14', 'a23', 'a24
 ```
 
 ---
-
-### Difference
 
 Set operations.
 
@@ -283,8 +483,6 @@ console.log(difference([1, , 3], [1])); // => [3]
 ```
 
 ---
-
-### Union
 
 Set operations.
 
@@ -435,7 +633,7 @@ console.log(flatten([1, [2, [3, [4, [5]]]]])); // [1, 2, 3, 4, 5]
 
 ---
 
-### Generate unique random array
+### Generate a unique random array
 
 ```js
 /**
@@ -510,7 +708,9 @@ console.log(result2); // => ['apple', 'banana', 'ORANGE']
 
 ---
 
-### Intersection
+### Intersections
+
+Set operations.
 
 Solution 1: `set.intersection()`
 Solution 2: Set + loop
@@ -640,6 +840,8 @@ console.log(shuffle([1, 2, 3, 4])); // => [*, *, *, *]
 
 ### SortBy
 
+`Array.prototype.sort()` accepts a comparing function.
+
 ```js
 /**
  * @param {Array} arr
@@ -659,6 +861,8 @@ console.log(sortBy([5, 4, 1, 2, 3], (x) => x)); // => [1, 2, 3, 4, 5]
 ---
 
 ### Tree to array
+
+It's a reverse problem of array to tree.
 
 ```js
 /**
@@ -742,66 +946,52 @@ console.log(flatArray);
 
 ---
 
-### decode message
+### Union
 
-It's a type of traversal algorithm.
+Set operations.
+
+Solution 1: `set.union()`
+Solution 2: Set + loop
 
 ```js
 /**
- * @param {string[][]} message
- * @return {string}
+ * @param {Array} array
+ * @param {Array} values
+ * @return {Array}
  */
 
-// Time: O(n) | Space: O(1)
-function decode(message) {
-  if (!message.length || !message[0].length) {
-    return "";
-  }
+// Solution 1
+// Time: O(1) | Space: O(1)
+function union(arr, values) {
+  return Array.from(
+    new Set(arr.filter(Boolean)).union(new Set(values.filter(Boolean)))
+  );
+}
 
-  let result = "";
-  let row = 0;
-  let col = 0;
-  let goingDown = true;
-  const rows = message.length;
-  const cols = message[0].length;
+// Solution 2
+// Time: O(n) | Space: O(n)
+function union(arr, values) {
+  const newArray = [];
+  const valueSet = new Set(values);
 
-  while (col < cols) {
-    result += message[row][col];
+  valueSet.forEach((item) => {
+    newArray.push(item);
+  });
 
-    if (goingDown) {
-      // Moving down-right
-      if (row + 1 >= rows || col + 1 >= cols) {
-        goingDown = false;
-        row -= 1;
-        col += 1;
-        continue;
-      }
-      row += 1;
-      col += 1;
-    } else {
-      // Moving up-right
-      if (row - 1 < 0 || col + 1 >= cols) {
-        goingDown = true;
-        row += 1;
-        col += 1;
-        continue;
-      }
-      row -= 1;
-      col += 1;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!valueSet.has(arr[i]) && arr[i] !== undefined) {
+      newArray.push(arr[i]);
     }
   }
 
-  return result;
+  return newArray;
 }
 
 // Usage example
-const message = [
-  ["I", "B", "C", "A", "L", "K", "A"],
-  ["D", "R", "F", "C", "A", "E", "A"],
-  ["G", "H", "O", "E", "L", "A", "D"],
-];
-
-console.log(decode(message)); // => IROCLED
+console.log(union([1, 2, 3], [2, 3])); // => [1, 2, 3]
+console.log(union([1, 2, 3, 4], [2, 3, 1])); // => [1, 2, 3, 4]
+console.log(union([1, 2, 3], [2, 3, 1, 4])); // => [1, 2, 3, 4]
+console.log(union([1, , 3], [1])); // => [1, 3]
 ```
 
 ---
@@ -820,3 +1010,11 @@ console.log(decode(message)); // => IROCLED
 - [167. Intersection of unsorted arrays - BFE.dev](https://bigfrontend.dev/problem/array-intersect)
 - [66. remove duplicates from an array - BFE.dev](https://bigfrontend.dev/problem/remove-duplicates-from-an-array)
 - [9. decode message - BFE.dev](https://bigfrontend.dev/problem/decode-message)
+- [Array.prototype.sort() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- [Cartesian product - Wikipedia.org](https://en.wikipedia.org/wiki/Cartesian_product)
+- [Complement (set theory) - Wikipedia.org](<https://en.wikipedia.org/wiki/Complement_(set_theory)#Relative_complement>)
+- [Union (set theory) - Wikipedia.org](<https://en.wikipedia.org/wiki/Union_(set_theory)>)
+- [Intersection (set theory) - Wikipedia.org](<https://en.wikipedia.org/wiki/Intersection_(set_theory)>)
+- [Set.prototype.difference() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/difference)
+- [Set.prototype.intersection() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/intersection)
+- [Set.prototype.union() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/union)

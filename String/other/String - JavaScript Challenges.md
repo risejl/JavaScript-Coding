@@ -6,7 +6,7 @@ You can find all the code in this post in the repo [Github](https://github.com/m
 
 ---
 
-### Is alphanumeric
+### Alphanumeric
 
 It's often used as a helper function.
 
@@ -179,55 +179,6 @@ console.log(compareVersion("5.0.1", "5.0.1")); // => 0, meaning they are equal.
 
 ---
 
-### Version numbers sorting
-
-This one takes a similar approach to the last one but put the comparsion logic into the sorting function.
-
-```js
-/**
- * @param {string[]} versions
- * @return {string[]}
- */
-
-// Time: O(n^2logn) | Space: O(n)
-function sortVersions(versionsArr) {
-  versionsArr.sort((a, b) => {
-    const aArr = a.split(".");
-    const bArr = b.split(".");
-
-    for (let i = 0; i < Math.max(aArr.length, bArr.length); i += 1) {
-      const aItem = Number(aArr[i] ?? 0);
-      const bItem = Number(bArr[i] ?? 0);
-
-      if (aItem > bItem) {
-        return 1;
-      } else if (aItem < bItem) {
-        return -1;
-      } else {
-        continue;
-      }
-    }
-
-    return 0;
-  });
-
-  return versionsArr;
-}
-
-// Usage example
-const sortedVersions = sortVersions([
-  "0.1.1",
-  "2.3.3",
-  "0.302.1",
-  "4.2",
-  "4.3.5",
-  "4.3.4.5",
-]);
-console.log(sortedVersions); // => [ '0.1.1', '0.302.1', '2.3.3', '4.2', '4.3.4.5', '4.3.5' ]
-```
-
----
-
 ### Compress a string
 
 This solution for this challenge is used for text encoding like sparse storage which can reduce memory usage.
@@ -269,52 +220,6 @@ console.log(compress("aaa")); // 'a3'
 console.log(compress("aaab")); // 'a3b'
 console.log(compress("aaabb")); // 'a3b2'
 console.log(compress("aaabba")); // 'a3b2a'
-```
-
----
-
-### Uncompress a string
-
-A paired challenge for the above one.
-
-Common patterns used in computer science:
-
-- encode, decode
-- compress, uncompress
-
-```js
-/**
- * @param {string} str
- * @returns {string}
- */
-
-// Time: O(n) | Space: O(n)
-function uncompress(str) {
-  const stack = [];
-  let currentNum = 0;
-  let currentStr = "";
-
-  for (const char of str) {
-    if (char >= "0" && char <= "9") {
-      currentNum = currentNum * 10 + Number(char);
-    } else if (char === "(") {
-      stack.push([currentStr, currentNum]);
-      currentStr = "";
-      currentNum = 0;
-    } else if (char === ")") {
-      const [prevStr, num] = stack.pop();
-      currentStr = prevStr + currentStr.repeat(num);
-    } else {
-      currentStr += char;
-    }
-  }
-
-  return currentStr;
-}
-
-// Usage example
-console.log(uncompress("3(ab)")); // => 'ababab'
-console.log(uncompress("3(ab2(c))")); // => 'abccabccabcc'
 ```
 
 ---
@@ -441,6 +346,101 @@ console.log("test😁".length); // => 6
 
 ---
 
+### Uncompress a string
+
+A paired challenge for the above one.
+
+Common patterns used in computer science:
+
+- encode, decode
+- compress, uncompress
+
+```js
+/**
+ * @param {string} str
+ * @returns {string}
+ */
+
+// Time: O(n) | Space: O(n)
+function uncompress(str) {
+  const stack = [];
+  let currentNum = 0;
+  let currentStr = "";
+
+  for (const char of str) {
+    if (char >= "0" && char <= "9") {
+      currentNum = currentNum * 10 + Number(char);
+    } else if (char === "(") {
+      stack.push([currentStr, currentNum]);
+      currentStr = "";
+      currentNum = 0;
+    } else if (char === ")") {
+      const [prevStr, num] = stack.pop();
+      currentStr = prevStr + currentStr.repeat(num);
+    } else {
+      currentStr += char;
+    }
+  }
+
+  return currentStr;
+}
+
+// Usage example
+console.log(uncompress("3(ab)")); // => 'ababab'
+console.log(uncompress("3(ab2(c))")); // => 'abccabccabcc'
+```
+
+---
+
+### Version numbers sorting
+
+This one takes a similar approach to the last one but put the comparsion logic into the sorting function.
+
+```js
+/**
+ * @param {string[]} versions
+ * @return {string[]}
+ */
+
+// Time: O(n^2logn) | Space: O(n)
+function sortVersions(versionsArr) {
+  versionsArr.sort((a, b) => {
+    const aArr = a.split(".");
+    const bArr = b.split(".");
+
+    for (let i = 0; i < Math.max(aArr.length, bArr.length); i += 1) {
+      const aItem = Number(aArr[i] ?? 0);
+      const bItem = Number(bArr[i] ?? 0);
+
+      if (aItem > bItem) {
+        return 1;
+      } else if (aItem < bItem) {
+        return -1;
+      } else {
+        continue;
+      }
+    }
+
+    return 0;
+  });
+
+  return versionsArr;
+}
+
+// Usage example
+const sortedVersions = sortVersions([
+  "0.1.1",
+  "2.3.3",
+  "0.302.1",
+  "4.2",
+  "4.3.5",
+  "4.3.4.5",
+]);
+console.log(sortedVersions); // => [ '0.1.1', '0.302.1', '2.3.3', '4.2', '4.3.4.5', '4.3.5' ]
+```
+
+---
+
 ## Reference
 
 - [Alphanumericals - Wikipedia.org](https://en.wikipedia.org/wiki/Alphanumericals)
@@ -453,3 +453,4 @@ console.log("test😁".length); // => 6
 - [173. uncompress string - BFE.dev](https://bigfrontend.dev/problem/uncompress-string)
 - [145. most frequently occurring character - BFE.dev](https://bigfrontend.dev/problem/most-frequently-occurring-character)
 - [94. emoji - BFE.dev](https://bigfrontend.dev/quiz/emoji)
+- [394. Decode String - LeetCode](https://leetcode.com/problems/decode-string?envType=study-plan-v2&envId=top-100-liked)
