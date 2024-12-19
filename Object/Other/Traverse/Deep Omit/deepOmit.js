@@ -1,36 +1,33 @@
 /**
- * @param {object} obj
- * @param {array} []
- * @return {object}
+ * @param {any} val
+ * @param {Array<string>} keys
+ * @returns any
  */
 
-function omit(obj, keys) {
-  const keysSet = new Set(keys);
+function deepOmit(val, keys) {
+  if (Array.isArray(val)) {
+    return val.map((item) => deepOmit(item, keys));
+  }
 
-  return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => !keysSet.has(key))
-  );
+  if (isPlainObject(val)) {
+    const newObj = {};
+    for (const key in val) {
+      if (!keys.includes(key)) {
+        newObj[key] = deepOmit(val[key], keys);
+      }
+    }
+
+    return newObj;
+  }
+
+  return val;
 }
 
-/**
- * @param {object} obj
- * @param {function} callbackFn
- * @return {object}
- */
+function isPlainObject(value) {
+  if (value == null) {
+    return false;
+  }
 
-function omitBy(obj, callbackFn) {
-  return Object.fromEntries(
-    Object.entries(obj).filter(([key, value]) => !callbackFn(value, key))
-  );
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
 }
-
-// Usage example
-const object = {
-  a: 3,
-  b: 4,
-  c: 5,
-};
-
-console.log(omit(object, ["a", "b"])); // => { c: 5 }
-
-console.log(omitBy(object, (value) => value === 3)); // => { b: 4, c: 5 }

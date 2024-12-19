@@ -239,6 +239,7 @@
 - From pairs
 - Object Map
 - Object to Array
+- Omit By
 - Set
 - Set Object Value Safely
 - Shallow Copy
@@ -281,6 +282,7 @@
 ### CSS
 
 - Calculate and compare CSS specificity
+- Classnames
 
 ### JSON
 

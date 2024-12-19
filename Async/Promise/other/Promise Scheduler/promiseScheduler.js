@@ -6,16 +6,14 @@ class Scheduler {
   }
 
   addTask(delay, taskId) {
-    const task = () => {
+    this.taskQueue.push(() => {
       return new Promise((resolve) => {
         setTimeout(() => {
           console.log(`Executing task: ${taskId}`);
           resolve();
         }, delay);
       });
-    };
-
-    this.taskQueue.push(task);
+    });
   }
 
   async start() {

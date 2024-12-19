@@ -8,7 +8,7 @@
 function cycle(...values) {
   let index = -1;
 
-  return function (...args) {
+  return function () {
     index = (index + 1) % values.length;
     return values[index];
   };

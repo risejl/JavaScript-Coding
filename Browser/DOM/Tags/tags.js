@@ -9,7 +9,7 @@ function getTagCount() {
   for (const node of documentTags) {
     const tagName = node.tagName.toLowerCase();
 
-    if (!(tagName in result)) {
+    if (!Object.hasOwn(result, tagName)) {
       result[tagName] = 1;
     } else {
       result[tagName] += 1;

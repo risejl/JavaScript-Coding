@@ -4,7 +4,7 @@
 
 // Time: O(1) | Space: O(1)
 function createHelloWorld() {
-  return function (...args) {
+  return function () {
     return "Hello World";
   };
 }
