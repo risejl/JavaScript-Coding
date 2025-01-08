@@ -1,7 +1,7 @@
-function debounce(func: Function, wait: number = 0): Function {
+export default function debounce(func: Function, wait: number = 0): Function {
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-  return function (...args: any[]) {
+  return function (this: any, ...args: any[]) {
     const context = this;
     clearTimeout(timeoutId ?? undefined);
     

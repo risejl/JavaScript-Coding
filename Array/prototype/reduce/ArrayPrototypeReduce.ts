@@ -4,7 +4,7 @@ interface Array<T> {
       previousValue: U,
       currentValue: T,
       currentIndex: number,
-      array: Array<T>
+      array: T[],
     ) => U,
     initialValue?: U,
   ): U;
